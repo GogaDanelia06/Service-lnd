@@ -1,0 +1,35 @@
+import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
+import { Section, SectionContent } from '@/components/fluid/Section';
+import { SectionLabel } from '@/components/ui/Meta';
+import { Reveal } from '@/components/ui/Reveal';
+import { SplitText } from '@/components/ui/SplitText';
+import type { Project } from '@/content/projects';
+
+export function ProjectHeader({ project }: { project: Project }) {
+  return (
+    <Section height="small" theme="white" offsetHeader>
+      <SectionContent>
+        <FluidGrid>
+          <FluidBlock
+            debugLabel="project/label"
+            area={{ desktop: [1, 2, 2, 10], mobile: [1, 2, 2, 10] }}
+          >
+            <SectionLabel index={project.index}>{project.type}</SectionLabel>
+          </FluidBlock>
+
+          <FluidBlock
+            debugLabel="project/title"
+            area={{ desktop: [3, 2, 8, 20], mobile: [3, 2, 9, 10] }}
+          >
+            <SplitText as="h1" text={project.title} className="display" />
+            <Reveal delay={200}>
+              <p className="mt-[0.6em] max-w-[46ch] text-[length:calc(1.25rem+0.5*var(--type-step))] leading-[1.5] text-[var(--muted)]">
+                {project.summary}
+              </p>
+            </Reveal>
+          </FluidBlock>
+        </FluidGrid>
+      </SectionContent>
+    </Section>
+  );
+}

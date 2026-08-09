@@ -1,0 +1,43 @@
+@layer components {
+
+  
+  .display {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: var(--display-size);
+    line-height: 1.06;
+    letter-spacing: var(--display-tracking);
+    text-wrap: pretty;
+  }
+
+  .display--tight {
+    line-height: 1;
+  }
+
+  
+  .meta {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 0.6875rem;
+    line-height: 1.6;
+    letter-spacing: var(--label-tracking);
+    text-transform: uppercase;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  .meta--lg {
+    font-size: 0.8125rem;
+  }
+
+  .meta-muted {
+    color: var(--muted);
+  }
+
+  
+  .numeral {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+}

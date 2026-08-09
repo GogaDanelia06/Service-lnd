@@ -1,0 +1,41 @@
+@utility fe-grid {
+  --fe-cell: calc(
+    (var(--site-max-width) - (var(--fe-gap) * (var(--fe-cols) - 1))) / var(--fe-cols)
+  );
+  --fe-edge: calc(var(--site-gutter) - var(--fe-gap));
+
+  display: grid;
+  overflow-x: clip;
+  grid-template-columns:
+    minmax(var(--fe-edge), 1fr)
+    repeat(var(--fe-cols), minmax(0, var(--fe-cell)))
+    minmax(var(--fe-edge), 1fr);
+  grid-auto-rows: minmax(var(--fe-row), auto);
+  gap: var(--fe-gap);
+}
+
+@utility fe-block {
+  grid-area: var(--area-mobile);
+  min-width: 0;
+
+  @media (width >= 768px) {
+    grid-area: var(--area-desktop);
+  }
+}
+
+@utility fe-bleed {
+  grid-area: 1 / 1 / -1 / -1;
+}
+
+@utility section-shell {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-content: center;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+@utility site-pad {
+  padding-inline: var(--site-gutter);
+}
