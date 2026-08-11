@@ -1,10 +1,11 @@
 import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
+import { LocaleSwitch } from '@/components/layout/LocaleSwitch';
 import { shared, type Content } from '@/content';
 import type { Locale } from '@/i18n/config';
 
-export function SiteFooter({ content }: { locale: Locale; content: Content }) {
-  const { site } = content;
+export function SiteFooter({ locale, content }: { locale: Locale; content: Content }) {
+  const { site, ui } = content;
 
   return (
     <Section as="footer" height="small" theme="white">
@@ -28,6 +29,10 @@ export function SiteFooter({ content }: { locale: Locale; content: Content }) {
               <br />
               <a href={`mailto:${shared.email}`}>{shared.email}</a>
             </p>
+          </FluidSpan>
+
+          <FluidSpan span={{ desktop: [2, 20], mobile: [2, 10] }}>
+            <LocaleSwitch locale={locale} label={ui.language} />
           </FluidSpan>
         </FluidGrid>
       </SectionContent>

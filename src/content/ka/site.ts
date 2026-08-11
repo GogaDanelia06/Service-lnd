@@ -22,10 +22,9 @@ export const stats = [
 ];
 
 export const nav = [
-  { label: 'ნამუშევრები', href: '/' },
+  { label: 'მთავარი', href: '/' },
   { label: 'ჩვენ შესახებ', href: '/about' },
-  { label: 'გუნდი', href: '/our-team' },
-  { label: 'პრესა', href: '/press' },
+  { label: 'სერვისები', href: '/services' },
   { label: 'კონტაქტი', href: '/contact' },
 ];
 
@@ -35,6 +34,7 @@ export const ui = {
   openMenu: 'მენიუს გახსნა',
   closeMenu: 'მენიუს დახურვა',
   language: 'ენა',
+  getStarted: 'დაგვიკავშირდით',
   nextProject: 'შემდეგი პროექტი',
   backToWork: 'ნამუშევრებზე დაბრუნება',
   notFound: 'ასეთი გვერდი არ არსებობს.',
@@ -58,6 +58,7 @@ export const ui = {
     team: 'გუნდი',
     press: 'პრესა',
     contact: 'კონტაქტი',
+    services: 'სერვისები',
     studio: 'ბიურო',
     enquiries: 'შეკითხვები',
   },

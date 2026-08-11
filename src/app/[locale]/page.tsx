@@ -15,21 +15,13 @@ export default async function WorkPage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
-      <Section height="small" theme="white" offsetHeader>
-        <SectionContent>
-          <FluidGrid>
-            <FluidSpan span={{ desktop: [2, 20], mobile: [2, 10] }}>
-              <h1>{site.tagline}</h1>
-            </FluidSpan>
-          </FluidGrid>
-        </SectionContent>
-      </Section>
-
       <Section
-        height="large"
-        theme="black"
-        background={{ src: home.hero.image, alt: home.hero.alt, overlay: 0.15, priority: true }}
-      />
+        height="hero"
+        theme="white"
+        background={{ src: home.hero.image, alt: home.hero.alt, overlay: 0, priority: true }}
+      >
+        <h1 className="sr-only">{site.tagline}</h1>
+      </Section>
 
       <Section height="small" theme="white">
         <SectionContent>

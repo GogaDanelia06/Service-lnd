@@ -22,10 +22,9 @@ export const stats = [
 ];
 
 export const nav = [
-  { label: 'Work', href: '/' },
+  { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Our Team', href: '/our-team' },
-  { label: 'Press', href: '/press' },
+  { label: 'Services', href: '/services' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -35,6 +34,7 @@ export const ui = {
   openMenu: 'Open menu',
   closeMenu: 'Close menu',
   language: 'Language',
+  getStarted: 'Get Started',
   nextProject: 'Next project',
   backToWork: 'Back to work',
   notFound: 'This page doesn’t exist.',
@@ -58,6 +58,7 @@ export const ui = {
     team: 'Team',
     press: 'Press',
     contact: 'Contact',
+    services: 'Services',
     studio: 'Studio',
     enquiries: 'Enquiries',
   },

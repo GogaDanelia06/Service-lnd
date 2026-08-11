@@ -78,7 +78,14 @@ export default async function LocaleLayout({
           {content.ui.skip}
         </a>
 
-        <SiteHeader locale={locale} nav={content.nav} site={content.site} ui={content.ui} />
+        <SiteHeader
+          locale={locale}
+          nav={content.nav}
+          site={content.site}
+          ui={content.ui}
+          socials={shared.socials}
+          lockup={shared.lockup}
+        />
         <main id="main">{children}</main>
         <SiteFooter locale={locale} content={content} />
 
