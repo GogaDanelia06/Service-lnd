@@ -32,7 +32,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       <SectionContent>
         <FluidGrid className="gap-y-[2.4vmax]">
           <FluidSpan span={{ desktop: [2, 12], mobile: [2, 10] }} className="prose-utica">
-            <h2>{contact.heading}</h2>
+            <h1 className="[--fs:2.8]">{contact.heading}</h1>
             <p className="mt-[0.8em]">{contact.body}</p>
           </FluidSpan>
 

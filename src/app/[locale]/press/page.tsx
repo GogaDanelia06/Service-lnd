@@ -35,7 +35,7 @@ export default async function PressPage({ params }: { params: Promise<{ locale: 
         <SectionContent>
           <FluidGrid className="gap-y-[2.4vmax]">
             <FluidSpan span={{ desktop: [2, 12], mobile: [2, 10] }}>
-              <h2>{press.heading}</h2>
+              <h1 className="[--fs:2.8]">{press.heading}</h1>
             </FluidSpan>
 
             <FluidSpan

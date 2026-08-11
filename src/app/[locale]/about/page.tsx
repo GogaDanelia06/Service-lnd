@@ -33,7 +33,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <SectionContent>
           <FluidGrid className="gap-y-[2.4vmax]">
             <FluidSpan span={{ desktop: [2, 12], mobile: [2, 10] }}>
-              <h2>{about.heading}</h2>
+              <h1 className="[--fs:2.8]">{about.heading}</h1>
             </FluidSpan>
 
             <FluidSpan span={{ desktop: [12, 26], mobile: [2, 10] }} className="prose-utica">
