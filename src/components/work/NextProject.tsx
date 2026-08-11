@@ -2,12 +2,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Arrow, Meta } from '@/components/ui/Meta';
-import type { Project } from '@/content/projects';
+import type { Project } from '@/content/types';
+import { localePath, type Locale } from '@/i18n/config';
 
-export function NextProject({ project }: { project: Project }) {
+export function NextProject({
+  locale,
+  project,
+  label,
+}: {
+  locale: Locale;
+  project: Project;
+  label: string;
+}) {
   return (
     <section data-theme="black" className="section-shell group relative overflow-hidden">
-      <Link href={`/work/${project.slug}`} className="block">
+      <Link href={localePath(locale, `/work/${project.slug}`)} className="block">
         <div className="absolute inset-0">
           <Image
             src={project.hero}
@@ -20,7 +29,7 @@ export function NextProject({ project }: { project: Project }) {
 
         <div className="site-pad relative py-[10vmax]">
           <Meta muted className="block">
-            Next project — {project.index}
+            {label} — {project.index}
           </Meta>
 
           <h2 className="display mt-6 flex flex-wrap items-center gap-x-6 gap-y-2">

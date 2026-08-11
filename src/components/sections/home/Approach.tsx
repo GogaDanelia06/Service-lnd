@@ -2,9 +2,10 @@ import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { Meta, SectionLabel } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
-import { home } from '@/content/pages';
 
-export function Approach() {
+type Item = { title: string; body: string };
+
+export function Approach({ items, label }: { items: Item[]; label: string }) {
   return (
     <Section height="medium" theme="white">
       <SectionContent>
@@ -13,10 +14,10 @@ export function Approach() {
             debugLabel="approach/label"
             area={{ desktop: [1, 2, 2, 8], mobile: [1, 2, 2, 10] }}
           >
-            <SectionLabel index="04">Approach</SectionLabel>
+            <SectionLabel index="04">{label}</SectionLabel>
           </FluidBlock>
 
-          {home.approach.map((item, index) => {
+          {items.map((item, index) => {
             const col = 2 + index * 8;
             return (
               <FluidBlock

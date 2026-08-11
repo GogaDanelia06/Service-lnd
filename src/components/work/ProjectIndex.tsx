@@ -3,7 +3,8 @@ import Link from 'next/link';
 
 import { Arrow, Meta } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
-import type { Project } from '@/content/projects';
+import type { Project } from '@/content/types';
+import { localePath, type Locale } from '@/i18n/config';
 
 type Slot = {
 
@@ -21,7 +22,7 @@ const SLOTS: Slot[] = [
   { col: 17, span: 8, ratio: '3 / 4', offset: 9 },
 ];
 
-export function ProjectIndex({ projects }: { projects: Project[] }) {
+export function ProjectIndex({ locale, projects }: { locale: Locale; projects: Project[] }) {
   return (
     <ul className="site-pad mx-auto grid w-full max-w-[var(--site-max-width)] grid-cols-1 gap-y-20 fe:grid-cols-24 fe:gap-x-[var(--fe-gap)] fe:gap-y-[9vw]">
       {projects.map((project, index) => {
@@ -42,7 +43,7 @@ export function ProjectIndex({ projects }: { projects: Project[] }) {
             }
           >
             <Reveal>
-              <Link href={`/work/${project.slug}`} className="group block">
+              <Link href={localePath(locale, `/work/${project.slug}`)} className="group block">
                 <div className="media media--zoom" style={{ aspectRatio: slot.ratio }}>
                   <Image
                     src={project.thumbnail}
@@ -56,7 +57,8 @@ export function ProjectIndex({ projects }: { projects: Project[] }) {
 
                 <div className="mt-5 flex items-baseline justify-between gap-4 border-t border-[var(--rule)] pt-4">
                   <Meta muted>
-                    {project.index} / {String(projects.length).padStart(2, '0')}
+                    <span className="text-[var(--accent)]">{project.index}</span> /{' '}
+                    {String(projects.length).padStart(2, '0')}
                   </Meta>
                   <Meta muted className="text-right">
                     {project.year} · {project.type}

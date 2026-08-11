@@ -2,7 +2,12 @@ export const home = {
   hero: {
     image: '/images/hero-home.jpg',
     alt: 'A brutalist concrete tower against open sky',
-    caption: 'Copenhagen — 2024',
+    caption: 'Tbilisi — 2024',
+  },
+  bleed: {
+    image: '/images/home-bleed.jpg',
+    alt: 'A top-lit colonnade running the length of the plan',
+    caption: 'Project Three — Kutaisi',
   },
   practice: {
     heading: 'Our practice spans environmental retrofits of existing buildings and the complete planning of new neighbourhoods.',
@@ -31,7 +36,7 @@ export const home = {
     body: 'We’re always looking for new opportunities and are comfortable working internationally. Get in touch and one of our project managers will contact you about beginning the proposal process.',
     action: { label: 'Start a conversation', href: '/contact' },
   },
-} as const;
+};
 
 export const about = {
   heading: 'We think of architecture not as one practice but as several interlocking ones.',
@@ -45,11 +50,17 @@ export const about = {
     heading: 'Let’s Work Together',
     action: { label: 'Start a conversation', href: '/contact' },
     image: '/images/cta-about.jpg',
+    alt: 'A concrete underpass lit from the far end',
   },
-} as const;
+};
+
+export const teamPage = {
+  heading: 'Every project is led by a partner, from first sketch to handover.',
+};
 
 export const press = {
   heading: 'Press',
+  intro: 'What people write about the work.',
   quotes: [
     {
       quote:
@@ -59,7 +70,7 @@ export const press = {
     },
     {
       quote:
-        'Utica belong to a new class of studio practising something closer to placemaking than building — a total design position that takes in structure, landscape, ecology and the social life of a site as one problem.',
+        'Montavia belong to a new class of studio practising something closer to placemaking than building — a total design position that takes in structure, landscape, ecology and the social life of a site as one problem.',
       source: 'Press Source',
       year: '2023',
     },
@@ -74,10 +85,11 @@ export const press = {
     heading: 'Let’s Work Together',
     action: { label: 'Start a conversation', href: '/contact' },
     image: '/images/cta-press.jpg',
+    alt: 'Dense city blocks seen from above',
   },
-} as const;
+};
 
 export const contact = {
   heading: 'Let’s Work Together',
   body: 'Further case studies available upon request. Please provide some information on your project or goals and we’ll move the conversation on from there.',
-} as const;
+};

@@ -3,13 +3,14 @@ import type { CSSProperties, ReactNode } from 'react';
 
 import { cn } from '@/lib/cn';
 
-export type SectionHeight = 'small' | 'medium' | 'large' | 'custom';
-export type SectionTheme = 'white' | 'dark' | 'black';
+export type SectionHeight = 'small' | 'medium' | 'large' | 'hero' | 'custom';
+export type SectionTheme = 'white' | 'tint' | 'dark' | 'black';
 
 const HEIGHT: Record<Exclude<SectionHeight, 'custom'>, { pad: string; minHeight: string }> = {
   small: { pad: '3.3vmax', minHeight: '33vh' },
   medium: { pad: '6.6vmax', minHeight: '66vh' },
   large: { pad: '10vmax', minHeight: '100vh' },
+  hero: { pad: '3.4vmax', minHeight: '100svh' },
 };
 
 export type BackgroundImage = {
@@ -17,6 +18,7 @@ export type BackgroundImage = {
   alt?: string;
 
   overlay?: number;
+  scrim?: string;
   priority?: boolean;
 
   position?: string;
@@ -76,6 +78,9 @@ export function Section({
             className="absolute inset-0 bg-black"
             style={{ opacity: background.overlay ?? 0.15 }}
           />
+          {background.scrim ? (
+            <div aria-hidden className="absolute inset-0" style={{ background: background.scrim }} />
+          ) : null}
         </div>
       ) : null}
 

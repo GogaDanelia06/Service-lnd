@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { Fragment } from 'react';
 
 import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
@@ -7,27 +8,32 @@ import { Section, SectionContent } from '@/components/fluid/Section';
 import { Meta, SectionLabel } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
 import { SplitText } from '@/components/ui/SplitText';
-import { team } from '@/content/team';
-import { sizesForArea, type FluidArea } from '@/lib/fluid';
+import { getContent } from '@/content';
+import type { TeamMember } from '@/content/types';
+import { isLocale } from '@/i18n/config';
+import { TEAM_LAYOUT as LAYOUT } from '@/lib/team-layout';
+import { sizesForArea } from '@/lib/fluid';
 
-const LAYOUT: { portrait: FluidArea; text: FluidArea }[] = [
-  {
-    portrait: { desktop: [1, 2, 15, 12], mobile: [1, 2, 13, 10] },
-    text: { desktop: [15, 2, 22, 12], mobile: [13, 2, 22, 10] },
-  },
-  {
-    portrait: { desktop: [4, 15, 18, 25], mobile: [24, 2, 36, 10] },
-    text: { desktop: [18, 15, 25, 25], mobile: [36, 2, 45, 10] },
-  },
-];
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const { site, ui } = getContent(locale);
+  return {
+    title: ui.sections.team,
+    description: site.description,
+    alternates: { canonical: `/${locale}/our-team` },
+  };
+}
 
-export const metadata: Metadata = {
-  title: 'Our Team',
-  description: 'The partners and staff behind Utica.',
-  alternates: { canonical: '/our-team' },
-};
+export default async function OurTeamPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const { team, teamPage, ui } = getContent(locale);
 
-export default function OurTeamPage() {
   return (
     <>
       <Section height="small" theme="white" offsetHeader>
@@ -37,7 +43,7 @@ export default function OurTeamPage() {
               debugLabel="team/label"
               area={{ desktop: [1, 2, 2, 8], mobile: [1, 2, 2, 10] }}
             >
-              <SectionLabel index="01">Our Team</SectionLabel>
+              <SectionLabel index="01">{ui.sections.team}</SectionLabel>
             </FluidBlock>
             <FluidBlock
               debugLabel="team/heading"
@@ -45,7 +51,7 @@ export default function OurTeamPage() {
             >
               <SplitText
                 as="h1"
-                text="Every project is led by a partner, from first sketch to handover."
+                text={teamPage.heading}
                 className="display"
               />
             </FluidBlock>
@@ -56,7 +62,7 @@ export default function OurTeamPage() {
       <Section height="small" theme="white">
         <SectionContent>
           <FluidGrid>
-            {team.map((member, index) => {
+            {team.map((member: TeamMember, index: number) => {
               const layout = LAYOUT[index] ?? LAYOUT[0]!;
 
               return (

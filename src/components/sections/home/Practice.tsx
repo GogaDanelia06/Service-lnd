@@ -4,18 +4,25 @@ import { StatRow } from '@/components/sections/StatRow';
 import { SectionLabel } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
 import { SplitText } from '@/components/ui/SplitText';
-import { home } from '@/content/pages';
 
-export function Practice() {
+export function Practice({
+  practice,
+  label,
+  stats,
+}: {
+  practice: { heading: string; body: string };
+  label: string;
+  stats: { value: string; label: string }[];
+}) {
   return (
-    <Section height="medium" theme="white">
+    <Section height="medium" theme="tint">
       <SectionContent>
         <FluidGrid>
           <FluidBlock
             debugLabel="practice/label"
             area={{ desktop: [1, 2, 2, 8], mobile: [1, 2, 2, 10] }}
           >
-            <SectionLabel index="02">Practice</SectionLabel>
+            <SectionLabel index="02">{label}</SectionLabel>
           </FluidBlock>
 
           <FluidBlock
@@ -24,7 +31,7 @@ export function Practice() {
           >
             <SplitText
               as="h2"
-              text={home.practice.heading}
+              text={practice.heading}
               className="text-[length:calc(2.1rem+1.5*var(--type-step))] leading-[1.22] font-[family-name:var(--font-heading)] font-medium tracking-[-0.018em]"
             />
           </FluidBlock>
@@ -35,7 +42,7 @@ export function Practice() {
             className="prose-utica"
           >
             <Reveal delay={140}>
-              <p className="text-[var(--muted)]">{home.practice.body}</p>
+              <p className="text-[var(--muted)]">{practice.body}</p>
             </Reveal>
           </FluidBlock>
 
@@ -43,7 +50,7 @@ export function Practice() {
             debugLabel="practice/stats"
             area={{ desktop: [11, 2, 16, 26], mobile: [22, 2, 40, 10] }}
           >
-            <StatRow />
+            <StatRow stats={stats} />
           </FluidBlock>
         </FluidGrid>
       </SectionContent>

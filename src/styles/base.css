@@ -60,7 +60,7 @@
   }
 
   ::selection {
-    background: var(--color-ink);
+    background: var(--color-blue);
     color: var(--color-paper);
   }
 

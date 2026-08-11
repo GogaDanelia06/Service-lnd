@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-export type SectionTheme = 'white' | 'dark' | 'black';
+export type SectionTheme = 'white' | 'tint' | 'dark' | 'black';
 
 export function useSectionTheme(key: string) {
   const [theme, setTheme] = useState<SectionTheme>('white');

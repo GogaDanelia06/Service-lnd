@@ -1,7 +1,5 @@
 import type { Project } from '@/content/types';
 
-export type { Project, ProjectImage } from '@/content/types';
-
 export const projects: Project[] = [
   {
     slug: 'project-one',
@@ -11,14 +9,14 @@ export const projects: Project[] = [
     thumbnail: '/images/project-one-thumb.jpg',
     hero: '/images/project-one-hero.jpg',
     year: '2024',
-    location: 'Nørrebro, Copenhagen',
+    location: 'Chugureti, Tbilisi',
     type: 'Housing · Retrofit',
-    client: 'Nørrebro Boligforening',
+    client: 'Chugureti Housing Association',
     programme: 'Housing, workshops, shared kitchen',
     area: '3,400 m²',
     status: 'Built',
     body: [
-      'A post-war housing block reworked from the inside out. Rather than demolish, we stripped the structure back to its frame, re-skinned it in a breathable envelope and returned the ground floor to the street as workshops and a shared kitchen.',
+      'A Soviet-era housing block reworked from the inside out. Rather than demolish, we stripped the structure back to its frame, re-skinned it in a breathable envelope and returned the ground floor to the street as workshops and a shared kitchen.',
       'The result keeps every tonne of embodied carbon already standing on the site, and adds sixteen homes that read as though they had always been there.',
       'Residents stayed in place through two of the three construction phases. That constraint shaped more of the design than any drawing did — every detail had to be buildable one storey at a time, from the outside, without a crane on the street.',
     ],
@@ -36,9 +34,9 @@ export const projects: Project[] = [
     thumbnail: '/images/project-two-thumb.jpg',
     hero: '/images/project-two-hero.jpg',
     year: '2023',
-    location: 'Amager, Copenhagen',
+    location: 'Avlabari, Tbilisi',
     type: 'Public space',
-    client: 'Københavns Kommune',
+    client: 'Tbilisi City Hall',
     programme: 'Civic square, water feature, planting',
     area: '6,100 m²',
     status: 'Built',
@@ -61,9 +59,9 @@ export const projects: Project[] = [
     thumbnail: '/images/project-three-thumb.jpg',
     hero: '/images/project-three-hero.jpg',
     year: '2023',
-    location: 'Aarhus',
+    location: 'Kutaisi',
     type: 'Cultural',
-    client: 'Aarhus Scenekunstcenter',
+    client: 'Kutaisi Performing Arts Centre',
     programme: 'Rehearsal rooms, performance hall, offices',
     area: '4,800 m²',
     status: 'Built',
@@ -86,9 +84,9 @@ export const projects: Project[] = [
     thumbnail: '/images/project-four-thumb.jpg',
     hero: '/images/project-four-hero.jpg',
     year: '2022',
-    location: 'Malmö',
+    location: 'Batumi',
     type: 'Masterplan',
-    client: 'Malmö Stad',
+    client: 'Batumi Municipality',
     programme: 'Mixed-use masterplan, public realm',
     area: '22 ha',
     status: 'In delivery',

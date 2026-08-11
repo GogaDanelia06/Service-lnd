@@ -16,7 +16,8 @@
   }
 
   .prose-utica a:not(.btn) {
-    background-image: linear-gradient(currentColor, currentColor);
+    color: var(--accent);
+    background-image: linear-gradient(var(--accent), var(--accent));
     background-repeat: no-repeat;
     background-position: 0 100%;
     background-size: 100% 1px;
@@ -27,13 +28,11 @@
     background-size: 0 1px;
   }
 
-  
   .rule {
     border: 0;
     border-top: 1px solid var(--rule);
   }
 
-  
   .btn {
     display: inline-flex;
     align-items: center;
@@ -76,7 +75,6 @@
     transform: translateX(0.35em);
   }
 
-  
   .underline-swipe {
     background-image: linear-gradient(currentColor, currentColor);
     background-repeat: no-repeat;
@@ -88,6 +86,27 @@
 
   .underline-swipe:hover,
   .underline-swipe[data-active='true'] {
+    background-image: linear-gradient(var(--accent), var(--accent));
     background-size: 100% 1px;
+  }
+}
+
+@layer components {
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 60;
+  }
+
+  .skip-link:focus-visible {
+    left: 1rem;
+    top: 1rem;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    padding: 0.75rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
   }
 }

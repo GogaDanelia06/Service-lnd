@@ -1,0 +1,28 @@
+:root:lang(ka) {
+  --heading-tracking: 0;
+  --meta-tracking: 0.04em;
+}
+
+:lang(ka) .meta,
+:lang(ka) .meta--lg {
+  text-transform: none;
+  letter-spacing: var(--meta-tracking);
+  font-family: var(--font-georgian), var(--font-plex-mono), ui-monospace, monospace;
+}
+
+:lang(ka) .display {
+  letter-spacing: -0.01em;
+  line-height: 1.16;
+}
+
+:lang(ka) h1,
+:lang(ka) h2,
+:lang(ka) h3,
+:lang(ka) h4 {
+  letter-spacing: 0;
+  line-height: 1.32;
+}
+
+:lang(ka) .numeral {
+  font-family: var(--font-archivo), sans-serif;
+}

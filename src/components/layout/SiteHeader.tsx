@@ -4,16 +4,37 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
+import { LocaleSwitch } from '@/components/layout/LocaleSwitch';
 import { MobileNav } from '@/components/layout/MobileNav';
-import { nav, site } from '@/content/site';
+import { Wordmark } from '@/components/ui/Wordmark';
+import { localePath, type Locale } from '@/i18n/config';
 import { useSectionTheme, type SectionTheme } from '@/lib/useSectionTheme';
 
-function isActive(pathname: string, href: string): boolean {
-  if (href === '/') return pathname === '/' || pathname.startsWith('/work');
-  return pathname === href || pathname.startsWith(`${href}/`);
+type NavItem = { label: string; href: string };
+
+function isActive(pathname: string, locale: Locale, href: string): boolean {
+  const target = localePath(locale, href);
+  if (href === '/') return pathname === target || pathname.startsWith(`/${locale}/work`);
+  return pathname === target || pathname.startsWith(`${target}/`);
 }
 
-export function SiteHeader() {
+export function SiteHeader({
+  locale,
+  nav,
+  site,
+  ui,
+}: {
+  locale: Locale;
+  nav: NavItem[];
+  site: { name: string };
+  ui: {
+    home: string;
+    language: string;
+    openMenu: string;
+    closeMenu: string;
+    nav: { primary: string; footer: string };
+  };
+}) {
   const pathname = usePathname();
   const { theme, lifted } = useSectionTheme(pathname);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,35 +47,32 @@ export function SiteHeader() {
       className="fixed inset-x-0 top-0 z-40 text-[var(--fg)] transition-colors duration-500 ease-[var(--ease-out-quint)]"
     >
       <div className="site-pad flex items-center justify-between gap-6 py-[var(--header-pad-y)]">
-        <Link
-          href="/"
-          aria-label={`${site.name} — home`}
-          className="relative z-30 font-[family-name:var(--font-heading)] text-[length:var(--logo-size)] leading-[1.4] font-medium tracking-[-0.02em]"
-        >
-          {site.name}
-        </Link>
+        <Wordmark locale={locale} name={site.name} label={ui.home} />
 
-        <nav aria-label="Primary" className="max-fe:hidden">
-          <ul className="meta flex items-center gap-8">
-            {nav.map((item) => {
-              const active = isActive(pathname, item.href);
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    aria-current={active ? 'page' : undefined}
-                    data-active={active}
-                    className="underline-swipe inline-block"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        <div className="flex items-center gap-10 max-fe:hidden">
+          <nav aria-label={ui.nav.primary}>
+            <ul className="meta flex items-center gap-8">
+              {nav.map((item) => {
+                const active = isActive(pathname, locale, item.href);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={localePath(locale, item.href)}
+                      aria-current={active ? 'page' : undefined}
+                      data-active={active}
+                      className="underline-swipe inline-block"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+          <LocaleSwitch locale={locale} label={ui.language} />
+        </div>
 
-        <MobileNav pathname={pathname} onOpenChange={setMenuOpen} />
+        <MobileNav locale={locale} nav={nav} ui={ui} pathname={pathname} onOpenChange={setMenuOpen} />
       </div>
 
       <div

@@ -2,14 +2,14 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "utica",
+      "name": "montavia",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000,
       "autoPort": true
     },
     {
-      "name": "utica-prod",
+      "name": "montavia-prod",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "start"],
       "port": 3001,

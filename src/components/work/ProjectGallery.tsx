@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Section } from '@/components/fluid/Section';
 import { Meta } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
-import type { ProjectImage } from '@/content/projects';
+import type { ProjectImage } from '@/content/types';
 
 export function ProjectGallery({ images }: { images: ProjectImage[] }) {
   return (

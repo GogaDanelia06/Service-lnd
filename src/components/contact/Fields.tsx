@@ -8,7 +8,7 @@ import { Meta } from '@/components/ui/Meta';
 import { cn } from '@/lib/cn';
 
 export const FIELD =
-  'w-full border-0 border-b border-[var(--rule)] bg-transparent pb-3 pt-1 font-[family-name:var(--font-body)] text-[length:calc(1.15rem+0.4*var(--type-step))] font-light leading-[1.6] text-[var(--fg)] outline-none transition-colors duration-300 focus:border-[var(--fg)]';
+  'w-full border-0 border-b border-[var(--rule)] bg-transparent pb-3 pt-1 font-[family-name:var(--font-body)] text-[length:calc(1.15rem+0.4*var(--type-step))] font-light leading-[1.6] text-[var(--fg)] outline-none transition-colors duration-300 focus:border-[var(--accent)]';
 
 export function Field({
   label,
@@ -35,7 +35,7 @@ export function Field({
     required,
     'aria-invalid': error ? true : undefined,
     'aria-describedby': error ? errorId : undefined,
-    className: cn(FIELD, rows && 'resize-y leading-[1.7]', error && 'border-[var(--fg)]'),
+    className: cn(FIELD, rows && 'resize-y leading-[1.7]', error && 'border-[var(--accent)]'),
   };
 
   return (
@@ -62,12 +62,12 @@ export function Field({
   );
 }
 
-export function SubmitButton() {
+export function SubmitButton({ send, sending }: { send: string; sending: string }) {
   const { pending } = useFormStatus();
 
   return (
     <Button type="submit" disabled={pending} arrow className="w-full sm:w-auto">
-      {pending ? 'Sending…' : 'Send message'}
+      {pending ? sending : send}
     </Button>
   );
 }

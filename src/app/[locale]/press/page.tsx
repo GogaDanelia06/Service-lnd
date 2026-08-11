@@ -1,20 +1,35 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
-import { CtaImageSection } from '@/components/sections/CtaSection';
+import { CtaImageSection } from '@/components/sections/CtaImageSection';
 import { Meta, SectionLabel } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
 import { SplitText } from '@/components/ui/SplitText';
-import { press } from '@/content/pages';
+import { getContent } from '@/content';
+import { isLocale } from '@/i18n/config';
 
-export const metadata: Metadata = {
-  title: 'Press',
-  description: 'Selected writing about Utica.',
-  alternates: { canonical: '/press' },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const { site, ui } = getContent(locale);
+  return {
+    title: ui.sections.press,
+    description: site.description,
+    alternates: { canonical: `/${locale}/press` },
+  };
+}
 
-export default function PressPage() {
+export default async function PressPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const { press, ui } = getContent(locale);
+
   return (
     <>
       <Section height="small" theme="white" offsetHeader>
@@ -24,13 +39,13 @@ export default function PressPage() {
               debugLabel="press/label"
               area={{ desktop: [1, 2, 2, 8], mobile: [1, 2, 2, 10] }}
             >
-              <SectionLabel index="01">Press</SectionLabel>
+              <SectionLabel index="01">{ui.sections.press}</SectionLabel>
             </FluidBlock>
             <FluidBlock
               debugLabel="press/heading"
               area={{ desktop: [3, 2, 8, 20], mobile: [3, 2, 9, 10] }}
             >
-              <SplitText as="h1" text="What people write about the work." className="display" />
+              <SplitText as="h1" text={press.intro} className="display" />
             </FluidBlock>
           </FluidGrid>
         </SectionContent>
@@ -39,7 +54,7 @@ export default function PressPage() {
       <Section height="small" theme="white">
         <SectionContent>
           <FluidGrid>
-            {press.quotes.map((entry, index) => (
+            {press.quotes.map((entry: { quote: string; source: string; year: string }, index: number) => (
               <FluidBlock
                 key={entry.quote.slice(0, 32)}
                 debugLabel={`press/quote-${index}`}
@@ -74,10 +89,12 @@ export default function PressPage() {
       </Section>
 
       <CtaImageSection
+        locale={locale}
+        label={ui.sections.contact}
         heading={press.cta.heading}
         action={press.cta.action}
         image={press.cta.image}
-        alt="Dense city blocks seen from above"
+        alt={press.cta.alt}
         theme="black"
       />
     </>

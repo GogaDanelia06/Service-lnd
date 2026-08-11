@@ -1,27 +1,23 @@
-import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
-import { Section, SectionContent } from '@/components/fluid/Section';
-import { ButtonLink } from '@/components/ui/Button';
+import Link from 'next/link';
 
-export default function NotFound() {
+import { fontClass } from '@/app/fonts';
+import { defaultLocale } from '@/i18n/config';
+
+import '@/app/globals.css';
+
+export default function RootNotFound() {
   return (
-    <Section height="medium" theme="white" offsetHeader>
-      <SectionContent>
-        <FluidGrid>
-          <FluidBlock
-            debugLabel="404"
-            area={{ desktop: [1, 2, 6, 16], mobile: [1, 2, 6, 10] }}
-            className="prose-utica"
-          >
-            <h1>This page doesn’t exist.</h1>
-            <p className="mt-[0.8em]">
-              The link may be out of date, or the page may have moved.
-            </p>
-            <div className="mt-[2em]">
-              <ButtonLink href="/">Back to work</ButtonLink>
-            </div>
-          </FluidBlock>
-        </FluidGrid>
-      </SectionContent>
-    </Section>
+    <html lang="en" className={fontClass}>
+      <body>
+        <main className="site-pad flex min-h-screen flex-col justify-center gap-6">
+          <h1 className="display">404</h1>
+          <p className="meta">
+            <Link href={`/${defaultLocale}`} className="underline-swipe">
+              Montavia — home
+            </Link>
+          </p>
+        </main>
+      </body>
+    </html>
   );
 }

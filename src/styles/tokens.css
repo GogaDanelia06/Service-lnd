@@ -1,12 +1,15 @@
 @theme {
-  --font-heading: 'acumin-pro', var(--font-archivo), 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-body: var(--font-poppins), 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-heading: 'acumin-pro', var(--font-archivo), var(--font-georgian), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-body: var(--font-poppins), 'Poppins', var(--font-georgian), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), var(--font-georgian), ui-monospace, 'SF Mono', Menlo, monospace;
 
-  --color-ink: #000000;
-  --color-paper: #ffffff;
-  --color-dark: #28282a;
-  --color-rule: #dfe0e1;
+  --color-paper: #f6f4ef;
+  --color-stone: #e7e4db;
+  --color-ink: #14151a;
+  --color-navy: #1b2a5c;
+  --color-blue: #2743a8;
+  --color-blue-light: #8fa6f0;
+  --color-rule: #dcd8cf;
 
   --breakpoint-fe: 768px;
 }
@@ -51,31 +54,4 @@
     --fe-row: 24px;
     --header-pad-y: var(--site-gutter);
   }
-}
-
-[data-theme='white'] {
-  --bg: var(--color-paper);
-  --fg: var(--color-ink);
-  --muted: color-mix(in srgb, var(--color-ink) 55%, transparent);
-  --rule: var(--color-rule);
-  --btn-bg: var(--color-ink);
-  --btn-fg: var(--color-paper);
-}
-
-[data-theme='dark'] {
-  --bg: var(--color-dark);
-  --fg: var(--color-paper);
-  --muted: color-mix(in srgb, var(--color-paper) 62%, transparent);
-  --rule: color-mix(in srgb, var(--color-paper) 24%, transparent);
-  --btn-bg: var(--color-paper);
-  --btn-fg: var(--color-ink);
-}
-
-[data-theme='black'] {
-  --bg: var(--color-ink);
-  --fg: var(--color-paper);
-  --muted: color-mix(in srgb, var(--color-paper) 62%, transparent);
-  --rule: color-mix(in srgb, var(--color-paper) 24%, transparent);
-  --btn-bg: var(--color-paper);
-  --btn-fg: var(--color-ink);
 }

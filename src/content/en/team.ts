@@ -1,7 +1,5 @@
 import type { TeamMember } from '@/content/types';
 
-export type { TeamMember } from '@/content/types';
-
 export const team: TeamMember[] = [
   {
     name: 'First Name Last Name',

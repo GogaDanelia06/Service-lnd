@@ -40,4 +40,9 @@
     letter-spacing: -0.02em;
     font-variant-numeric: tabular-nums;
   }
+
+  .display--hero {
+    font-size: clamp(2.1rem, 4.6vw, 4.4rem);
+    line-height: 1.1;
+  }
 }

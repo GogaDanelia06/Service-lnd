@@ -33,8 +33,8 @@ export function SectionLabel({
 }) {
   return (
     <div className={cn('meta flex items-center gap-3', className)}>
-      <span className="tabular-nums">({index})</span>
-      <span aria-hidden className="h-px w-8 shrink-0 bg-current opacity-40" />
+      <span className="tabular-nums text-[var(--accent)]">({index})</span>
+      <span aria-hidden className="h-px w-8 shrink-0 bg-[var(--accent)] opacity-70" />
       <span>{children}</span>
     </div>
   );

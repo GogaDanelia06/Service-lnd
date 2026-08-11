@@ -1,6 +1,6 @@
-# Utica
+# Montavia
 
-An architecture-studio portfolio site in Next.js.
+A bilingual (English / Georgian) architecture-studio portfolio site in Next.js.
 
 It is built in two layers. Underneath is a faithful port of the **Utica**
 (Squarespace 7.1 / Fluid Engine) template's layout system — every number
@@ -43,8 +43,64 @@ the two reveal primitives, the parallax image and the contact form.
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm test` | Vitest |
-| `npm run assets:photos` | Fetch and grade the photography |
+| `npm run assets:photos` | Fetch and grade the photography (`-- --mono` for black and white) |
 | `npm run assets:placeholders` | Regenerate abstract placeholders instead |
+
+## Languages
+
+The site ships in **English** and **Georgian**, both statically prerendered.
+
+| | |
+|---|---|
+| Routes | `/en/...` and `/ka/...` — every page exists in both |
+| Default | `/` redirects via `src/middleware.ts` |
+| Detection | `locale` cookie, then `Accept-Language`, then `en` |
+| Switching | Preserves the current page — `/ka/work/project-two` → `/en/work/project-two` |
+| SEO | Per-locale `<html lang>`, canonical, `hreflang` alternates, both locales in `sitemap.xml` |
+
+Copy lives in `src/content/en/` and `src/content/ka/` as parallel modules;
+`getContent(locale)` returns one merged dictionary. Adding a third language
+means adding a folder and one entry in `src/i18n/config.ts` — no component
+changes.
+
+Things that are **not** translated on purpose: image filenames, project
+slugs (so URLs stay stable across languages), and the shared contact details
+in `src/content/index.ts`.
+
+### Nothing may be hardcoded in a component
+
+Two checks enforce this, because either one alone misses half the problem:
+
+- `src/content/dictionary.test.ts` compares the two dictionaries key by key
+  and array length by array length, then scans the Georgian one for stray
+  Latin copy. It catches a key you translated in one locale and forgot in the
+  other.
+- `leak-scan` walks the **rendered** `/ka` pages and flags any text node
+  containing Latin letters that is not the brand, a number or a contact
+  detail. It catches a string hardcoded in a component, which never reaches a
+  dictionary at all.
+
+The second check is what found `"What people write about the work."` sitting
+in `press/page.tsx` and `"Every project is led by a partner…"` in
+`our-team/page.tsx` — both invisible to the dictionary test.
+
+Both are clean: 20 unit tests passing, 0 leaks across 9 Georgian pages.
+
+### Georgian typography
+
+Georgian needed three deliberate corrections, in `src/styles/georgian.css`:
+
+- **No uppercasing.** `text-transform: uppercase` maps Mkhedruli to Mtavruli
+  in modern browsers. It renders, but no Georgian site sets running text that
+  way — so the mono meta voice keeps its tracking and drops the transform.
+- **No negative tracking.** The display scale runs at `-0.03em` for Archivo.
+  Georgian letterforms are rounder and more open; the same value closes them
+  up badly. Set to `0`, with looser line-height to match.
+- **Its own face.** Archivo and IBM Plex Mono have no Georgian glyphs, so
+  **Noto Sans Georgian** sits in all three stacks and takes over by coverage.
+
+Georgian also runs roughly 20–30 % longer than English. The fluid grid absorbs
+it, but it is worth checking headline blocks when editing copy.
 
 ## Conventions
 
@@ -172,19 +228,51 @@ Above 1700 px the gutter becomes `(100vw − 1500px) / 2`, capping content at
 
 | section height | padding-block | min-height |
 |---|---|---|
+| hero | `3.4vmax` | `100svh` |
 | small | `3.3vmax` | `33vh` |
 | medium | `6.6vmax` | `66vh` |
 | large | `10vmax` | `100vh` |
 
-| theme | background | text |
+| token | value | role |
 |---|---|---|
-| `white` | `#ffffff` | `#000000` |
-| `dark` | `#28282a` | `#ffffff` |
-| `black` | `#000000` | `#ffffff` |
+| `paper` | `#f6f4ef` | bone off-white, the default ground |
+| `stone` | `#e7e4db` | tinted section, used for rhythm |
+| `ink` | `#14151a` | near-black with a cool cast |
+| `navy` | `#1b2a5c` | ultramarine, the dark sections |
+| `blue` | `#2743a8` | accent on light — text **and** fill |
+| `blue-light` | `#8fa6f0` | accent on dark — text **and** fill |
 
-Rules and hairlines use `#dfe0e1`. A fixed film-grain layer sits over
+| section theme | background | text | accent |
+|---|---|---|---|
+| `white` | paper | ink | blue |
+| `tint` | stone | ink | blue |
+| `dark` | navy | paper | blue-light |
+| `black` | ink | paper | blue-light |
+
+Ultramarine needs only one accent tone per ground, unlike a warm accent:
+`#2743a8` measures **7.78:1** on paper in *both* directions, so the same value
+works as 11px label text and as a button fill. `#8fa6f0` does the same job on
+dark — 7.71:1 on ink, 5.80:1 on navy.
+
+Rules and hairlines use `--rule`. A fixed film-grain layer sits over
 everything at 3.5 % opacity in `multiply` — a few percent of noise is what
 stops large flat areas reading as flat *screen* rather than flat *paper*.
+
+### Contrast is verified, not assumed
+
+Every text/background pair is audited against the **rendered** page — walking
+the DOM, compositing each ancestor background, and blending the `color-mix`
+alpha in `--muted`. Current state: **0 failures** across `/en`, `/en/contact`
+and `/ka/work/project-one` at WCAG AA (4.5:1 body, 3:1 large).
+
+That audit caught a real bug: `--muted` at 58 % ink measured 4.1–4.3:1 on the
+warm grounds — it had passed on pure white and quietly stopped passing when
+the ground warmed up. It is 70 % now.
+
+One trap worth knowing if you re-run such a check: Chrome serialises
+`color-mix()` as `color(srgb 0.95 0.94 0.91 / 0.66)` with **0–1** channels,
+not the `rgb()` 0–255 you get everywhere else. Parsing those as 8-bit gives
+nonsense ratios.
 
 ---
 
@@ -254,7 +342,7 @@ to redistribute. The stack leads with it anyway:
 
 Add your own Adobe Fonts kit and Acumin takes over with no other change. Until
 then it falls back to **Archivo**, which measures within **0.6 %** of Acumin
-Pro at display sizes (`"Utica is an architecture firm"` — Acumin 830.9 px,
+Pro at display sizes (`"Montavia is an architecture firm"` — Acumin 830.9 px,
 Archivo 826.3 px at 67.84 px).
 
 Body copy is **Poppins Light**, exactly what the reference uses. Meta is
@@ -282,17 +370,26 @@ slot (a brick detail belongs in a gallery, not behind a headline).
 
 Two decisions make a mixed-source set read as one studio's portfolio:
 
-- **A single grade.** Everything is desaturated to monochrome with the same
-  contrast curve. That is what lets a Cambridge quad and a brutalist flak
-  tower sit on the same page — and it suits a design system built entirely
-  from ink, paper and one grey. Pass `--color` to keep the originals.
+- **Per-image white balance, then one shared grade.** Each frame is
+  grey-world balanced *after* cropping, then desaturated to 74 % with a
+  slightly cool per-channel curve. That is what lets a Cambridge quad and a brutalist
+  flak tower sit on the same page while both still read as colour. The balance
+  step matters: the hero photograph shipped with a **+15 green cast** that was
+  invisible in black and white and turned the whole section olive the moment
+  colour came back. It is ±0.7 across the set now. Pass `--mono` for the
+  black-and-white treatment instead.
+
+  Two sharp traps worth knowing: `.tint()` duotones an image and destroys its
+  original hue — it is not a white-balance tool. And calling `.linear()` twice
+  on one pipeline **overwrites** rather than composes, so a correction and a
+  grade have to be separate passes.
 - **Attention-based cropping.** Sources are landscape; several slots are
   portrait. A centre crop cuts buildings in half, so `sharp` picks the region
   of interest instead.
 
 ```bash
-npm run assets:photos            # monochrome (default)
-npm run assets:photos -- --color # keep the source colour
+npm run assets:photos           # graded colour (default)
+npm run assets:photos -- --mono # black and white
 ```
 
 Swap in your own photography by dropping files over the same filenames, or

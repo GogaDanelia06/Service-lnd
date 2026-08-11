@@ -7,7 +7,7 @@ const valid = {
   lastName: 'Lovelace',
   email: 'ada@example.com',
   subject: 'New commission',
-  message: 'We are planning a small civic building in Aarhus and would like to talk.',
+  message: 'We are planning a small civic building in Kutaisi and would like to talk.',
   company: '',
 };
 

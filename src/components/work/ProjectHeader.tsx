@@ -3,7 +3,7 @@ import { Section, SectionContent } from '@/components/fluid/Section';
 import { SectionLabel } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
 import { SplitText } from '@/components/ui/SplitText';
-import type { Project } from '@/content/projects';
+import type { Project } from '@/content/types';
 
 export function ProjectHeader({ project }: { project: Project }) {
   return (

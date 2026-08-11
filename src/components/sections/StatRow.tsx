@@ -1,8 +1,7 @@
 import { Meta } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
-import { stats } from '@/content/site';
 
-export function StatRow() {
+export function StatRow({ stats }: { stats: { value: string; label: string }[] }) {
   return (
     <dl className="grid grid-cols-2 gap-x-[var(--fe-gap)] gap-y-10 fe:grid-cols-4">
       {stats.map((stat, index) => (

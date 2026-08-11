@@ -1,21 +1,36 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
+import { ContactRow } from '@/components/contact/ContactRow';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
-import { Meta, SectionLabel } from '@/components/ui/Meta';
+import { SectionLabel } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
 import { SplitText } from '@/components/ui/SplitText';
-import { contact } from '@/content/pages';
-import { site } from '@/content/site';
+import { getContent, shared } from '@/content';
+import { isLocale } from '@/i18n/config';
 
-export const metadata: Metadata = {
-  title: 'Contact',
-  description: contact.body,
-  alternates: { canonical: '/contact' },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const { contact, ui } = getContent(locale);
+  return {
+    title: ui.sections.contact,
+    description: contact.body,
+    alternates: { canonical: `/${locale}/contact` },
+  };
+}
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const { contact, site, ui } = getContent(locale);
+
   return (
     <Section height="medium" theme="white" offsetHeader>
       <SectionContent>
@@ -24,7 +39,7 @@ export default function ContactPage() {
             debugLabel="contact/label"
             area={{ desktop: [1, 2, 2, 8], mobile: [1, 2, 2, 10] }}
           >
-            <SectionLabel index="01">Contact</SectionLabel>
+            <SectionLabel index="01">{ui.sections.contact}</SectionLabel>
           </FluidBlock>
 
           <FluidBlock
@@ -50,24 +65,24 @@ export default function ContactPage() {
           >
             <Reveal delay={180}>
               <dl className="flex flex-col">
-                <Row label="Studio">
+                <ContactRow label={ui.details.studio}>
                   {site.address.street}
                   <br />
                   {site.address.city}, {site.address.country}
-                </Row>
-                <Row label="Email">
-                  <a href={`mailto:${site.email}`} className="underline-swipe">
-                    {site.email}
+                </ContactRow>
+                <ContactRow label={ui.details.email}>
+                  <a href={`mailto:${shared.email}`} className="underline-swipe">
+                    {shared.email}
                   </a>
-                </Row>
-                <Row label="Telephone">
-                  <a href={`tel:${site.phone.replace(/[^\d+]/g, '')}`} className="underline-swipe">
-                    {site.phone}
+                </ContactRow>
+                <ContactRow label={ui.details.telephone}>
+                  <a href={`tel:${shared.phone.replace(/[^\d+]/g, '')}`} className="underline-swipe">
+                    {shared.phone}
                   </a>
-                </Row>
-                <Row label="Elsewhere">
+                </ContactRow>
+                <ContactRow label={ui.details.elsewhere}>
                   <span className="flex flex-wrap gap-x-4 gap-y-1">
-                    {site.socials.map((social) => (
+                    {shared.socials.map((social: { label: string; href: string }) => (
                       <a
                         key={social.href}
                         href={social.href}
@@ -79,7 +94,7 @@ export default function ContactPage() {
                       </a>
                     ))}
                   </span>
-                </Row>
+                </ContactRow>
               </dl>
             </Reveal>
           </FluidBlock>
@@ -88,23 +103,10 @@ export default function ContactPage() {
             debugLabel="contact/form"
             area={{ desktop: [3, 14, 24, 26], mobile: [28, 2, 56, 10] }}
           >
-            <ContactForm />
+            <ContactForm labels={ui.form} />
           </FluidBlock>
         </FluidGrid>
       </SectionContent>
     </Section>
-  );
-}
-
-function Row({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="flex justify-between gap-6 border-t border-[var(--rule)] py-3.5">
-      <Meta as="dt" muted className="shrink-0">
-        {label}
-      </Meta>
-      <Meta as="dd" className="text-right">
-        {children}
-      </Meta>
-    </div>
   );
 }

@@ -7,11 +7,12 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'public', 'images');
-const KEEP_COLOR = process.argv.includes('--color');
+const MONO = process.argv.includes('--mono');
 
 const PHOTOS = [
 
   { key: 'hero-home', id: 101, width: 2400, height: 1500 },
+  { key: 'home-bleed', id: 153, width: 2400, height: 1500 },
   { key: 'about-studio', id: 192, width: 2000, height: 1500 },
   { key: 'cta-about', id: 181, width: 2400, height: 1500 },
   { key: 'cta-press', id: 214, width: 2400, height: 1500 },
@@ -44,6 +45,16 @@ const PHOTOS = [
 ];
 
 const SOURCE_LONG_EDGE = 2600;
+const BALANCE_LIMIT = 0.22;
+
+async function greyWorld(buffer) {
+  const { channels } = await sharp(buffer).stats();
+  const means = channels.slice(0, 3).map((c) => c.mean);
+  const target = means.reduce((a, b) => a + b, 0) / 3;
+  return means.map((m) =>
+    Math.min(1 + BALANCE_LIMIT, Math.max(1 - BALANCE_LIMIT, target / m)),
+  );
+}
 
 async function download(id) {
   const meta = await (await fetch(`https://picsum.photos/id/${id}/info`)).json();
@@ -58,21 +69,24 @@ async function download(id) {
 
 async function main() {
   await mkdir(OUT, { recursive: true });
-  console.log(`Fetching ${PHOTOS.length} photographs${KEEP_COLOR ? ' (colour)' : ' (monochrome)'}…\n`);
+  console.log(`Fetching ${PHOTOS.length} photographs${MONO ? ' (monochrome)' : ' (graded colour)'}…\n`);
 
   for (const photo of PHOTOS) {
     const source = await download(photo.id);
 
-    let pipeline = sharp(source).resize(photo.width, photo.height, {
-      fit: 'cover',
+    const cropped = await sharp(source)
+      .resize(photo.width, photo.height, { fit: 'cover', position: sharp.strategy.attention })
+      .toBuffer();
 
-      position: sharp.strategy.attention,
-    });
+    const balance = await greyWorld(cropped);
+    const balanced = MONO ? cropped : await sharp(cropped).linear(balance, [0, 0, 0]).toBuffer();
+    let pipeline = sharp(balanced);
 
-    if (!KEEP_COLOR) {
-
-      pipeline = pipeline.grayscale().linear(1.06, -6).modulate({ brightness: 1.01 });
-    }
+    pipeline = MONO
+      ? pipeline.grayscale().linear(1.06, -6).modulate({ brightness: 1.01 })
+      : pipeline
+          .modulate({ saturation: 0.74, brightness: 1.02 })
+          .linear([0.99, 1.0, 1.03], [-2, -2, 0]);
 
     const buffer = await pipeline
       .jpeg({ quality: 82, mozjpeg: true, progressive: true })
