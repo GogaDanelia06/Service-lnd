@@ -55,7 +55,7 @@ The site ships in **English** and **Georgian**, both statically prerendered.
 | Routes | `/en/...` and `/ka/...` — every page exists in both |
 | Default | `/` redirects via `src/middleware.ts` |
 | Detection | `locale` cookie, then `Accept-Language`, then `en` |
-| Switching | Preserves the current page — `/ka/work/project-two` → `/en/work/project-two` |
+| Switching | One label, not two. `/en` shows **ENG**, `/ka` shows **ქარ**; clicking goes to the other language and preserves the page — `/ka/work/project-two` → `/en/work/project-two`. The visible text is the *current* language, so `aria-label` carries the action ("Language: ქართული") since the label alone does not say where the link goes. |
 | SEO | Per-locale `<html lang>`, canonical, `hreflang` alternates, both locales in `sitemap.xml` |
 
 Copy lives in `src/content/en/` and `src/content/ka/` as parallel modules;
@@ -454,16 +454,49 @@ without reproducing its prose.
 
 ## Contact form
 
-Progressively enhanced: a plain `<form action={serverAction}>` that works
-without JavaScript and upgrades to inline pending state and field errors with
-it. Server-side Zod validation, per-field `aria-invalid` + `aria-describedby`,
-a honeypot that returns a fake success so bots learn nothing, and length caps
-on every field.
+Progressively enhanced. Without JavaScript it is a plain
+`<form action={serverAction}>` and the server validates. With JavaScript it
+validates inline, blocks a bad submit before any network call, and shows
+pending state.
 
-Validation messages, the success text and the failure text are all localised.
-The form posts a hidden `locale` field and the action looks the strings up in
-the same dictionary the pages use; the schema is a factory, `contactSchema(t)`,
-so no copy lives inside it.
+### Validation
+
+The **same Zod schema runs on both sides**. `contactSchema(t)` is a factory
+taking the localised messages, so `useContactForm` can validate a single field
+in the browser with `schema.shape[name].safeParse(value)` while the server
+action validates the whole object. One source of truth, no drift.
+
+Behaviour:
+
+- **On blur** a field validates and shows its message. Nothing is shown before
+  a field is touched, so the form never greets you with errors.
+- **On input** the message clears as soon as the value becomes valid, rather
+  than making you resubmit to find out.
+- **On submit** every field is checked first. If any fails, the submit is
+  cancelled, all messages appear, and focus moves to the first invalid field.
+  Verified: **zero network calls** on a blocked submit.
+- Invalid fields get `aria-invalid`, an `aria-describedby` pointing at their
+  message, and a **red 1px border** — the same weight as a valid field, so
+  nothing shifts or thickens. Messages are red, `0.85rem`, and terse
+  ("Required", "At least 10 characters"): the label already names the field,
+  so a full sentence per field just makes a wall of text when several fail at
+  once. Colour is never the only signal — `aria-invalid` and the message carry
+  it for anyone who cannot see the red.
+- Each message sits in an `aria-live="polite"` slot with reserved height, so
+  announcing an error does not shift the layout.
+
+One alert colour does both jobs — the required asterisk and the invalid state
+(`--alert`, `#c8102e`, 5.88:1 on white and 5.49:1 on the field fill).
+Required fields are marked with a red asterisk
+rather than the word "(required)". The asterisk is `aria-hidden` — the `required`
+attribute already makes screen readers announce it, so repeating it in text
+would double up. A lighter red is mapped for dark themes in case a form ever
+lands on one.
+
+The server remains the authority. Client validation is an enhancement and is
+trivially bypassed; every submission is re-parsed server-side, and the
+honeypot returns a fake success so bots learn nothing.
+
 
 ### Turning delivery on
 

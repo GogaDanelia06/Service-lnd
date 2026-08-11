@@ -23,7 +23,7 @@ export const projects: Project[] = [
     gallery: [
       { src: '/images/project-one-01.jpg', alt: 'ფასადზე შენარჩუნებული ორიგინალი ფანჯრის ღიობი', span: 'half' },
       { src: '/images/project-one-02.jpg', alt: 'შენარჩუნებული კონსტრუქციის აგურის წყობა', span: 'half' },
-      { src: '/images/project-one-03.jpg', alt: 'ფერდობზე დაფეხმძიმებული მოცულობები', span: 'full' },
+      { src: '/images/project-one-03.jpg', alt: 'ფერდობზე  მოცულობები', span: 'full' },
     ],
   },
   {

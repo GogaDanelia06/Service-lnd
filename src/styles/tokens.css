@@ -6,6 +6,8 @@
   --color-ink: #000000;
   --color-dark: #28282a;
   --color-rule: #dfe0e1;
+  --color-alert: #c8102e;
+  --color-alert-light: #ffa39e;
 
   --breakpoint-fe: 768px;
 }

@@ -26,7 +26,6 @@ export const shared = {
   socials: [
     { label: 'Instagram', href: 'https://instagram.com/' },
     { label: 'LinkedIn', href: 'https://linkedin.com/' },
-    { label: 'Are.na', href: 'https://are.na/' },
   ],
 };
 

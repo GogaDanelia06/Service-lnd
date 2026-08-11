@@ -85,11 +85,11 @@ export const ui = {
     checkFields: 'Please check the highlighted fields.',
     deliveryFailed: 'Something went wrong sending that. Please email us directly.',
     errors: {
-      firstName: 'Please add your first name.',
-      lastName: 'Please add your last name.',
-      email: 'Please use a valid email address.',
-      messageShort: 'Please tell us a little more — 10 characters or so.',
-      tooLong: 'That is longer than we can accept.',
+      firstName: 'Required',
+      lastName: 'Required',
+      email: 'Enter a valid email address',
+      messageShort: 'At least 10 characters',
+      tooLong: 'Too long',
     },
   },
 };

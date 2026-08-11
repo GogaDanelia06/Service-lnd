@@ -10,9 +10,13 @@ export const localeNames: Record<Locale, string> = {
 };
 
 export const localeShort: Record<Locale, string> = {
-  en: 'EN',
-  ka: 'ᲙᲐ',
+  en: 'ENG',
+  ka: 'ქარ',
 };
+
+export function otherLocale(locale: Locale): Locale {
+  return locales.find((option) => option !== locale) ?? locale;
+}
 
 export const htmlLang: Record<Locale, string> = {
   en: 'en',
