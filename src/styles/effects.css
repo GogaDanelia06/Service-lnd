@@ -15,7 +15,6 @@
   }
 
   
-  
   .split-word {
     display: inline-block;
     overflow: hidden;
@@ -35,11 +34,10 @@
 
   [data-split='in'] .split-inner {
     transform: none;
-    transition: transform 1100ms var(--ease-mask);
+    transition: transform 1100ms var(--ease-out-quint);
     transition-delay: calc(var(--line, 0) * 90ms);
   }
 
-  
   .media {
     position: relative;
     overflow: hidden;
@@ -58,17 +56,5 @@
 
   .group:hover .media--zoom img {
     transform: scale(1.04);
-  }
-
-  
-  .grain {
-    position: fixed;
-    inset: 0;
-    z-index: 60;
-    pointer-events: none;
-    opacity: 0.035;
-    mix-blend-mode: multiply;
-    background-image: var(--grain-src);
-    background-size: 180px 180px;
   }
 }

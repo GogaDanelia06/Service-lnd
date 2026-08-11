@@ -460,9 +460,46 @@ it. Server-side Zod validation, per-field `aria-invalid` + `aria-describedby`,
 a honeypot that returns a fake success so bots learn nothing, and length caps
 on every field.
 
-Set `CONTACT_WEBHOOK_URL` to POST submissions as JSON to Resend / Postmark / a
-CRM. Unset, they are logged to the server console — see `deliver()` in
-`src/app/contact/actions.ts`.
+Validation messages, the success text and the failure text are all localised.
+The form posts a hidden `locale` field and the action looks the strings up in
+the same dictionary the pages use; the schema is a factory, `contactSchema(t)`,
+so no copy lives inside it.
+
+### Turning delivery on
+
+Nothing is sent until one transport is configured. Copy `.env.example` to
+`.env.local` and fill in **one** of:
+
+```bash
+# Option A - Resend (recommended). All three are required together.
+RESEND_API_KEY=re_...
+CONTACT_TO=hello@montavia.ge                 # comma-separated list is fine
+CONTACT_FROM=Montavia <hello@montavia.ge>    # Resend-verified domain
+
+# Option B - POST the submission as JSON anywhere
+CONTACT_WEBHOOK_URL=https://hooks.zapier.com/...
+```
+
+Resend is called over its REST API with `fetch`, so there is no SDK
+dependency. `reply_to` is set to the sender's address, so replying from the
+inbox goes straight back to the enquirer.
+
+**With neither configured, production returns an error rather than a false
+success.** This matters: the earlier version logged to the console and still
+told the visitor "Thank you - we'll be in touch", so a misconfigured deploy
+would lose every enquiry silently and look fine doing it. Development still
+logs and succeeds, so local work needs no credentials.
+
+`deliver()` tries Resend, then the webhook, then throws. Adding a third
+transport is one more function in `src/lib/contact/deliver.ts`.
+
+### Not included
+
+No rate limiting. The honeypot stops naive bots, but a determined script can
+still POST the action repeatedly. On Vercel, add a WAF rule or put the action
+behind Upstash Ratelimit - in-memory counters do not work across serverless
+instances.
+
 
 ## Accessibility
 

@@ -1,6 +1,6 @@
 import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
-import { SectionLabel } from '@/components/ui/Meta';
+import { Meta } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
 import { SplitText } from '@/components/ui/SplitText';
 import type { Project } from '@/content/types';
@@ -11,7 +11,7 @@ export function ProjectHeader({ project }: { project: Project }) {
       <SectionContent>
         <FluidGrid className="gap-y-[2.6vmax]">
           <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
-            <SectionLabel index={project.index}>{project.type}</SectionLabel>
+            <Meta muted>{project.type}</Meta>
           </FluidSpan>
 
           <FluidSpan span={{ desktop: [2, 20], mobile: [2, 10] }}>

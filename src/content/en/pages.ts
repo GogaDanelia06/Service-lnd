@@ -14,8 +14,8 @@ export const home = {
     body: 'While the work is aesthetically diverse, the projects are linked by one question: what kind of relationships does this place make possible? We answer it in plan before we answer it in elevation.',
   },
   work: {
-    heading: 'Selected Work',
-    body: 'Four projects, 2022–2024.',
+    heading: 'Recent Work',
+    body: 'Our practice spans from environmental retrofits of existing buildings to the complete planning and design of new neighbourhoods and public spaces. While our work is aesthetically diverse, our projects are linked by a focus on enhancing human relationships through architecture.',
   },
   approach: [
     {
@@ -34,21 +34,22 @@ export const home = {
   cta: {
     heading: 'Let’s Work Together',
     body: 'We’re always looking for new opportunities and are comfortable working internationally. Get in touch and one of our project managers will contact you about beginning the proposal process.',
-    action: { label: 'Start a conversation', href: '/contact' },
+    action: { label: 'Contact Us', href: '/contact' },
   },
 };
 
 export const about = {
-  heading: 'We think of architecture not as one practice but as several interlocking ones.',
+  heading: 'About',
   body: [
-    'Landscape cannot be separated from structure, ecology cannot be separated from the building programme, and the quality of the relationships a place produces is the measure we keep coming back to. Aesthetic movements arrive and leave. These principles have not.',
+    'We think of architecture not as a single practice, but as several interlocking ones. Landscapes are inseparable from structures, ecology is inseparable from building requirements, and improving human relationships is the ultimate goal of any project. Aesthetic movements come and go, but we have found these principles to be timeless.',
     'As partners we work for honesty and clarity. Our first job is to understand what a client actually needs, not to arrive with an answer already drawn. We value plain language, prototypes over presentations, decisions made on time, and the occasional long conversation over a meal.',
-    'The studio is deliberately small. Every project is led by a partner from first sketch to handover, and we take on only as much work as we can give that attention to.',
+    'Over the years we have been fortunate to collaborate with excellent clients on some wonderful projects, but we believe it is still too early to weigh in on the success of the work. A building exists in time, and its usefulness is directly related to how well it continues to perform.',
+    'We are proud of our Georgian home and heritage, but do not consider ourselves exponents of a national style. National style has no place in architecture, where a building must first and foremost be suited to local needs.',
   ],
   image: { src: '/images/about-studio.jpg', alt: 'The studio: long windows over the work tables' },
   cta: {
     heading: 'Let’s Work Together',
-    action: { label: 'Start a conversation', href: '/contact' },
+    action: { label: 'Contact Us', href: '/contact' },
     image: '/images/cta-about.jpg',
     alt: 'A concrete underpass lit from the far end',
   },
@@ -83,7 +84,7 @@ export const press = {
   ],
   cta: {
     heading: 'Let’s Work Together',
-    action: { label: 'Start a conversation', href: '/contact' },
+    action: { label: 'Contact Us', href: '/contact' },
     image: '/images/cta-press.jpg',
     alt: 'Dense city blocks seen from above',
   },

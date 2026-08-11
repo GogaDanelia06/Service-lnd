@@ -1,13 +1,21 @@
 'use server';
 
-import { ContactSchema } from './schema';
+import { getContent } from '@/content';
+import { defaultLocale, isLocale } from '@/i18n/config';
+
+import { deliver } from './deliver';
+import { contactSchema } from './schema';
 import type { ContactField, ContactState } from './state';
 
 export async function submitContact(
   _previous: ContactState,
   formData: FormData,
 ): Promise<ContactState> {
-  const parsed = ContactSchema.safeParse({
+  const raw = formData.get('locale');
+  const locale = typeof raw === 'string' && isLocale(raw) ? raw : defaultLocale;
+  const t = getContent(locale).ui.form;
+
+  const parsed = contactSchema(t.errors).safeParse({
     firstName: formData.get('firstName'),
     lastName: formData.get('lastName'),
     email: formData.get('email'),
@@ -22,42 +30,19 @@ export async function submitContact(
       const key = issue.path[0] as ContactField | undefined;
       if (key && !fieldErrors[key]) fieldErrors[key] = issue.message;
     }
-
-    return { status: 'error', message: 'Please check the highlighted fields.', fieldErrors };
+    return { status: 'error', message: t.checkFields, fieldErrors };
   }
 
   if (parsed.data.company) {
-    return { status: 'success', message: 'Thank you — we’ll be in touch shortly.' };
+    return { status: 'success', message: t.thanks };
   }
 
   try {
     await deliver(parsed.data);
   } catch (error) {
     console.error('[contact] delivery failed', error);
-    return {
-      status: 'error',
-      message: 'Something went wrong sending that. Please email us directly.',
-    };
+    return { status: 'error', message: t.deliveryFailed };
   }
 
-  return { status: 'success', message: 'Thank you — we’ll be in touch shortly.' };
-}
-
-async function deliver(payload: Record<string, unknown>): Promise<void> {
-  const endpoint = process.env.CONTACT_WEBHOOK_URL;
-
-  if (!endpoint) {
-    console.info('[contact] no CONTACT_WEBHOOK_URL set — submission logged only', payload);
-    return;
-  }
-
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Webhook responded ${response.status}`);
-  }
+  return { status: 'success', message: t.thanks };
 }

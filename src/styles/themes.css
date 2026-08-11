@@ -3,41 +3,24 @@
   --fg: var(--color-ink);
   --muted: color-mix(in srgb, var(--color-ink) 70%, transparent);
   --rule: var(--color-rule);
-  --accent: var(--color-blue);
-  --accent-fill: var(--color-blue);
-  --btn-bg: var(--color-blue);
-  --btn-fg: var(--color-paper);
-}
-
-[data-theme='tint'] {
-  --bg: var(--color-stone);
-  --fg: var(--color-ink);
-  --muted: color-mix(in srgb, var(--color-ink) 70%, transparent);
-  --rule: color-mix(in srgb, var(--color-ink) 18%, transparent);
-  --accent: var(--color-blue);
-  --accent-fill: var(--color-blue);
-  --btn-bg: var(--color-blue);
+  --btn-bg: var(--color-ink);
   --btn-fg: var(--color-paper);
 }
 
 [data-theme='dark'] {
-  --bg: var(--color-navy);
+  --bg: var(--color-dark);
   --fg: var(--color-paper);
-  --muted: color-mix(in srgb, var(--color-paper) 72%, transparent);
+  --muted: color-mix(in srgb, var(--color-paper) 78%, transparent);
   --rule: color-mix(in srgb, var(--color-paper) 26%, transparent);
-  --accent: var(--color-blue-light);
-  --accent-fill: var(--color-blue-light);
-  --btn-bg: var(--color-blue-light);
+  --btn-bg: var(--color-paper);
   --btn-fg: var(--color-ink);
 }
 
 [data-theme='black'] {
   --bg: var(--color-ink);
   --fg: var(--color-paper);
-  --muted: color-mix(in srgb, var(--color-paper) 72%, transparent);
+  --muted: color-mix(in srgb, var(--color-paper) 78%, transparent);
   --rule: color-mix(in srgb, var(--color-paper) 24%, transparent);
-  --accent: var(--color-blue-light);
-  --accent-fill: var(--color-blue-light);
-  --btn-bg: var(--color-blue-light);
+  --btn-bg: var(--color-paper);
   --btn-fg: var(--color-ink);
 }

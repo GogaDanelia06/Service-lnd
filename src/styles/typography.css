@@ -1,48 +1,27 @@
-@layer components {
-
-  
-  .display {
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
     font-weight: 500;
-    font-size: var(--display-size);
-    line-height: 1.06;
-    letter-spacing: var(--display-tracking);
-    text-wrap: pretty;
+    line-height: 1.4;
+    letter-spacing: var(--heading-tracking);
+    font-size: calc(var(--fs, 1) * 1rem + (var(--fs, 1) - 1) * var(--type-step));
   }
 
-  .display--tight {
-    line-height: 1;
+  h1 {
+    --fs: 4;
   }
-
-  
-  .meta {
-    font-family: var(--font-mono);
-    font-weight: 400;
-    font-size: 0.6875rem;
-    line-height: 1.6;
-    letter-spacing: var(--label-tracking);
-    text-transform: uppercase;
-    font-feature-settings: 'tnum' 1;
+  h2 {
+    --fs: 2.8;
   }
-
-  .meta--lg {
-    font-size: 0.8125rem;
+  h3 {
+    --fs: 2.2;
   }
-
-  .meta-muted {
-    color: var(--muted);
-  }
-
-  
-  .numeral {
-    font-family: var(--font-heading);
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .display--hero {
-    font-size: clamp(2.1rem, 4.6vw, 4.4rem);
-    line-height: 1.1;
+  h4 {
+    --fs: 1.6;
   }
 }

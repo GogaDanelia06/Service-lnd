@@ -2,13 +2,10 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
 
 import { LocaleSwitch } from '@/components/layout/LocaleSwitch';
 import { MobileNav } from '@/components/layout/MobileNav';
-import { Wordmark } from '@/components/ui/Wordmark';
 import { localePath, type Locale } from '@/i18n/config';
-import { useSectionTheme, type SectionTheme } from '@/lib/useSectionTheme';
 
 type NavItem = { label: string; href: string };
 
@@ -36,22 +33,21 @@ export function SiteHeader({
   };
 }) {
   const pathname = usePathname();
-  const { theme, lifted } = useSectionTheme(pathname);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const chromeTheme: SectionTheme = menuOpen ? 'black' : theme;
 
   return (
-    <header
-      data-theme={chromeTheme}
-      className="fixed inset-x-0 top-0 z-40 text-[var(--fg)] transition-colors duration-500 ease-[var(--ease-out-quint)]"
-    >
+    <header data-theme="white" className="absolute inset-x-0 top-0 z-10 bg-[var(--bg)] text-[var(--fg)]">
       <div className="site-pad flex items-center justify-between gap-6 py-[var(--header-pad-y)]">
-        <Wordmark locale={locale} name={site.name} label={ui.home} />
+        <Link
+          href={localePath(locale, '/')}
+          aria-label={`${site.name} — ${ui.home}`}
+          className="relative z-30 font-[family-name:var(--font-heading)] text-[length:var(--logo-size)] leading-[1.4] font-medium"
+        >
+          {site.name}
+        </Link>
 
-        <div className="flex items-center gap-10 max-fe:hidden">
+        <div className="flex items-center gap-6 max-fe:hidden">
           <nav aria-label={ui.nav.primary}>
-            <ul className="meta flex items-center gap-8">
+            <ul className="flex items-center gap-[19px] text-base font-light">
               {nav.map((item) => {
                 const active = isActive(pathname, locale, item.href);
                 return (
@@ -72,15 +68,7 @@ export function SiteHeader({
           <LocaleSwitch locale={locale} label={ui.language} />
         </div>
 
-        <MobileNav locale={locale} nav={nav} ui={ui} pathname={pathname} onOpenChange={setMenuOpen} />
-      </div>
-
-      <div
-        aria-hidden
-        className="site-pad pointer-events-none transition-opacity duration-500"
-        style={{ opacity: lifted && !menuOpen ? 1 : 0 }}
-      >
-        <div className="h-px w-full bg-current opacity-15" />
+        <MobileNav locale={locale} nav={nav} ui={ui} pathname={pathname} />
       </div>
     </header>
   );

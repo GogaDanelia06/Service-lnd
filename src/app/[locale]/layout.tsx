@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import { fontClass } from '@/app/fonts';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
-import { Grain } from '@/components/ui/Grain';
 import { getContent, shared } from '@/content';
 import { htmlLang, isLocale, locales, ogLocale, type Locale } from '@/i18n/config';
 
@@ -82,7 +81,6 @@ export default async function LocaleLayout({
         <SiteHeader locale={locale} nav={content.nav} site={content.site} ui={content.ui} />
         <main id="main">{children}</main>
         <SiteFooter locale={locale} content={content} />
-        <Grain />
 
         <script
           type="application/ld+json"

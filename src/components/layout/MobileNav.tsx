@@ -15,13 +15,11 @@ export function MobileNav({
   nav,
   ui,
   pathname,
-  onOpenChange,
 }: {
   locale: Locale;
   nav: NavItem[];
   ui: { openMenu: string; closeMenu: string; language: string; nav: { primary: string } };
   pathname: string;
-  onOpenChange?: (open: boolean) => void;
 }) {
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -32,10 +30,6 @@ export function MobileNav({
     setOpen(false);
     triggerRef.current?.focus();
   }, []);
-
-  useEffect(() => {
-    onOpenChange?.(open);
-  }, [open, onOpenChange]);
 
   useEffect(() => {
     setOpen(false);
@@ -69,7 +63,7 @@ export function MobileNav({
       <div
         ref={panelRef}
         id={panelId}
-        data-theme="black"
+        data-theme="white"
         hidden={!open}
         className="fixed inset-0 z-20 bg-[var(--bg)] text-[var(--fg)]"
       >

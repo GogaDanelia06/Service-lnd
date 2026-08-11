@@ -1,21 +1,16 @@
 @theme {
   --font-heading: 'acumin-pro', var(--font-archivo), var(--font-georgian), 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-body: var(--font-poppins), 'Poppins', var(--font-georgian), 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-mono: var(--font-plex-mono), var(--font-georgian), ui-monospace, 'SF Mono', Menlo, monospace;
 
-  --color-paper: #f6f4ef;
-  --color-stone: #e7e4db;
-  --color-ink: #14151a;
-  --color-navy: #1b2a5c;
-  --color-blue: #2743a8;
-  --color-blue-light: #8fa6f0;
-  --color-rule: #dcd8cf;
+  --color-paper: #ffffff;
+  --color-ink: #000000;
+  --color-dark: #28282a;
+  --color-rule: #dfe0e1;
 
   --breakpoint-fe: 768px;
 }
 
 :root {
-  
   --site-max-width: 1500px;
   --site-gutter: 4vw;
   --fe-cols: 24;
@@ -23,24 +18,12 @@
   --fe-row: calc(0.0215 * min(100vw - (var(--site-gutter) * 2), var(--site-max-width)));
   --header-pad-y: 2.2vmax;
 
-  
-  
   --type-step: calc(min(1.2vmax, 18px) - 16px);
-  --logo-size: calc(1.9rem + 0.9 * var(--type-step));
+  --heading-tracking: -0.006em;
+  --logo-size: calc(2rem + 1 * var(--type-step));
   --header-height: calc(var(--header-pad-y) * 2 + var(--logo-size) * 1.4);
 
-  
-  --display-size: clamp(2.6rem, 6.2vw, 6.6rem);
-
-  
-  --heading-tracking: -0.006em;
-  
-  --display-tracking: -0.03em;
-  --label-tracking: 0.14em;
-
-  
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-mask: cubic-bezier(0.16, 1, 0.3, 1);
   --reveal-distance: 14px;
   --reveal-duration: 900ms;
 

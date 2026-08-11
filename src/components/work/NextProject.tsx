@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Arrow, Meta } from '@/components/ui/Meta';
+import { Meta } from '@/components/ui/Meta';
 import type { Project } from '@/content/types';
 import { localePath, type Locale } from '@/i18n/config';
 
@@ -32,9 +32,8 @@ export function NextProject({
             {label} — {project.index}
           </Meta>
 
-          <h2 className="display mt-6 flex flex-wrap items-center gap-x-6 gap-y-2">
-            <span>{project.title}</span>
-            <Arrow className="h-[0.5em] w-[0.5em] transition-transform duration-500 ease-[var(--ease-out-quint)] group-hover:translate-x-3" />
+          <h2 className="mt-6">
+            {project.title}
           </h2>
 
           <Meta muted className="mt-6 block">

@@ -4,11 +4,10 @@ import { useId } from 'react';
 import { useFormStatus } from 'react-dom';
 
 import { Button } from '@/components/ui/Button';
-import { Meta } from '@/components/ui/Meta';
 import { cn } from '@/lib/cn';
 
-export const FIELD =
-  'w-full border-0 border-b border-[var(--rule)] bg-transparent pb-3 pt-1 font-[family-name:var(--font-body)] text-[length:calc(1.15rem+0.4*var(--type-step))] font-light leading-[1.6] text-[var(--fg)] outline-none transition-colors duration-300 focus:border-[var(--accent)]';
+const FIELD =
+  'w-full border border-[var(--fg)] bg-[color-mix(in_srgb,var(--fg)_3%,transparent)] px-3 py-2.5 font-[family-name:var(--font-body)] text-base font-light leading-[1.6] text-[var(--fg)] outline-none';
 
 export function Field({
   label,
@@ -16,6 +15,7 @@ export function Field({
   type = 'text',
   error,
   required = true,
+  requiredLabel,
   autoComplete,
   rows,
 }: {
@@ -24,6 +24,7 @@ export function Field({
   type?: string;
   error?: string;
   required?: boolean;
+  requiredLabel: string;
   autoComplete?: string;
   rows?: number;
 }) {
@@ -35,17 +36,15 @@ export function Field({
     required,
     'aria-invalid': error ? true : undefined,
     'aria-describedby': error ? errorId : undefined,
-    className: cn(FIELD, rows && 'resize-y leading-[1.7]', error && 'border-[var(--accent)]'),
+    className: cn(FIELD, rows && 'resize-y leading-[1.7]'),
   };
 
   return (
-    <div className="flex flex-col gap-3">
-      <Meta as="span" muted>
-        <label htmlFor={id}>
-          {label}
-          {required ? <span aria-hidden> *</span> : null}
-        </label>
-      </Meta>
+    <div className="flex flex-col gap-2">
+      <label htmlFor={id} className="text-base font-light">
+        {label}
+        {required ? <span className="text-[var(--muted)]"> ({requiredLabel})</span> : null}
+      </label>
 
       {rows ? (
         <textarea {...shared} rows={rows} />
@@ -54,7 +53,7 @@ export function Field({
       )}
 
       {error ? (
-        <p id={errorId} className="text-[0.85rem] leading-[1.6]">
+        <p id={errorId} className="text-[0.9rem] leading-[1.6]">
           {error}
         </p>
       ) : null}
@@ -66,7 +65,7 @@ export function SubmitButton({ send, sending }: { send: string; sending: string 
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" disabled={pending} arrow className="w-full sm:w-auto">
+    <Button type="submit" disabled={pending}>
       {pending ? sending : send}
     </Button>
   );

@@ -1,6 +1,14 @@
 import { describe, expect, it } from 'vitest';
 
-import { ContactSchema } from './schema';
+import { contactSchema } from './schema';
+
+const ContactSchema = contactSchema({
+  firstName: 'Please add your first name.',
+  lastName: 'Please add your last name.',
+  email: 'Please use a valid email address.',
+  messageShort: 'Please tell us a little more — 10 characters or so.',
+  tooLong: 'That is longer than we can accept.',
+});
 
 const valid = {
   firstName: 'Ada',

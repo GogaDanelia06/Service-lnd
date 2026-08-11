@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
-import { Meta, SectionLabel } from '@/components/ui/Meta';
+import { Meta } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
 import { SplitText } from '@/components/ui/SplitText';
 import { getContent } from '@/content';
@@ -31,16 +31,13 @@ export async function generateMetadata({
 export default async function OurTeamPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const { team, teamPage, ui } = getContent(locale);
+  const { team, teamPage } = getContent(locale);
 
   return (
     <>
       <Section height="small" theme="white" offsetHeader>
         <SectionContent>
           <FluidGrid className="gap-y-[3.2vmax]">
-            <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
-              <SectionLabel index="01">{ui.sections.team}</SectionLabel>
-            </FluidSpan>
             <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
               <SplitText as="h1" text={teamPage.heading} className="display" />
             </FluidSpan>

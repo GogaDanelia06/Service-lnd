@@ -15,7 +15,7 @@ export default function NotFound() {
             <h1 className="display">{ui.notFound}</h1>
             <p className="mt-[0.8em] text-[var(--muted)]">{ui.notFoundBody}</p>
             <div className="mt-[2em]">
-              <ButtonLink href={localePath(defaultLocale, '/')} arrow>
+              <ButtonLink href={localePath(defaultLocale, '/')}>
                 {ui.backToWork}
               </ButtonLink>
             </div>
