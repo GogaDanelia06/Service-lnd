@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
+import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { CtaImageSection } from '@/components/sections/CtaImageSection';
 import { Meta, SectionLabel } from '@/components/ui/Meta';
@@ -34,34 +34,24 @@ export default async function PressPage({ params }: { params: Promise<{ locale: 
     <>
       <Section height="small" theme="white" offsetHeader>
         <SectionContent>
-          <FluidGrid>
-            <FluidBlock
-              debugLabel="press/label"
-              area={{ desktop: [1, 2, 2, 8], mobile: [1, 2, 2, 10] }}
-            >
+          <FluidGrid className="gap-y-[3.2vmax]">
+            <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
               <SectionLabel index="01">{ui.sections.press}</SectionLabel>
-            </FluidBlock>
-            <FluidBlock
-              debugLabel="press/heading"
-              area={{ desktop: [3, 2, 8, 20], mobile: [3, 2, 9, 10] }}
-            >
+            </FluidSpan>
+            <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
               <SplitText as="h1" text={press.intro} className="display" />
-            </FluidBlock>
+            </FluidSpan>
           </FluidGrid>
         </SectionContent>
       </Section>
 
       <Section height="small" theme="white">
         <SectionContent>
-          <FluidGrid>
+          <FluidGrid className="gap-y-[3.2vmax]">
             {press.quotes.map((entry: { quote: string; source: string; year: string }, index: number) => (
-              <FluidBlock
+              <FluidSpan
                 key={entry.quote.slice(0, 32)}
-                debugLabel={`press/quote-${index}`}
-                area={{
-                  desktop: [1 + index * 9, 2, 9 + index * 9, 26],
-                  mobile: [1 + index * 13, 2, 13 + index * 13, 10],
-                }}
+                span={{ desktop: [2, 26], mobile: [2, 10] }}
               >
                 <Reveal delay={index * 80}>
                   <figure className="grid gap-6 border-t border-[var(--rule)] pt-6 fe:grid-cols-[10rem_1fr] fe:gap-[var(--fe-gap)]">
@@ -82,7 +72,7 @@ export default async function PressPage({ params }: { params: Promise<{ locale: 
                     </div>
                   </figure>
                 </Reveal>
-              </FluidBlock>
+              </FluidSpan>
             ))}
           </FluidGrid>
         </SectionContent>

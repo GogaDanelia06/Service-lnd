@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 
 import { ContactRow } from '@/components/contact/ContactRow';
 import { ContactForm } from '@/components/contact/ContactForm';
-import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
+import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { SectionLabel } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
@@ -35,34 +35,21 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
     <Section height="medium" theme="white" offsetHeader>
       <SectionContent>
         <FluidGrid>
-          <FluidBlock
-            debugLabel="contact/label"
-            area={{ desktop: [1, 2, 2, 8], mobile: [1, 2, 2, 10] }}
-          >
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
             <SectionLabel index="01">{ui.sections.contact}</SectionLabel>
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="contact/heading"
-            area={{ desktop: [3, 2, 8, 13], mobile: [3, 2, 9, 10] }}
-          >
+          <FluidSpan span={{ desktop: [2, 13], mobile: [2, 10] }}>
             <SplitText as="h1" text={contact.heading} className="display" />
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="contact/intro"
-            area={{ desktop: [9, 2, 13, 12], mobile: [10, 2, 17, 10] }}
-            className="prose-utica"
-          >
+          <FluidSpan span={{ desktop: [2, 12], mobile: [2, 10] }} className="prose-utica">
             <Reveal delay={140}>
               <p className="text-[var(--muted)]">{contact.body}</p>
             </Reveal>
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="contact/details"
-            area={{ desktop: [14, 2, 20, 12], mobile: [18, 2, 26, 10] }}
-          >
+          <FluidSpan span={{ desktop: [2, 12], mobile: [2, 10] }}>
             <Reveal delay={180}>
               <dl className="flex flex-col">
                 <ContactRow label={ui.details.studio}>
@@ -97,14 +84,11 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 </ContactRow>
               </dl>
             </Reveal>
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="contact/form"
-            area={{ desktop: [3, 14, 24, 26], mobile: [28, 2, 56, 10] }}
-          >
+          <FluidSpan span={{ desktop: [14, 26], mobile: [2, 10] }}>
             <ContactForm labels={ui.form} />
-          </FluidBlock>
+          </FluidSpan>
         </FluidGrid>
       </SectionContent>
     </Section>

@@ -164,13 +164,58 @@ silently collapsing.
 `sizesForArea()` turns a column span into an `<Image sizes>` string, so the
 browser never downloads more pixels than the grid can show.
 
+### Two placement primitives
+
+**`FluidSpan` is the default.** It sets only `grid-column` and lets the row
+auto-flow, so a block is exactly as tall as its content:
+
+```tsx
+<FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
+```
+
+The grid runs `grid-auto-flow: row dense`, so two spans with non-overlapping
+columns land side by side without either one reserving a fixed height.
+
+**`FluidBlock` pins rows explicitly** — `[rowStart, colStart, rowEnd, colEnd]`
+on the raw Fluid Engine coordinate system, where line 1 is the left gutter
+track. Reach for it only when a deliberate vertical offset is the point.
+Placements are asserted in development, so a coordinate transcribed against
+the wrong breakpoint's grid throws with the block's label.
+
+Pinning rows is what produced the dead space this design shipped with: a block
+spanning rows 3→9 reserves that height whether or not its content fills it,
+and the numbers get worse the moment copy changes length — Georgian runs
+20–30 % longer than English. Measured before the switch: 426 px of slack in
+one CTA, 406 px beside an image, 86 px under a statistics row, and a hard 90 px
+gap between a heading and the body beneath it.
+
+**Section labels always span the full content width.** With dense packing, a
+narrow label leaves its row half-free and the *next* free block slides up
+beside it — on the home page the body paragraph jumped up next to the `(02)`
+label instead of sitting beside its heading. A full-width label closes the row.
+
 ### One rule worth knowing
 
 **Width comes from the grid; height comes from `aspect-ratio`.** Never the
 other way round. Pinning height first — `h-full` on an aspect-ratio box — lets
 the media compute its *width* from its height and escape the grid entirely.
 That bug shipped an image 21px past the right edge of the viewport during
-development; it is why `ProjectIndex` sizes cards the way it does.
+development.
+
+### Section heights
+
+Only sections that are *meant* to be tall carry a `min-height`:
+
+| height | padding-block | min-height |
+|---|---|---|
+| `hero` | `3.4vmax` | `100svh` |
+| `small` | `3.3vmax` | — |
+| `medium` | `6.6vmax` | — |
+| `large` | `10vmax` | `100vh` |
+| `custom` | `6.6vmax` | `N × 10vh` |
+
+`small` and `medium` used to floor at `33vh` / `66vh`, which is dead space
+whenever the content is shorter than that. Padding alone carries the rhythm.
 
 ---
 

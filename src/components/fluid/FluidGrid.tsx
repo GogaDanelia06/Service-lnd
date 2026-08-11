@@ -1,7 +1,7 @@
 import type { ElementType, ReactNode } from 'react';
 
 import { cn } from '@/lib/cn';
-import { areaStyle, type FluidArea } from '@/lib/fluid';
+import { areaStyle, columnStyle, type FluidArea, type FluidColumn } from '@/lib/fluid';
 
 export function FluidGrid({
   children,
@@ -31,6 +31,24 @@ export function FluidBlock({
 }: FluidBlockProps) {
   return (
     <Tag style={areaStyle(area, debugLabel)} className={cn('fe-block', className)}>
+      {children}
+    </Tag>
+  );
+}
+
+export function FluidSpan({
+  span,
+  children,
+  className,
+  as: Tag = 'div',
+}: {
+  span: FluidColumn;
+  children: ReactNode;
+  className?: string;
+  as?: ElementType;
+}) {
+  return (
+    <Tag style={columnStyle(span)} className={cn('fe-span', className)}>
       {children}
     </Tag>
   );

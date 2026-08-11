@@ -1,4 +1,4 @@
-import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
+import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { Meta } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
@@ -15,11 +15,8 @@ export function ProjectSpec({
   return (
     <Section height="medium" theme="tint">
       <SectionContent>
-        <FluidGrid>
-          <FluidBlock
-            debugLabel="project/spec"
-            area={{ desktop: [1, 2, 12, 10], mobile: [1, 2, 16, 10] }}
-          >
+        <FluidGrid className="gap-y-[2.6vmax]">
+          <FluidSpan span={{ desktop: [2, 10], mobile: [2, 10] }}>
             <Reveal>
               <dl className="flex flex-col">
                 {specRows(project, labels).map((row) => (
@@ -37,13 +34,9 @@ export function ProjectSpec({
                 ))}
               </dl>
             </Reveal>
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="project/body"
-            area={{ desktop: [1, 12, 12, 26], mobile: [18, 2, 40, 10] }}
-            className="prose-utica"
-          >
+          <FluidSpan span={{ desktop: [12, 26], mobile: [2, 10] }} className="prose-utica">
             <Reveal delay={120}>
               {project.body.map((paragraph, index) => (
                 <p
@@ -54,7 +47,7 @@ export function ProjectSpec({
                 </p>
               ))}
             </Reveal>
-          </FluidBlock>
+          </FluidSpan>
         </FluidGrid>
       </SectionContent>
     </Section>

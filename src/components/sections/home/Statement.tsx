@@ -1,4 +1,4 @@
-import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
+import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { Meta, SectionLabel } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
@@ -34,22 +34,16 @@ export function Statement({
       }}
     >
       <SectionContent>
-        <FluidGrid>
-          <FluidBlock debugLabel="home/label" area={{ desktop: [1, 2, 2, 8], mobile: [1, 2, 2, 10] }}>
+        <FluidGrid className="gap-y-[2.6vmax]">
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
             <SectionLabel index="01">{label}</SectionLabel>
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="home/statement"
-            area={{ desktop: [3, 2, 9, 22], mobile: [3, 2, 9, 10] }}
-          >
+          <FluidSpan span={{ desktop: [2, 22], mobile: [2, 10] }}>
             <SplitText as="h1" text={site.tagline} className="display display--hero" />
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="home/facts"
-            area={{ desktop: [10, 2, 12, 22], mobile: [10, 2, 16, 10] }}
-          >
+          <FluidSpan span={{ desktop: [2, 22], mobile: [2, 10] }}>
             <Reveal delay={260}>
               <dl className="flex flex-col gap-3 border-t border-[var(--rule)] pt-5 fe:flex-row fe:gap-12">
                 {facts.map((fact) => (
@@ -62,7 +56,7 @@ export function Statement({
                 ))}
               </dl>
             </Reveal>
-          </FluidBlock>
+          </FluidSpan>
         </FluidGrid>
       </SectionContent>
     </Section>

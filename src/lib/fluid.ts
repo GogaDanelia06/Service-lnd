@@ -8,11 +8,32 @@ export type GridArea = readonly [
 ];
 
 export type FluidArea = {
-
   desktop: GridArea;
-
   mobile?: GridArea;
 };
+
+export type ColumnSpan = readonly [start: number, end: number];
+
+export type FluidColumn = {
+  desktop: ColumnSpan;
+  mobile?: ColumnSpan;
+};
+
+export function columnStyle(span: FluidColumn): React.CSSProperties {
+  const mobile = span.mobile ?? span.desktop;
+  return {
+    '--col-desktop': `${span.desktop[0]} / ${span.desktop[1]}`,
+    '--col-mobile': `${mobile[0]} / ${mobile[1]}`,
+  } as React.CSSProperties;
+}
+
+export function sizesForColumn(span: FluidColumn): string {
+  const d = Math.min(100, Math.ceil(((span.desktop[1] - span.desktop[0]) / FE_COLUMNS.desktop) * 92));
+  const m = span.mobile
+    ? Math.min(100, Math.ceil(((span.mobile[1] - span.mobile[0]) / FE_COLUMNS.mobile) * 88))
+    : 88;
+  return `(max-width: 767px) ${m}vw, ${d}vw`;
+}
 
 const LINE_MIN = 1;
 

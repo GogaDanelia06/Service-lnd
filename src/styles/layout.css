@@ -10,12 +10,23 @@
     minmax(var(--fe-edge), 1fr)
     repeat(var(--fe-cols), minmax(0, var(--fe-cell)))
     minmax(var(--fe-edge), 1fr);
-  grid-auto-rows: minmax(var(--fe-row), auto);
+  grid-auto-rows: minmax(0, auto);
+  grid-auto-flow: row dense;
   gap: var(--fe-gap);
+}
+
+@utility fe-span {
+  grid-column: var(--col-mobile);
+  min-width: 0;
+
+  @media (width >= 768px) {
+    grid-column: var(--col-desktop);
+  }
 }
 
 @utility fe-block {
   grid-area: var(--area-mobile);
+  grid-auto-rows: minmax(var(--fe-row), auto);
   min-width: 0;
 
   @media (width >= 768px) {

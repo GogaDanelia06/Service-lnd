@@ -7,8 +7,8 @@ export type SectionHeight = 'small' | 'medium' | 'large' | 'hero' | 'custom';
 export type SectionTheme = 'white' | 'tint' | 'dark' | 'black';
 
 const HEIGHT: Record<Exclude<SectionHeight, 'custom'>, { pad: string; minHeight: string }> = {
-  small: { pad: '3.3vmax', minHeight: '33vh' },
-  medium: { pad: '6.6vmax', minHeight: '66vh' },
+  small: { pad: '3.3vmax', minHeight: '0' },
+  medium: { pad: '6.6vmax', minHeight: '0' },
   large: { pad: '10vmax', minHeight: '100vh' },
   hero: { pad: '3.4vmax', minHeight: '100svh' },
 };
@@ -51,7 +51,7 @@ export function Section({
 }: SectionProps) {
   const metrics =
     height === 'custom'
-      ? { pad: '10vmax', minHeight: `${customHeightSteps * 10}vh` }
+      ? { pad: '6.6vmax', minHeight: `${customHeightSteps * 10}vh` }
       : HEIGHT[height];
 
   const style: CSSProperties = {

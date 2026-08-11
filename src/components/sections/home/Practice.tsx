@@ -1,4 +1,4 @@
-import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
+import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { StatRow } from '@/components/sections/StatRow';
 import { SectionLabel } from '@/components/ui/Meta';
@@ -17,41 +17,28 @@ export function Practice({
   return (
     <Section height="medium" theme="tint">
       <SectionContent>
-        <FluidGrid>
-          <FluidBlock
-            debugLabel="practice/label"
-            area={{ desktop: [1, 2, 2, 8], mobile: [1, 2, 2, 10] }}
-          >
+        <FluidGrid className="gap-y-[2.6vmax]">
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
             <SectionLabel index="02">{label}</SectionLabel>
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="practice/heading"
-            area={{ desktop: [3, 2, 9, 17], mobile: [3, 2, 12, 10] }}
-          >
+          <FluidSpan span={{ desktop: [2, 17], mobile: [2, 10] }}>
             <SplitText
               as="h2"
               text={practice.heading}
               className="text-[length:calc(2.1rem+1.5*var(--type-step))] leading-[1.22] font-[family-name:var(--font-heading)] font-medium tracking-[-0.018em]"
             />
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="practice/body"
-            area={{ desktop: [4, 18, 9, 26], mobile: [13, 2, 20, 10] }}
-            className="prose-utica"
-          >
+          <FluidSpan span={{ desktop: [18, 26], mobile: [2, 10] }} className="prose-utica">
             <Reveal delay={140}>
               <p className="text-[var(--muted)]">{practice.body}</p>
             </Reveal>
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="practice/stats"
-            area={{ desktop: [11, 2, 16, 26], mobile: [22, 2, 40, 10] }}
-          >
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
             <StatRow stats={stats} />
-          </FluidBlock>
+          </FluidSpan>
         </FluidGrid>
       </SectionContent>
     </Section>

@@ -1,4 +1,4 @@
-import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
+import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { ButtonLink } from '@/components/ui/Button';
 import { Meta, SectionLabel } from '@/components/ui/Meta';
@@ -25,35 +25,22 @@ export function CtaSection({
   return (
     <Section height="medium" theme="dark">
       <SectionContent>
-        <FluidGrid>
-          <FluidBlock
-            debugLabel="cta/label"
-            area={{ desktop: [1, 2, 2, 8], mobile: [1, 2, 2, 10] }}
-          >
+        <FluidGrid className="gap-y-[2.6vmax]">
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
             <SectionLabel index="05">{label}</SectionLabel>
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="cta/heading"
-            area={{ desktop: [3, 2, 7, 18], mobile: [3, 2, 8, 10] }}
-          >
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
             <SplitText as="h2" text={heading} className="display" />
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="cta/body"
-            area={{ desktop: [8, 2, 12, 12], mobile: [9, 2, 16, 10] }}
-            className="prose-utica"
-          >
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }} className="prose-utica">
             <Reveal delay={140}>
               <p className="text-[var(--muted)]">{body}</p>
             </Reveal>
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="cta/action"
-            area={{ desktop: [8, 18, 10, 26], mobile: [17, 2, 20, 10] }}
-          >
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
             <Reveal delay={200}>
               <div className="flex flex-col items-start gap-6 fe:items-end">
                 <ButtonLink href={localePath(locale, action.href)}>{action.label}</ButtonLink>
@@ -64,7 +51,7 @@ export function CtaSection({
                 </Meta>
               </div>
             </Reveal>
-          </FluidBlock>
+          </FluidSpan>
         </FluidGrid>
       </SectionContent>
     </Section>

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
+import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { ButtonLink } from '@/components/ui/Button';
 import { SectionLabel } from '@/components/ui/Meta';
@@ -28,36 +28,27 @@ export function CtaImageSection({
   theme?: 'dark' | 'black';
 }) {
   return (
-    <Section height="custom" customHeightSteps={9} theme={theme} className="overflow-hidden">
+    <Section height="custom" customHeightSteps={6} theme={theme} className="overflow-hidden">
       <div aria-hidden className="absolute inset-0">
         <Image src={image} alt={alt} fill sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-black/45" />
       </div>
 
       <SectionContent>
-        <FluidGrid>
-          <FluidBlock
-            debugLabel="cta-image/label"
-            area={{ desktop: [2, 2, 3, 10], mobile: [2, 2, 3, 10] }}
-          >
+        <FluidGrid className="gap-y-[2.6vmax]">
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
             <SectionLabel index="05">{label}</SectionLabel>
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="cta-image/heading"
-            area={{ desktop: [4, 2, 8, 18], mobile: [4, 2, 9, 10] }}
-          >
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
             <SplitText as="h2" text={heading} className="display" />
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="cta-image/action"
-            area={{ desktop: [9, 2, 11, 10], mobile: [10, 2, 13, 10] }}
-          >
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
             <Reveal delay={160}>
               <ButtonLink href={localePath(locale, action.href)}>{action.label}</ButtonLink>
             </Reveal>
-          </FluidBlock>
+          </FluidSpan>
         </FluidGrid>
       </SectionContent>
     </Section>

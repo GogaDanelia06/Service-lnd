@@ -1,4 +1,4 @@
-import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
+import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { SectionLabel } from '@/components/ui/Meta';
 import { Reveal } from '@/components/ui/Reveal';
@@ -9,25 +9,19 @@ export function ProjectHeader({ project }: { project: Project }) {
   return (
     <Section height="small" theme="white" offsetHeader>
       <SectionContent>
-        <FluidGrid>
-          <FluidBlock
-            debugLabel="project/label"
-            area={{ desktop: [1, 2, 2, 10], mobile: [1, 2, 2, 10] }}
-          >
+        <FluidGrid className="gap-y-[2.6vmax]">
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
             <SectionLabel index={project.index}>{project.type}</SectionLabel>
-          </FluidBlock>
+          </FluidSpan>
 
-          <FluidBlock
-            debugLabel="project/title"
-            area={{ desktop: [3, 2, 8, 20], mobile: [3, 2, 9, 10] }}
-          >
+          <FluidSpan span={{ desktop: [2, 20], mobile: [2, 10] }}>
             <SplitText as="h1" text={project.title} className="display" />
             <Reveal delay={200}>
               <p className="mt-[0.6em] max-w-[46ch] text-[length:calc(1.25rem+0.5*var(--type-step))] leading-[1.5] text-[var(--muted)]">
                 {project.summary}
               </p>
             </Reveal>
-          </FluidBlock>
+          </FluidSpan>
         </FluidGrid>
       </SectionContent>
     </Section>

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
+import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { CtaImageSection } from '@/components/sections/CtaImageSection';
 import { StatRow } from '@/components/sections/StatRow';
@@ -30,45 +30,24 @@ export async function generateMetadata({
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const { about, ui } = getContent(locale);
+  const { about, ui, stats } = getContent(locale);
 
   return (
     <>
       <Section height="medium" theme="white" offsetHeader>
         <SectionContent>
-          <FluidGrid>
-            <FluidBlock
-              debugLabel="about/label"
-              area={{ desktop: [1, 2, 2, 8], mobile: [1, 2, 2, 10] }}
-            >
+          <FluidGrid className="gap-y-[3.2vmax]">
+            <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
               <SectionLabel index="01">{ui.sections.about}</SectionLabel>
-            </FluidBlock>
+            </FluidSpan>
 
-            <FluidBlock
-              debugLabel="about/heading"
-              area={{ desktop: [3, 2, 9, 20], mobile: [3, 2, 11, 10] }}
-            >
+            <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
               <SplitText as="h1" text={about.heading} className="display" />
-            </FluidBlock>
+            </FluidSpan>
 
-            <FluidBlock
-              debugLabel="about/body"
-              area={{ desktop: [11, 14, 22, 26], mobile: [13, 2, 34, 10] }}
-              className="prose-utica"
-            >
-              <Reveal delay={140}>
-                {about.body.map((paragraph: string) => (
-                  <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-                ))}
-              </Reveal>
-            </FluidBlock>
-
-            <FluidBlock
-              debugLabel="about/image"
-              area={{ desktop: [11, 2, 24, 13], mobile: [36, 2, 48, 10] }}
-            >
-              <Reveal className="h-full">
-                <div className="media h-full">
+            <FluidSpan span={{ desktop: [2, 13], mobile: [2, 10] }}>
+              <Reveal>
+                <div className="media aspect-[4/3]">
                   <Image
                     src={about.image.src}
                     alt={about.image.alt}
@@ -79,26 +58,28 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                   />
                 </div>
               </Reveal>
-            </FluidBlock>
+            </FluidSpan>
+
+            <FluidSpan span={{ desktop: [14, 26], mobile: [2, 10] }} className="prose-utica">
+              <Reveal delay={140}>
+                {about.body.map((paragraph: string) => (
+                  <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                ))}
+              </Reveal>
+            </FluidSpan>
           </FluidGrid>
         </SectionContent>
       </Section>
 
-      <Section height="small" theme="white">
+      <Section height="small" theme="tint">
         <SectionContent>
-          <FluidGrid>
-            <FluidBlock
-              debugLabel="about/stats-label"
-              area={{ desktop: [1, 2, 2, 8], mobile: [1, 2, 2, 10] }}
-            >
+          <FluidGrid className="gap-y-[2.4vmax]">
+            <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
               <SectionLabel index="02">{ui.byTheNumbers}</SectionLabel>
-            </FluidBlock>
-            <FluidBlock
-              debugLabel="about/stats"
-              area={{ desktop: [3, 2, 8, 26], mobile: [3, 2, 22, 10] }}
-            >
-              <StatRow stats={getContent(locale).stats} />
-            </FluidBlock>
+            </FluidSpan>
+            <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
+              <StatRow stats={stats} />
+            </FluidSpan>
           </FluidGrid>
         </SectionContent>
       </Section>

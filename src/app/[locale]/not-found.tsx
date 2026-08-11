@@ -1,4 +1,4 @@
-import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
+import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { ButtonLink } from '@/components/ui/Button';
 import { getContent } from '@/content';
@@ -10,12 +10,8 @@ export default function NotFound() {
   return (
     <Section height="medium" theme="white" offsetHeader>
       <SectionContent>
-        <FluidGrid>
-          <FluidBlock
-            debugLabel="404"
-            area={{ desktop: [1, 2, 6, 16], mobile: [1, 2, 6, 10] }}
-            className="prose-utica"
-          >
+        <FluidGrid className="gap-y-[2.6vmax]">
+          <FluidSpan span={{ desktop: [2, 16], mobile: [2, 10] }} className="prose-utica">
             <h1 className="display">{ui.notFound}</h1>
             <p className="mt-[0.8em] text-[var(--muted)]">{ui.notFoundBody}</p>
             <div className="mt-[2em]">
@@ -23,7 +19,7 @@ export default function NotFound() {
                 {ui.backToWork}
               </ButtonLink>
             </div>
-          </FluidBlock>
+          </FluidSpan>
         </FluidGrid>
       </SectionContent>
     </Section>
