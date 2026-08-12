@@ -20,7 +20,6 @@ export function getContent(locale: Locale): Content {
 }
 
 export const shared = {
-  lockup: 'development',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://montavia.ge',
   phone: '+995 32 200 00 00',
   email: 'hello@montavia.ge',

@@ -50,6 +50,11 @@
     object-fit: cover;
   }
 
+  .media-fill {
+    overflow: hidden;
+    background: color-mix(in srgb, var(--fg) 8%, transparent);
+  }
+
   .media--zoom img {
     transition: transform 1200ms var(--ease-out-quint);
   }

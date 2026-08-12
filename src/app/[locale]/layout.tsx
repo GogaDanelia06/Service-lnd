@@ -84,7 +84,6 @@ export default async function LocaleLayout({
           site={content.site}
           ui={content.ui}
           socials={shared.socials}
-          lockup={shared.lockup}
         />
         <main id="main">{children}</main>
         <SiteFooter locale={locale} content={content} />

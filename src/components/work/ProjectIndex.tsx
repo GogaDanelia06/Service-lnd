@@ -10,7 +10,7 @@ export function ProjectIndex({ locale, projects }: { locale: Locale; projects: P
       {projects.map((project, index) => (
         <li key={project.slug}>
           <Link href={localePath(locale, `/work/${project.slug}`)} className="group block">
-            <div className="relative aspect-[4/3] overflow-hidden bg-[var(--color-rule)]">
+            <div className="media aspect-[4/3]">
               <Image
                 src={project.thumbnail}
                 alt={project.title}

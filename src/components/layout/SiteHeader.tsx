@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { BrandMark } from '@/components/layout/BrandMark';
+import { Logo } from '@/components/layout/Logo';
 import { MobileNav } from '@/components/layout/MobileNav';
 import { SocialIcon } from '@/components/layout/SocialIcon';
 import { localePath, type Locale } from '@/i18n/config';
@@ -23,7 +23,6 @@ export function SiteHeader({
   site,
   ui,
   socials = [],
-  lockup,
 }: {
   locale: Locale;
   nav: NavItem[];
@@ -37,7 +36,6 @@ export function SiteHeader({
     nav: { primary: string; footer: string };
   };
   socials?: Social[];
-  lockup?: string;
 }) {
   const pathname = usePathname();
   const linked = socials.filter((item) => item.href);
@@ -71,20 +69,9 @@ export function SiteHeader({
         <Link
           href={localePath(locale, '/')}
           aria-label={`${site.name} — ${ui.home}`}
-          className="col-start-2 relative z-30 flex items-center gap-[0.45em] font-[family-name:var(--font-heading)] leading-[1.1]"
+          className="col-start-2 relative z-30 flex items-center"
         >
-          <BrandMark className="h-[calc(var(--logo-size)*0.78)] w-[calc(var(--logo-size)*0.78)] shrink-0" />
-
-          <span className="flex flex-col">
-            <span className="text-[length:calc(var(--logo-size)*0.66)] font-normal tracking-[0.14em] uppercase">
-              {site.name}
-            </span>
-            {lockup ? (
-              <span className="text-[length:calc(var(--logo-size)*0.26)] font-bold tracking-[0.02em]">
-                {lockup}
-              </span>
-            ) : null}
-          </span>
+          <Logo className="h-[calc(var(--logo-size)*1.45)] w-auto" />
         </Link>
 
         <div className="col-start-3 flex items-center justify-end gap-5">

@@ -63,7 +63,7 @@ export function Section({
   return (
     <Tag id={id} data-theme={theme} style={style} className={cn('section-shell', className)}>
       {background ? (
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="media-fill absolute inset-0">
           <Image
             src={background.src}
             alt={background.alt ?? ''}

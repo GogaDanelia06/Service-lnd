@@ -41,10 +41,10 @@ export const home = {
 export const about = {
   heading: 'About',
   body: [
-    'We think of architecture not as a single practice, but as several interlocking ones. Landscapes are inseparable from structures, ecology is inseparable from building requirements, and improving human relationships is the ultimate goal of any project. Aesthetic movements come and go, but we have found these principles to be timeless.',
-    'As partners we work for honesty and clarity. Our first job is to understand what a client actually needs, not to arrive with an answer already drawn. We value plain language, prototypes over presentations, decisions made on time, and the occasional long conversation over a meal.',
-    'Over the years we have been fortunate to collaborate with excellent clients on some wonderful projects, but we believe it is still too early to weigh in on the success of the work. A building exists in time, and its usefulness is directly related to how well it continues to perform.',
-    'We are proud of our Georgian home and heritage, but do not consider ourselves exponents of a national style. National style has no place in architecture, where a building must first and foremost be suited to local needs.',
+    'Montavia was founded with one guiding purpose: to build quality that stands the test of time. Our many years in construction let us approach every project with professionalism, precision and accountability. The knowledge and practical experience gathered over those years is the backbone of our work, and it is what allows us to deliver standard projects and complex, large-scale ones alike.',
+    'Montavia’s team brings together specialists from across disciplines, with experience spanning design, construction, renovation and complete interior fit-out. That range lets us hold every stage of a project to a single standard, from developing the idea through to final delivery. Because each job carries its own complexity, effective communication with the client matters to us: close contact is what sets the right expectations and reaches the intended result.',
+    'For us, experience is not simply a count of completed projects. It is the ability to anticipate every detail of the process, manage resources efficiently, resolve challenges as they arise and hold to a high standard of quality throughout. We place particular weight on transparent communication, sound planning and keeping to agreed deadlines.',
+    'Our aim is to use that accumulated experience to create spaces that bring together quality, functionality and contemporary aesthetics.',
   ],
   image: { src: '/images/about-studio.jpg', alt: 'The studio: long windows over the work tables' },
   cta: {

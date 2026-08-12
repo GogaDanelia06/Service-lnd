@@ -67,7 +67,7 @@ export function BleedImage({
       <div
         ref={inner}
 
-        className="absolute inset-x-0 -inset-y-[6%]"
+        className="media-fill absolute inset-x-0 -inset-y-[6%]"
       >
         <Image
           src={src}

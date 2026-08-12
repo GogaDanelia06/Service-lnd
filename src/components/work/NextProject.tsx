@@ -17,7 +17,7 @@ export function NextProject({
   return (
     <section data-theme="black" className="section-shell group relative overflow-hidden">
       <Link href={localePath(locale, `/work/${project.slug}`)} className="block">
-        <div className="absolute inset-0">
+        <div className="media-fill absolute inset-0">
           <Image
             src={project.hero}
             alt=""
