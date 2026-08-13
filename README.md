@@ -84,7 +84,11 @@ The second check is what found `"What people write about the work."` sitting
 in `press/page.tsx` and `"Every project is led by a partner…"` in
 `our-team/page.tsx` — both invisible to the dictionary test.
 
-Both are clean: 20 unit tests passing, 0 leaks across 9 Georgian pages.
+Both are clean: 24 unit tests passing, 0 leaks across 10 Georgian pages.
+
+The leak scan deliberately passes a string the moment it contains a Georgian
+character, so mixed strings like `3D ვიზუალიზაცია` — where the Latin part is
+the accepted term in Georgian too — do not register as untranslated.
 
 ### Georgian typography
 
@@ -278,6 +282,11 @@ Above 1700 px the gutter becomes `(100vw − 1500px) / 2`, capping content at
 | medium | `6.6vmax` | `66vh` |
 | large | `10vmax` | `100vh` |
 
+The header is one knob. `--logo-scale` multiplies `--logo-size` into
+`--logo-height`, and `--header-height` is padding plus that — so the rendered
+mark and the offset every `offsetHeader` section reserves for it can never
+drift apart. Resizing the logo is one number in `src/styles/tokens.css`.
+
 | token | value | role |
 |---|---|---|
 | `paper` | `#f6f4ef` | bone off-white, the default ground |
@@ -445,12 +454,26 @@ original generated placeholders are still available via
 ## Content
 
 All copy and data live in `src/content/` as typed modules — `site.ts`,
-`pages.ts`, `projects.ts`, `team.ts`. Nothing is hard-coded into components, so
-moving to a CMS means replacing those four files with fetchers of the same
-shape.
+`pages.ts`, `projects.ts`, `services.ts`, `team.ts`. Nothing is hard-coded into
+components, so moving to a CMS means replacing those five files with fetchers of
+the same shape.
 
 Body copy is original writing at the reference's lengths, so the layout matches
-without reproducing its prose.
+without reproducing its prose. The exception is `services.ts`, which carries the
+studio's own supplied copy — the Georgian is verbatim from the client and the
+English is a translation of it.
+
+`Service` is `{ slug, title, body, list }` with `list` always present and
+sometimes empty (One Team has no bullets). Keeping it required rather than
+optional is what lets the dictionary test compare array lengths across locales,
+which is how a bullet dropped from one language gets caught.
+
+The services page reads that shape rather than hard-coding positions: entries
+with a list render as services, the entry without one renders as the closing
+statement, and the image break falls at the midpoint of the listed ones. Adding
+or removing a service needs no layout change. `slug` is shared across locales —
+it anchors the contents list at the top of the page, so it must not be
+translated, exactly like the project slugs.
 
 ## Contact form
 

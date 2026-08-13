@@ -71,7 +71,7 @@ export function SiteHeader({
           aria-label={`${site.name} — ${ui.home}`}
           className="col-start-2 relative z-30 flex items-center"
         >
-          <Logo className="h-[calc(var(--logo-size)*1.45)] w-auto" />
+          <Logo className="h-[var(--logo-height)] w-auto" />
         </Link>
 
         <div className="col-start-3 flex items-center justify-end gap-5">

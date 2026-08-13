@@ -1,31 +1,4 @@
 @layer components {
-  .prose-utica p {
-    font-size: 1rem;
-    line-height: 1.8;
-  }
-
-  .prose-utica p + p {
-    margin-block-start: 1.8em;
-  }
-
-  .prose-utica .lead,
-  .prose-utica p.lead {
-    font-size: 1.5rem;
-    line-height: 1.8;
-  }
-
-  .prose-utica a:not(.btn) {
-    background-image: linear-gradient(currentColor, currentColor);
-    background-repeat: no-repeat;
-    background-position: 0 100%;
-    background-size: 100% 1px;
-    transition: background-size 320ms var(--ease-out-quint);
-  }
-
-  .prose-utica a:not(.btn):hover {
-    background-size: 0 1px;
-  }
-
   .rule {
     border: 0;
     border-top: 1px solid var(--rule);

@@ -1,0 +1,65 @@
+@layer components {
+  .service-title {
+    scroll-margin-top: 6vmax;
+  }
+
+  @media (width >= 768px) {
+    .service-title {
+      position: sticky;
+      top: 3.3vmax;
+    }
+  }
+
+  .service-index {
+    display: grid;
+  }
+
+  .service-index a {
+    display: block;
+    padding-block: 0.72em;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: calc(1.2rem + 0.2 * var(--type-step));
+    line-height: 1.35;
+    letter-spacing: var(--heading-tracking);
+    transition: opacity 320ms var(--ease-out-quint);
+  }
+
+  .service-index li:last-child a {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .service-index a:hover {
+    opacity: 0.55;
+  }
+
+  .prose-utica ul.capability-list {
+    display: block;
+    columns: 2;
+    column-gap: var(--fe-gap);
+    margin-block-start: 2.6em;
+  }
+
+  .prose-utica ul.capability-list:empty {
+    display: none;
+  }
+
+  .prose-utica ul.capability-list li {
+    break-inside: avoid;
+    padding-inline-start: 0;
+    padding-block: 0.62em;
+    border-top: 1px solid var(--rule);
+    line-height: 1.5;
+  }
+
+  .prose-utica ul.capability-list li::before {
+    content: none;
+  }
+
+  @media (max-width: 767px) {
+    .prose-utica ul.capability-list {
+      columns: 1;
+    }
+  }
+}

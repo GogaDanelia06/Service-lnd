@@ -22,6 +22,13 @@ export type Project = {
   gallery: ProjectImage[];
 };
 
+export type Service = {
+  slug: string;
+  title: string;
+  body: string;
+  list: string[];
+};
+
 export type TeamMember = {
   name: string;
   role: string;

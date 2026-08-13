@@ -1,16 +1,18 @@
 import * as enPages from '@/content/en/pages';
 import { projects as enProjects } from '@/content/en/projects';
+import { services as enServices } from '@/content/en/services';
 import * as enSite from '@/content/en/site';
 import { team as enTeam } from '@/content/en/team';
 import * as kaPages from '@/content/ka/pages';
 import { projects as kaProjects } from '@/content/ka/projects';
+import { services as kaServices } from '@/content/ka/services';
 import * as kaSite from '@/content/ka/site';
 import { team as kaTeam } from '@/content/ka/team';
 import type { Locale } from '@/i18n/config';
 
 const DICTIONARIES = {
-  en: { ...enSite, ...enPages, projects: enProjects, team: enTeam },
-  ka: { ...kaSite, ...kaPages, projects: kaProjects, team: kaTeam },
+  en: { ...enSite, ...enPages, projects: enProjects, services: enServices, team: enTeam },
+  ka: { ...kaSite, ...kaPages, projects: kaProjects, services: kaServices, team: kaTeam },
 };
 
 export type Content = (typeof DICTIONARIES)['en'];
@@ -29,4 +31,4 @@ export const shared = {
   ],
 };
 
-export type { Project, ProjectImage, TeamMember } from '@/content/types';
+export type { Project, ProjectImage, Service, TeamMember } from '@/content/types';
