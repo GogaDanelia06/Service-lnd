@@ -65,6 +65,12 @@ export const ui = {
     studio: 'ბიურო',
     enquiries: 'შეკითხვები',
   },
+  gallery: {
+    open: 'გადიდება',
+    previous: 'წინა ფოტო',
+    next: 'შემდეგი ფოტო',
+    close: 'დახურვა',
+  },
   spec: {
     client: 'დამკვეთი',
     location: 'ლოკაცია',

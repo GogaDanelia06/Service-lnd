@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { BleedImage } from '@/components/sections/BleedImage';
 import { NextProject } from '@/components/work/NextProject';
 import { ProjectGallery } from '@/components/work/ProjectGallery';
 import { ProjectHeader } from '@/components/work/ProjectHeader';
@@ -50,15 +49,8 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
     <>
       <ProjectHeader project={project} />
 
-      <BleedImage
-        src={project.hero}
-        alt={`${project.title} — ${project.location}`}
-        priority
-        height="88vh"
-      />
-
       <ProjectSpec project={project} labels={ui.spec} />
-      <ProjectGallery images={project.gallery} />
+      <ProjectGallery images={project.gallery} labels={ui.gallery} />
 
       {next ? <NextProject locale={locale} project={next} label={ui.nextProject} /> : null}
     </>

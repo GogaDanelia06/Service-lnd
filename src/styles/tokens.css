@@ -1,5 +1,5 @@
 @theme {
-  --font-heading: 'acumin-pro', var(--font-archivo), var(--font-georgian), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-heading: var(--font-poppins), 'Poppins', var(--font-georgian), 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-body: var(--font-poppins), 'Poppins', var(--font-georgian), 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   --color-paper: #ffffff;

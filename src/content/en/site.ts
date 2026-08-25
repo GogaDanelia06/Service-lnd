@@ -65,6 +65,12 @@ export const ui = {
     studio: 'Studio',
     enquiries: 'Enquiries',
   },
+  gallery: {
+    open: 'View larger',
+    previous: 'Previous image',
+    next: 'Next image',
+    close: 'Close',
+  },
   spec: {
     client: 'Client',
     location: 'Location',
