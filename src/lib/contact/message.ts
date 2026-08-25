@@ -12,6 +12,7 @@ export function composeMessage(input: ContactInput, siteName = 'Montavia'): Comp
 
   const lines = [
     `From:    ${name} <${input.email}>`,
+    `Phone:   ${input.phone.trim()}`,
     `Subject: ${topic}`,
     '',
     input.message.trim(),

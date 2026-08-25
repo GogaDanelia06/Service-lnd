@@ -55,6 +55,19 @@
     background: color-mix(in srgb, var(--fg) 8%, transparent);
   }
 
+  .media--fade::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--bg);
+    opacity: 0;
+    transition: opacity 200ms var(--ease-out-quint);
+  }
+
+  .group:hover .media--fade::after {
+    opacity: 0.4;
+  }
+
   .media--zoom img {
     transition: transform 1200ms var(--ease-out-quint);
   }

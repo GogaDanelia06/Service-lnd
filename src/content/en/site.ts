@@ -25,6 +25,7 @@ export const nav = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
+  { label: 'Portfolio', href: '/work' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -50,6 +51,8 @@ export const ui = {
     elsewhere: 'Elsewhere',
   },
   sections: {
+    included: 'Included',
+
     work: 'Work',
     practice: 'Practice',
     selectedWork: 'Selected Work',
@@ -74,13 +77,13 @@ export const ui = {
     firstName: 'First Name',
     lastName: 'Last Name',
     email: 'Email',
+    phone: 'Phone',
     subject: 'Subject',
     message: 'Message',
     send: 'Submit',
     sending: 'Sending…',
     sent: 'Message sent',
     company: 'Company',
-    name: 'Name',
     required: 'required',
     thanks: 'Thank you — we’ll be in touch shortly.',
     checkFields: 'Please check the highlighted fields.',
@@ -89,6 +92,7 @@ export const ui = {
       firstName: 'Required',
       lastName: 'Required',
       email: 'Enter a valid email address',
+      phone: 'Enter a phone number',
       messageShort: 'At least 10 characters',
       tooLong: 'Too long',
     },

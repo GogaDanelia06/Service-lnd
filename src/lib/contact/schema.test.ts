@@ -6,6 +6,7 @@ const ContactSchema = contactSchema({
   firstName: 'Required',
   lastName: 'Required',
   email: 'Enter a valid email address',
+  phone: 'Enter a phone number',
   messageShort: 'At least 10 characters',
   tooLong: 'Too long',
 });
@@ -14,6 +15,7 @@ const valid = {
   firstName: 'Ada',
   lastName: 'Lovelace',
   email: 'ada@example.com',
+  phone: '+995 599 12 34 56',
   subject: 'New commission',
   message: 'We are planning a small civic building in Kutaisi and would like to talk.',
   company: '',
@@ -27,6 +29,21 @@ describe('ContactSchema', () => {
   it('treats the subject as optional', () => {
     const { subject: _subject, ...rest } = valid;
     expect(ContactSchema.safeParse(rest).success).toBe(true);
+  });
+
+  it('requires a phone number', () => {
+    const { phone: _phone, ...rest } = valid;
+    expect(ContactSchema.safeParse(rest).success).toBe(false);
+    expect(ContactSchema.safeParse({ ...valid, phone: '' }).success).toBe(false);
+    expect(ContactSchema.safeParse({ ...valid, phone: '   ' }).success).toBe(false);
+  });
+
+  it('rejects a phone number too short to dial', () => {
+    const result = ContactSchema.safeParse({ ...valid, phone: '123' });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(result.error.issues[0]?.message).toMatch(/phone/i);
+    }
   });
 
   it('rejects a malformed email', () => {

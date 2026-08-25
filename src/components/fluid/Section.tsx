@@ -61,7 +61,13 @@ export function Section({
   } as CSSProperties;
 
   return (
-    <Tag id={id} data-theme={theme} style={style} className={cn('section-shell', className)}>
+    <Tag
+      id={id}
+      data-theme={theme}
+      data-hero-media={background && height === 'hero' ? '' : undefined}
+      style={style}
+      className={cn('section-shell', className)}
+    >
       {background ? (
         <div className="media-fill absolute inset-0">
           <Image

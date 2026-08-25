@@ -86,7 +86,7 @@ export default async function LocaleLayout({
           socials={shared.socials}
         />
         <main id="main">{children}</main>
-        <SiteFooter locale={locale} content={content} />
+        <SiteFooter content={content} />
 
         <script
           type="application/ld+json"

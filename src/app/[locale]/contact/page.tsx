@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { ContactForm } from '@/components/contact/ContactForm';
-import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
+import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { getContent, shared } from '@/content';
 import { isLocale } from '@/i18n/config';
@@ -31,21 +31,28 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
     <Section height="medium" theme="white" offsetHeader>
       <SectionContent>
         <FluidGrid className="gap-y-[2.4vmax]">
-          <FluidSpan span={{ desktop: [2, 12], mobile: [2, 10] }} className="prose-utica">
+          <FluidBlock
+            area={{ desktop: [1, 2, 2, 12], mobile: [1, 2, 2, 10] }}
+            className="prose-utica"
+          >
             <h1 className="[--fs:2.8]">{contact.heading}</h1>
             <p className="mt-[0.8em]">{contact.body}</p>
-          </FluidSpan>
+          </FluidBlock>
 
-          <FluidSpan span={{ desktop: [14, 26], mobile: [2, 10] }}>
+          <FluidBlock
+            area={{ desktop: [1, 14, 3, 26], mobile: [2, 2, 3, 10] }}
+            className="max-fe:mt-[2vmax]"
+          >
             <ContactForm labels={ui.form} locale={locale} />
-          </FluidSpan>
+          </FluidBlock>
 
-          <FluidSpan span={{ desktop: [2, 8], mobile: [2, 10] }}>
+          <FluidBlock
+            area={{ desktop: [2, 2, 3, 12], mobile: [3, 2, 4, 10] }}
+            className="prose-utica max-fe:mt-[2.4vmax]"
+          >
             <hr className="rule w-full" />
-          </FluidSpan>
 
-          <FluidSpan span={{ desktop: [2, 12], mobile: [2, 10] }} className="prose-utica">
-            <p>
+            <p className="mt-[2.2vmax]">
               {site.address.street}
               <br />
               {site.address.city}, {site.address.country}
@@ -69,7 +76,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 </li>
               ))}
             </ul>
-          </FluidSpan>
+          </FluidBlock>
         </FluidGrid>
       </SectionContent>
     </Section>

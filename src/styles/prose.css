@@ -43,7 +43,6 @@
     background-repeat: no-repeat;
     background-position: 0 100%;
     background-size: 100% 1px;
-    transition: background-size 320ms var(--ease-out-quint);
   }
 
   .prose-utica a:not(.btn):hover {

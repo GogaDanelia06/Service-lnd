@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next';
 import { getContent, shared } from '@/content';
 import { locales } from '@/i18n/config';
 
-const ROUTES = ['', '/about', '/our-team', '/press', '/contact'];
+const ROUTES = ['', '/about', '/services', '/work', '/our-team', '/press', '/contact'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return locales.flatMap((locale) => [

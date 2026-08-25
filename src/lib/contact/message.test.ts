@@ -6,6 +6,7 @@ const input = {
   firstName: 'Ada',
   lastName: 'Lovelace',
   email: 'ada@example.com',
+  phone: '+995 599 12 34 56',
   subject: 'New commission',
   message: '  We are planning a civic building in Kutaisi.  ',
   company: '',
@@ -18,6 +19,10 @@ describe('composeMessage', () => {
 
   it('replies to the sender, not the site', () => {
     expect(composeMessage(input).replyTo).toBe('ada@example.com');
+  });
+
+  it('always carries the phone number through to the email', () => {
+    expect(composeMessage(input).text).toContain('Phone:   +995 599 12 34 56');
   });
 
   it('trims the message body', () => {

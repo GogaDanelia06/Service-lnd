@@ -8,7 +8,7 @@ import type { ContactField } from './state';
 type Errors = Partial<Record<ContactField, string>>;
 type Touched = Partial<Record<ContactField, boolean>>;
 
-const FIELDS: ContactField[] = ['firstName', 'lastName', 'email', 'subject', 'message'];
+const FIELDS: ContactField[] = ['firstName', 'lastName', 'email', 'phone', 'subject', 'message'];
 
 export function useContactForm(messages: ValidationMessages) {
   const schema = useMemo(() => contactSchema(messages), [messages]);

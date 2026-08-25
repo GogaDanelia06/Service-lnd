@@ -55,6 +55,10 @@ export const about = {
   },
 };
 
+export const workPage = {
+  heading: 'Portfolio',
+};
+
 export const teamPage = {
   heading: 'Every project is led by a partner, from first sketch to handover.',
 };

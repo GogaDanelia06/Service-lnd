@@ -12,9 +12,9 @@ type FormLabels = {
   firstName: string;
   lastName: string;
   email: string;
+  phone: string;
   subject: string;
   message: string;
-  name: string;
   required: string;
   send: string;
   sending: string;
@@ -27,6 +27,7 @@ type FormLabels = {
     firstName: string;
     lastName: string;
     email: string;
+    phone: string;
     messageShort: string;
     tooLong: string;
   };
@@ -62,6 +63,7 @@ export function ContactForm({ labels, locale }: { labels: FormLabels; locale: st
 
   const field = (name: ContactField) => ({
     error: errorFor(name, state.fieldErrors?.[name]),
+    defaultValue: state.values?.[name],
     requiredLabel: labels.required,
     onBlur,
     onInput,
@@ -71,15 +73,19 @@ export function ContactForm({ labels, locale }: { labels: FormLabels; locale: st
     <form action={formAction} onSubmit={onSubmit} noValidate className="flex flex-col gap-4">
       <input type="hidden" name="locale" value={locale} />
 
-      <fieldset>
-        <legend className="mb-2 text-base font-light">{labels.name}</legend>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field label={labels.firstName} name="firstName" autoComplete="given-name" {...field('firstName')} />
-          <Field label={labels.lastName} name="lastName" autoComplete="family-name" {...field('lastName')} />
-        </div>
-      </fieldset>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Field label={labels.firstName} name="firstName" autoComplete="given-name" {...field('firstName')} />
+        <Field label={labels.lastName} name="lastName" autoComplete="family-name" {...field('lastName')} />
+      </div>
 
       <Field label={labels.email} name="email" type="email" autoComplete="email" {...field('email')} />
+      <Field
+        label={labels.phone}
+        name="phone"
+        type="tel"
+        autoComplete="tel"
+        {...field('phone')}
+      />
       <Field label={labels.subject} name="subject" required={false} {...field('subject')} />
       <Field label={labels.message} name="message" rows={5} {...field('message')} />
 

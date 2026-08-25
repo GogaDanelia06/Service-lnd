@@ -38,7 +38,7 @@ export function MobileNav({
   useModalPanel({ open, panelRef, onClose: close });
 
   return (
-    <div className="fe:hidden">
+    <div className="min-[1340px]:hidden">
       <button
         ref={triggerRef}
         type="button"

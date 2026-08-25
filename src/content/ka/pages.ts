@@ -55,6 +55,10 @@ export const about = {
   },
 };
 
+export const workPage = {
+  heading: 'პორტფოლიო',
+};
+
 export const teamPage = {
   heading: 'ყოველ პროექტს პარტნიორი უძღვება პირველი ესკიზიდან ჩაბარებამდე.',
 };

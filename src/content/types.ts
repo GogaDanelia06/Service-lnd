@@ -24,6 +24,7 @@ export type Project = {
 
 export type Service = {
   slug: string;
+  image: string;
   title: string;
   body: string;
   list: string[];

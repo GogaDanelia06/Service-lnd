@@ -18,6 +18,7 @@ export function Field({
   requiredLabel,
   autoComplete,
   rows,
+  defaultValue,
   onBlur,
   onInput,
 }: {
@@ -29,6 +30,7 @@ export function Field({
   requiredLabel: string;
   autoComplete?: string;
   rows?: number;
+  defaultValue?: string;
   onBlur?: (name: string, value: string) => void;
   onInput?: (name: string, value: string) => void;
 }) {
@@ -39,6 +41,7 @@ export function Field({
     id,
     name,
     required,
+    defaultValue,
     'aria-invalid': error ? true : undefined,
     'aria-describedby': error ? errorId : undefined,
     onBlur: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) =>

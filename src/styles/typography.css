@@ -12,6 +12,14 @@
     font-size: calc(var(--fs, 1) * 1rem + (var(--fs, 1) - 1) * var(--type-step));
   }
 
+  .display {
+    margin-inline-start: -0.059em;
+  }
+
+  :lang(ka) .display {
+    margin-inline-start: -0.044em;
+  }
+
   h1 {
     --fs: 4;
   }

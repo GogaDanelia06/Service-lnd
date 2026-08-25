@@ -1,65 +1,80 @@
 @layer components {
+  .panel-statement {
+    background: var(--bg);
+    color: var(--fg);
+    padding: 7vmax var(--site-gutter);
+    text-align: center;
+  }
+
+  .panel-statement__body {
+    margin-inline: auto;
+    margin-block-start: 0.9em;
+    max-width: 68ch;
+    font-size: calc(1.25rem + 0.5 * var(--type-step));
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
   .service-title {
     scroll-margin-top: 6vmax;
   }
 
-  @media (width >= 768px) {
-    .service-title {
-      position: sticky;
-      top: 3.3vmax;
-    }
+  .service-figure {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 10 / 7;
+    background: color-mix(in srgb, var(--color-ink) 8%, transparent);
   }
 
-  .service-index {
-    display: grid;
+  .service-figure__body {
+    margin: 1.4em 0 0;
+    max-width: 62ch;
+    font-size: 1rem;
+    line-height: 1.8;
   }
 
-  .service-index a {
-    display: block;
-    padding-block: 0.72em;
-    border-top: 1px solid var(--rule);
-    font-family: var(--font-heading);
+  .service-included {
+    margin: 0;
     font-weight: 500;
-    font-size: calc(1.2rem + 0.2 * var(--type-step));
-    line-height: 1.35;
-    letter-spacing: var(--heading-tracking);
-    transition: opacity 320ms var(--ease-out-quint);
+    font-size: 1rem;
+    line-height: 1.4;
   }
 
-  .service-index li:last-child a {
-    border-bottom: 1px solid var(--rule);
+  .service-list {
+    display: grid;
+    gap: 1.15em;
+    margin-block-start: 1.6em;
   }
 
-  .service-index a:hover {
-    opacity: 0.55;
-  }
-
-  .prose-utica ul.capability-list {
-    display: block;
-    columns: 2;
-    column-gap: var(--fe-gap);
-    margin-block-start: 2.6em;
-  }
-
-  .prose-utica ul.capability-list:empty {
-    display: none;
-  }
-
-  .prose-utica ul.capability-list li {
-    break-inside: avoid;
-    padding-inline-start: 0;
-    padding-block: 0.62em;
-    border-top: 1px solid var(--rule);
-    line-height: 1.5;
-  }
-
-  .prose-utica ul.capability-list li::before {
-    content: none;
+  .service-list li {
+    font-size: 1rem;
+    line-height: 1.4;
   }
 
   @media (max-width: 767px) {
-    .prose-utica ul.capability-list {
-      columns: 1;
+    .service-figure {
+      aspect-ratio: 4 / 5;
+    }
+
+    .service-included {
+      margin-block-start: 2.6vmax;
+      padding-block-start: 1.5vmax;
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+    }
+
+    .service-list {
+      gap: 0;
+      margin-block-start: 1.3em;
+    }
+
+    .service-list li {
+      padding-block: 0.9em;
+      border-top: 1px solid var(--rule);
+    }
+
+    .service-list li:first-child {
+      border-top: 0;
     }
   }
 }

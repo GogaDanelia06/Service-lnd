@@ -36,6 +36,24 @@
     cursor: not-allowed;
   }
 
+  .btn-reverse {
+    background: transparent;
+    color: var(--btn-bg);
+    box-shadow: none;
+  }
+
+  .btn-reverse:hover {
+    background: var(--btn-bg);
+    color: var(--btn-fg);
+  }
+
+  @media (hover: none) {
+    .btn-reverse {
+      background: var(--btn-bg);
+      color: var(--btn-fg);
+    }
+  }
+
   .btn-stretch {
     display: flex;
     width: 100%;
@@ -49,12 +67,19 @@
     background-position: 0 calc(100% - 1.6px);
     background-size: 0 1px;
     padding-block: 1.6px;
-    transition: background-size 340ms var(--ease-out-quint);
   }
 
   .underline-swipe:hover,
   .underline-swipe[data-active='true'] {
     background-size: 100% 1px;
+  }
+
+  .next-project {
+    transition: opacity 200ms var(--ease-out-quint);
+  }
+
+  .next-project:hover {
+    opacity: 0.55;
   }
 
   .skip-link {

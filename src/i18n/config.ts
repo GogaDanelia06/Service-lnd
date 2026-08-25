@@ -11,7 +11,7 @@ export const localeNames: Record<Locale, string> = {
 
 export const localeShort: Record<Locale, string> = {
   en: 'ENG',
-  ka: 'ქარ',
+  ka: 'GEO',
 };
 
 export function otherLocale(locale: Locale): Locale {

@@ -27,3 +27,7 @@
   --btn-bg: var(--color-paper);
   --btn-fg: var(--color-ink);
 }
+
+body:has(main > section[data-hero-media]:first-of-type) header[data-theme='white'] {
+  --fg: var(--color-paper);
+}

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import { LocaleSwitch } from '@/components/layout/LocaleSwitch';
 import { Logo } from '@/components/layout/Logo';
 import { MobileNav } from '@/components/layout/MobileNav';
 import { SocialIcon } from '@/components/layout/SocialIcon';
@@ -13,7 +14,7 @@ type Social = { label: string; href: string };
 
 function isActive(pathname: string, locale: Locale, href: string): boolean {
   const target = localePath(locale, href);
-  if (href === '/') return pathname === target || pathname.startsWith(`/${locale}/work`);
+  if (href === '/') return pathname === target;
   return pathname === target || pathname.startsWith(`${target}/`);
 }
 
@@ -30,7 +31,6 @@ export function SiteHeader({
   ui: {
     home: string;
     language: string;
-    getStarted: string;
     openMenu: string;
     closeMenu: string;
     nav: { primary: string; footer: string };
@@ -46,8 +46,8 @@ export function SiteHeader({
       className="absolute inset-x-0 top-0 z-10 flex min-h-[var(--header-height)] items-center text-[var(--fg)]"
     >
       <div className="site-pad grid w-full grid-cols-[1fr_auto_1fr] items-center gap-6 py-[var(--header-pad-y)]">
-        <nav aria-label={ui.nav.primary} className="col-start-1 max-fe:hidden">
-          <ul className="flex items-center gap-[19px] text-base font-light">
+        <nav aria-label={ui.nav.primary} className="col-start-1 max-[1340px]:hidden">
+          <ul className="flex items-center gap-[19px] text-[length:var(--header-text)] font-light">
             {nav.map((item) => {
               const active = isActive(pathname, locale, item.href);
               return (
@@ -56,7 +56,7 @@ export function SiteHeader({
                     href={localePath(locale, item.href)}
                     aria-current={active ? 'page' : undefined}
                     data-active={active}
-                    className="underline-swipe inline-block"
+                    className="underline-swipe inline-block whitespace-nowrap"
                   >
                     {item.label}
                   </Link>
@@ -71,11 +71,11 @@ export function SiteHeader({
           aria-label={`${site.name} — ${ui.home}`}
           className="col-start-2 relative z-30 flex items-center"
         >
-          <Logo className="h-[var(--logo-height)] w-auto" />
+          <Logo className="h-[var(--logo-height)] w-auto text-[var(--color-ink)]" />
         </Link>
 
         <div className="col-start-3 flex items-center justify-end gap-5">
-          <div className="flex items-center gap-6 max-fe:hidden">
+          <div className="flex items-center gap-6 text-[length:var(--header-text)] max-[1340px]:hidden">
             {linked.length > 0 ? (
               <ul className="flex items-center gap-4">
                 {linked.map((item) => (
@@ -87,19 +87,17 @@ export function SiteHeader({
                       aria-label={item.label}
                       className="block opacity-80 transition-opacity hover:opacity-100"
                     >
-                      <SocialIcon label={item.label} className="h-[17px] w-[17px]" />
+                      <SocialIcon
+                        label={item.label}
+                        className="h-[calc(var(--header-text)*1.15)] w-[calc(var(--header-text)*1.15)]"
+                      />
                     </a>
                   </li>
                 ))}
               </ul>
             ) : null}
 
-            <Link
-              href={localePath(locale, '/contact')}
-              className="underline-swipe inline-block text-base font-light"
-            >
-              {ui.getStarted}
-            </Link>
+            <LocaleSwitch locale={locale} label={ui.language} />
           </div>
 
           <MobileNav locale={locale} nav={nav} ui={ui} pathname={pathname} />

@@ -25,6 +25,7 @@ export const nav = [
   { label: 'მთავარი', href: '/' },
   { label: 'ჩვენ შესახებ', href: '/about' },
   { label: 'სერვისები', href: '/services' },
+  { label: 'პორტფოლიო', href: '/work' },
   { label: 'კონტაქტი', href: '/contact' },
 ];
 
@@ -50,6 +51,8 @@ export const ui = {
     elsewhere: 'სოციალური ქსელები',
   },
   sections: {
+    included: 'მოიცავს',
+
     work: 'ნამუშევრები',
     practice: 'პრაქტიკა',
     selectedWork: 'შერჩეული ნამუშევრები',
@@ -74,13 +77,13 @@ export const ui = {
     firstName: 'სახელი',
     lastName: 'გვარი',
     email: 'ელ. ფოსტა',
+    phone: 'ტელეფონი',
     subject: 'თემა',
     message: 'შეტყობინება',
     send: 'გაგზავნა',
     sending: 'იგზავნება…',
     sent: 'შეტყობინება გაიგზავნა',
     company: 'კომპანია',
-    name: 'სახელი და გვარი',
     required: 'სავალდებულო',
     thanks: 'გმადლობთ — მალე დაგიკავშირდებით.',
     checkFields: 'გთხოვთ, შეამოწმოთ მონიშნული ველები.',
@@ -89,6 +92,7 @@ export const ui = {
       firstName: 'სავალდებულოა',
       lastName: 'სავალდებულოა',
       email: 'მიუთითეთ სწორი ელ. ფოსტა',
+      phone: 'მიუთითეთ ტელეფონის ნომერი',
       messageShort: 'მინიმუმ 10 სიმბოლო',
       tooLong: 'ძალიან გრძელია',
     },

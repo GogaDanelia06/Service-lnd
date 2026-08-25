@@ -34,7 +34,7 @@ export function CtaImageSection({
           </FluidSpan>
 
           <FluidSpan span={{ desktop: [2, 6], mobile: [2, 6] }}>
-            <ButtonLink href={localePath(locale, action.href)} className="btn-stretch">
+            <ButtonLink href={localePath(locale, action.href)} className="btn-stretch btn-reverse">
               {action.label}
             </ButtonLink>
           </FluidSpan>
