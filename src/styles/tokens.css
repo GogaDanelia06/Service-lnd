@@ -22,7 +22,7 @@
 
   --type-step: calc(min(1.2vmax, 18px) - 16px);
   --heading-tracking: -0.006em;
-  --header-text: 11px;
+  --header-text: 13px;
   --logo-size: calc(2rem + 1 * var(--type-step));
   --logo-scale: 2.15;
   --logo-height: calc(var(--logo-size) * var(--logo-scale));
