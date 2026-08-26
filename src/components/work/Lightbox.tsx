@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 import { GalleryArrow } from '@/components/work/GalleryArrow';
 import type { ProjectImage } from '@/content/types';
@@ -47,7 +48,7 @@ export function Lightbox({
   const image = images[at];
   if (!image) return null;
 
-  return (
+  return createPortal(
     <div
       ref={panelRef}
       role="dialog"
@@ -98,6 +99,7 @@ export function Lightbox({
       <p className="lightbox__count">
         {at + 1} / {images.length}
       </p>
-    </div>
+    </div>,
+    document.body,
   );
 }
