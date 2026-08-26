@@ -25,7 +25,6 @@ export const nav = [
   { label: 'მთავარი', href: '/' },
   { label: 'ჩვენ შესახებ', href: '/about' },
   { label: 'სერვისები', href: '/services' },
-  { label: 'პორტფოლიო', href: '/work' },
   { label: 'კონტაქტი', href: '/contact' },
 ];
 

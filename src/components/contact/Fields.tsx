@@ -83,7 +83,7 @@ export function SubmitButton({ send, sending }: { send: string; sending: string 
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" disabled={pending}>
+    <Button type="submit" disabled={pending} className="btn-reverse">
       {pending ? sending : send}
     </Button>
   );

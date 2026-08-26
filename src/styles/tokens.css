@@ -18,13 +18,13 @@
   --fe-cols: 24;
   --fe-gap: 11px;
   --fe-row: calc(0.0215 * min(100vw - (var(--site-gutter) * 2), var(--site-max-width)));
-  --header-pad-y: 2.2vmax;
+  --header-pad-y: 2.8vmax;
 
   --type-step: calc(min(1.2vmax, 18px) - 16px);
   --heading-tracking: -0.006em;
-  --header-text: 13px;
+  --header-text: 16px;
   --logo-size: calc(2rem + 1 * var(--type-step));
-  --logo-scale: 2.15;
+  --logo-scale: 2.67;
   --logo-height: calc(var(--logo-size) * var(--logo-scale));
   --header-height: calc(var(--header-pad-y) * 2 + var(--logo-height));
 

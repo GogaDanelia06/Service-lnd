@@ -46,8 +46,8 @@ export function SiteHeader({
       className="absolute inset-x-0 top-0 z-10 flex min-h-[var(--header-height)] items-center text-[var(--fg)]"
     >
       <div className="site-pad grid w-full grid-cols-[1fr_auto_1fr] items-center gap-6 py-[var(--header-pad-y)]">
-        <nav aria-label={ui.nav.primary} className="col-start-1 max-[1340px]:hidden">
-          <ul className="flex items-center gap-[19px] text-[length:var(--header-text)] font-light">
+        <nav aria-label={ui.nav.primary} className="col-start-1 max-[1130px]:hidden">
+          <ul className="flex items-center gap-[17px] text-[length:var(--header-text)] font-light">
             {nav.map((item) => {
               const active = isActive(pathname, locale, item.href);
               return (
@@ -75,7 +75,7 @@ export function SiteHeader({
         </Link>
 
         <div className="col-start-3 flex items-center justify-end gap-5">
-          <div className="flex items-center gap-6 text-[length:var(--header-text)] max-[1340px]:hidden">
+          <div className="flex items-center gap-6 text-[length:var(--header-text)] max-[1130px]:hidden">
             {linked.length > 0 ? (
               <ul className="flex items-center gap-4">
                 {linked.map((item) => (
