@@ -10,6 +10,7 @@
     line-height: 1.4;
     letter-spacing: var(--heading-tracking);
     font-size: calc(var(--fs, 1) * 1rem + (var(--fs, 1) - 1) * var(--type-step));
+    text-wrap: balance;
   }
 
   .display {

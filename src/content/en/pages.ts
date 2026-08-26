@@ -60,7 +60,8 @@ export const workPage = {
 };
 
 export const teamPage = {
-  heading: 'Every project is led by a partner, from first sketch to handover.',
+  heading: 'Our Team',
+  lead: 'Every project is led by a partner, from first sketch to handover.',
 };
 
 export const press = {

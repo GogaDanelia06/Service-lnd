@@ -17,6 +17,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ),
       },
     })),
+    ...getContent(locale).legal.map((page) => ({
+      url: `${shared.url}/${locale}/legal/${page.slug}`,
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    })),
     ...getContent(locale).projects.map((project) => ({
       url: `${shared.url}/${locale}/work/${project.slug}`,
       changeFrequency: 'yearly' as const,

@@ -47,7 +47,7 @@ export function SiteHeader({
     >
       <div className="site-pad grid w-full grid-cols-[1fr_auto_1fr] items-center gap-6 py-[var(--header-pad-y)]">
         <nav aria-label={ui.nav.primary} className="col-start-1 max-[1130px]:hidden">
-          <ul className="flex items-center gap-[17px] text-[length:var(--header-text)] font-light">
+          <ul className="flex items-center gap-[17px] text-[length:var(--header-text)] font-semibold">
             {nav.map((item) => {
               const active = isActive(pathname, locale, item.href);
               return (

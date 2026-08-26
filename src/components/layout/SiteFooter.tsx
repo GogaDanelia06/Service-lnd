@@ -1,31 +1,66 @@
 import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
+import { FooterLinks } from '@/components/layout/FooterLinks';
+import { LogoVertical } from '@/components/layout/LogoVertical';
+import { SocialIcon } from '@/components/layout/SocialIcon';
 import { shared, type Content } from '@/content';
+import type { Locale } from '@/i18n/config';
 
-export function SiteFooter({ content }: { content: Content }) {
-  const { site } = content;
+export function SiteFooter({ locale, content }: { locale: Locale; content: Content }) {
+  const { site, ui, nav, legal } = content;
+  const legalLinks = legal.map((page) => ({ label: page.title, href: `/legal/${page.slug}` }));
 
   return (
     <Section as="footer" height="small" theme="white">
       <SectionContent>
-        <FluidGrid className="gap-y-[1.6vmax]">
-          <FluidSpan span={{ desktop: [2, 20], mobile: [2, 10] }}>
-            <h3>{site.name}</h3>
+        <FluidGrid className="gap-y-[2.4vmax]">
+          <FluidSpan span={{ desktop: [2, 8], mobile: [2, 10] }}>
+            <h3>
+              <span className="sr-only">{site.name}</span>
+              <LogoVertical className="h-[var(--footer-logo)] w-auto" />
+            </h3>
           </FluidSpan>
 
-          <FluidSpan span={{ desktop: [2, 8], mobile: [2, 10] }} className="prose-utica">
+          <FluidSpan span={{ desktop: [8, 14], mobile: [2, 10] }}>
+            <FooterLinks locale={locale} items={nav} label={ui.nav.footer} />
+          </FluidSpan>
+
+          <FluidSpan span={{ desktop: [14, 20], mobile: [2, 10] }}>
+            <FooterLinks locale={locale} items={legalLinks} label={ui.sections.legal} />
+          </FluidSpan>
+
+          <FluidSpan span={{ desktop: [20, 26], mobile: [2, 10] }} className="prose-utica">
             <p>
               {site.address.street}
               <br />
               {site.address.city}, {site.address.country}
             </p>
-          </FluidSpan>
-
-          <FluidSpan span={{ desktop: [9, 21], mobile: [2, 10] }} className="prose-utica">
             <p>
               <a href={`tel:${shared.phone.replace(/[^\d+]/g, '')}`}>{shared.phone}</a>
               <br />
               <a href={`mailto:${shared.email}`}>{shared.email}</a>
+            </p>
+            <ul className="social-row mt-[1.2em] flex flex-wrap gap-x-6 gap-y-2">
+              {shared.socials.map((social) => (
+                <li key={social.href}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="inline-flex items-center gap-2"
+                  >
+                    <SocialIcon label={social.label} className="h-[1.05em] w-[1.05em] shrink-0" />
+                    <span className="underline-swipe">{social.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </FluidSpan>
+
+          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }} className="mt-[2vmax]">
+            <hr className="rule" />
+            <p className="mt-[2vmax] text-center text-[0.85rem] leading-[1.6] text-[var(--muted)]">
+              © {new Date().getFullYear()}. {ui.rights}
             </p>
           </FluidSpan>
         </FluidGrid>

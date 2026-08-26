@@ -15,7 +15,7 @@ export function LocaleSwitch({ locale, label }: { locale: Locale; label: string 
       hrefLang={next}
       aria-label={`${label}: ${localeNames[next]}`}
       title={localeNames[next]}
-      className="underline-swipe inline-block font-light"
+      className="underline-swipe inline-block font-semibold"
     >
       {localeShort[next]}
     </Link>

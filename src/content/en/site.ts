@@ -50,7 +50,8 @@ export const ui = {
     elsewhere: 'Elsewhere',
   },
   sections: {
-    included: 'Included',
+    legal: 'Legal',
+
 
     work: 'Work',
     practice: 'Practice',

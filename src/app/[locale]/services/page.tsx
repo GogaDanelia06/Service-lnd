@@ -27,35 +27,29 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
-  const { home, services, ui } = getContent(locale);
+  const { home, services } = getContent(locale);
   const detailed = services.items.filter((service) => service.list.length > 0);
   const closing = services.items.filter((service) => service.list.length === 0);
 
   return (
     <>
-      <Section height="small" theme="white" offsetHeader>
-        <SectionContent>
-          <FluidGrid>
-            <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
-              <h1 className="[--fs:2.8] text-center">{services.heading}</h1>
-            </FluidSpan>
-          </FluidGrid>
-        </SectionContent>
-      </Section>
-
-      <ServiceGroup items={detailed} includedLabel={ui.sections.included} />
+      <ServiceGroup items={detailed} heading={services.heading} />
 
       {closing.map((service) => (
-        <Section key={service.slug} height="small" theme="white">
+        <Section key={service.slug} id={service.slug} height="small" theme="white">
           <SectionContent>
-            <FluidGrid>
+            <FluidGrid className="gap-y-[2.6vmax]">
               <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
-                <div data-theme="black" className="panel-statement">
-                  <h2 id={service.slug} className="[--fs:2.2] scroll-mt-[6vmax]">
-                    {service.title}
-                  </h2>
-                  <p className="panel-statement__body">{service.body}</p>
-                </div>
+                <hr className="rule" />
+              </FluidSpan>
+
+              <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
+                <h2 className="sr-only">{service.title}</h2>
+                <p className="closing-statement">{service.body}</p>
+              </FluidSpan>
+
+              <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
+                <hr className="rule" />
               </FluidSpan>
             </FluidGrid>
           </SectionContent>

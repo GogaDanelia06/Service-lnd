@@ -30,6 +30,12 @@ export type Service = {
   list: string[];
 };
 
+export type LegalPage = {
+  slug: string;
+  title: string;
+  body: string[];
+};
+
 export type TeamMember = {
   name: string;
   role: string;

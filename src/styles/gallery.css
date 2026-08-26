@@ -33,14 +33,6 @@
     cursor: pointer;
   }
 
-  .gallery__figure img {
-    transition: opacity 200ms var(--ease-out-quint);
-  }
-
-  .gallery__figure:hover img {
-    opacity: 0.72;
-  }
-
   .gallery__controls {
     display: flex;
     justify-content: flex-end;

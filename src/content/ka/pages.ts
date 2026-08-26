@@ -60,7 +60,8 @@ export const workPage = {
 };
 
 export const teamPage = {
-  heading: 'ყოველ პროექტს პარტნიორი უძღვება პირველი ესკიზიდან ჩაბარებამდე.',
+  heading: 'ჩვენი გუნდი',
+  lead: 'ყოველ პროექტს პარტნიორი უძღვება პირველი ესკიზიდან ჩაბარებამდე.',
 };
 
 export const press = {

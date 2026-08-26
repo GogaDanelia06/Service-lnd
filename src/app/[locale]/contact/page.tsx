@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { FluidBlock, FluidGrid } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
+import { SocialIcon } from '@/components/layout/SocialIcon';
 import { getContent, shared } from '@/content';
 import { isLocale } from '@/i18n/config';
 
@@ -62,16 +63,17 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               <br />
               <a href={`mailto:${shared.email}`}>{shared.email}</a>
             </p>
-            <ul className="mt-[1.4em] flex flex-wrap gap-x-5 gap-y-2">
+            <ul className="social-row mt-[1.4em] flex flex-wrap gap-x-6 gap-y-2">
               {shared.socials.map((social: { label: string; href: string }) => (
                 <li key={social.href}>
                   <a
                     href={social.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="underline-swipe inline-block"
+                    className="inline-flex items-center gap-2"
                   >
-                    {social.label}
+                    <SocialIcon label={social.label} className="h-[1.05em] w-[1.05em] shrink-0" />
+                    <span className="underline-swipe">{social.label}</span>
                   </a>
                 </li>
               ))}

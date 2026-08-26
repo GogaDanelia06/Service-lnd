@@ -41,6 +41,9 @@ export default async function OurTeamPage({ params }: { params: Promise<{ locale
             <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
               <SplitText as="h1" text={teamPage.heading} className="display" />
             </FluidSpan>
+            <FluidSpan span={{ desktop: [2, 16], mobile: [2, 10] }} className="prose-utica">
+              <p className="lead text-[var(--muted)]">{teamPage.lead}</p>
+            </FluidSpan>
           </FluidGrid>
         </SectionContent>
       </Section>

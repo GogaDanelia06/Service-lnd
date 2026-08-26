@@ -50,7 +50,8 @@ export const ui = {
     elsewhere: 'სოციალური ქსელები',
   },
   sections: {
-    included: 'მოიცავს',
+    legal: 'იურიდიული',
+
 
     work: 'ნამუშევრები',
     practice: 'პრაქტიკა',

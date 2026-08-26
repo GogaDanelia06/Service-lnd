@@ -64,7 +64,7 @@ const items: Service[] = [
     slug: 'one-team',
     image: '',
     title: 'One Team',
-    body: 'End-to-end management — one team, one line of responsibility, from concept to final delivery. A team with wide-ranging experience keeps coordination efficient, the work consistent and the standard of execution high. For the client that means simpler communication, full transparency over the process, and as little friction as possible.',
+    body: 'End-to-end management — one goal, one line of responsibility, from concept to final delivery. A team with wide-ranging experience keeps coordination efficient, the work consistent and the standard of execution high. For the client that means simpler communication, full transparency over the process, and as little friction as possible.',
     list: [],
   },
 ];

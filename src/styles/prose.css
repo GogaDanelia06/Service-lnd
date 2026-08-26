@@ -38,6 +38,14 @@
     opacity: 0.55;
   }
 
+  .prose-utica ul.social-row li {
+    padding-inline-start: 0;
+  }
+
+  .prose-utica ul.social-row li::before {
+    content: none;
+  }
+
   .prose-utica a:not(.btn) {
     background-image: linear-gradient(currentColor, currentColor);
     background-repeat: no-repeat;
