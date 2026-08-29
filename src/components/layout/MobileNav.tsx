@@ -24,6 +24,7 @@ export function MobileNav({
   const panelRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelId = useId();
+  const items = nav.flatMap((item) => [item, ...(item.children ?? [])]);
 
   const close = useCallback(() => {
     setOpen(false);
@@ -71,7 +72,7 @@ export function MobileNav({
           className="site-pad flex h-full flex-col justify-between py-[var(--header-pad-y)]"
         >
           <ul className="flex flex-1 flex-col content-center justify-center">
-            {nav.map((item, index) => (
+            {items.map((item, index) => (
               <li key={item.href} className="border-b border-[var(--rule)]">
                 <Link
                   href={localePath(locale, item.href)}
@@ -85,19 +86,6 @@ export function MobileNav({
                     {item.label}
                   </span>
                 </Link>
-
-                {(item.children ?? []).map((child) => (
-                  <Link
-                    key={child.href}
-                    href={localePath(locale, child.href)}
-                    aria-current={pathname === localePath(locale, child.href) ? 'page' : undefined}
-                    className="flex items-baseline gap-4 pb-[0.55em] pl-12"
-                  >
-                    <span className="display display--tight text-[length:calc(1.4rem+0.8*var(--type-step))] text-[var(--muted)]">
-                      {child.label}
-                    </span>
-                  </Link>
-                ))}
               </li>
             ))}
           </ul>
