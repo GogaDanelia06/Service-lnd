@@ -2,7 +2,8 @@
 
 import { useEffect, type RefObject } from 'react';
 
-const FOCUSABLE = 'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])';
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])';
 
 export function useModalPanel({
   open,

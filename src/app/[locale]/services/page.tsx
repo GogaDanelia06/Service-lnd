@@ -36,7 +36,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       <ServiceGroup items={detailed} heading={services.heading} />
 
       {closing.map((service) => (
-        <Section key={service.slug} id={service.slug} height="small" theme="white">
+        <Section key={service.slug} id={service.slug} height="compact" theme="white">
           <SectionContent>
             <FluidGrid className="gap-y-[2.6vmax]">
               <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
@@ -61,6 +61,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         heading={home.cta.heading}
         body={home.cta.body}
         action={home.cta.action}
+        headingFs={2.2}
       />
     </>
   );

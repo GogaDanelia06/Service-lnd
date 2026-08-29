@@ -5,7 +5,9 @@
 :lang(ka) h1,
 :lang(ka) h2,
 :lang(ka) h3,
-:lang(ka) h4 {
-  letter-spacing: 0;
-  line-height: 1.34;
+:lang(ka) h4,
+:lang(ka) h5,
+:lang(ka) h6 {
+  letter-spacing: 0.012em;
+  line-height: 1.3;
 }

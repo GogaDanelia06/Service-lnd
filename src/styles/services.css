@@ -1,7 +1,7 @@
 @layer components {
   .closing-statement {
     margin: 0;
-    font-size: calc(1.15rem + 0.4 * var(--type-step));
+    font-size: 1rem;
     line-height: 1.6;
     text-align: start;
     text-wrap: pretty;
@@ -10,6 +10,7 @@
   @media (min-width: 600px) {
     .closing-statement {
       text-align: justify;
+      text-align-last: center;
     }
   }
 
@@ -26,7 +27,7 @@
   }
 
   .service-body {
-    margin: -1.2vmax 0 0;
+    margin: 0.75em 0 0;
     font-size: 1rem;
     line-height: 1.8;
     text-wrap: pretty;

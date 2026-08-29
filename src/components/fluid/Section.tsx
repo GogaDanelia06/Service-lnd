@@ -3,10 +3,11 @@ import type { CSSProperties, ReactNode } from 'react';
 
 import { cn } from '@/lib/cn';
 
-export type SectionHeight = 'small' | 'medium' | 'large' | 'hero' | 'custom';
+export type SectionHeight = 'compact' | 'small' | 'medium' | 'large' | 'hero' | 'custom';
 export type SectionTheme = 'white' | 'tint' | 'dark' | 'black';
 
 const HEIGHT: Record<Exclude<SectionHeight, 'custom'>, { pad: string; minHeight: string }> = {
+  compact: { pad: '2.4vmax', minHeight: '0' },
   small: { pad: '3.3vmax', minHeight: '33vh' },
   medium: { pad: '6.6vmax', minHeight: '66vh' },
   large: { pad: '10vmax', minHeight: '100vh' },
@@ -85,7 +86,11 @@ export function Section({
             style={{ opacity: background.overlay ?? 0.15 }}
           />
           {background.scrim ? (
-            <div aria-hidden className="absolute inset-0" style={{ background: background.scrim }} />
+            <div
+              aria-hidden
+              className="absolute inset-0"
+              style={{ background: background.scrim }}
+            />
           ) : null}
         </div>
       ) : null}
@@ -102,6 +107,5 @@ export function SectionContent({
   children: ReactNode;
   className?: string;
 }) {
-
   return <div className={cn('relative py-[var(--pad)]', className)}>{children}</div>;
 }

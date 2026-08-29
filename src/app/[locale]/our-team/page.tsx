@@ -12,6 +12,7 @@ import type { TeamMember } from '@/content/types';
 import { isLocale } from '@/i18n/config';
 import { TEAM_SPANS } from '@/lib/team-layout';
 import { sizesForColumn } from '@/lib/fluid';
+import { mtavruli } from '@/lib/mtavruli';
 
 export async function generateMetadata({
   params,
@@ -39,7 +40,7 @@ export default async function OurTeamPage({ params }: { params: Promise<{ locale
         <SectionContent>
           <FluidGrid className="gap-y-[3.2vmax]">
             <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
-              <SplitText as="h1" text={teamPage.heading} className="display" />
+              <SplitText as="h1" text={mtavruli(teamPage.heading)} className="display" />
             </FluidSpan>
             <FluidSpan span={{ desktop: [2, 16], mobile: [2, 10] }} className="prose-utica">
               <p className="lead text-[var(--muted)]">{teamPage.lead}</p>
@@ -73,7 +74,7 @@ export default async function OurTeamPage({ params }: { params: Promise<{ locale
                         <Meta muted>{member.role}</Meta>
                       </div>
                       <h2 className="mt-[0.5em] text-[length:calc(1.6rem+0.9*var(--type-step))]">
-                        {member.name}
+                        {mtavruli(member.name)}
                       </h2>
                       <p className="mt-[0.8em] text-[var(--muted)]">{member.bio}</p>
                     </div>

@@ -2,6 +2,7 @@ import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { ButtonLink } from '@/components/ui/Button';
 import { localePath, type Locale } from '@/i18n/config';
+import { mtavruli } from '@/lib/mtavruli';
 
 type Action = { label: string; href: string };
 
@@ -30,7 +31,7 @@ export function CtaImageSection({
       <SectionContent>
         <FluidGrid className="gap-y-[2.4vmax]">
           <FluidSpan span={{ desktop: [2, 14], mobile: [2, 10] }}>
-            <h2>{heading}</h2>
+            <h2>{mtavruli(heading)}</h2>
           </FluidSpan>
 
           <FluidSpan span={{ desktop: [2, 6], mobile: [2, 6] }}>

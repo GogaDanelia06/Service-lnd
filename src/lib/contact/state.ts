@@ -1,10 +1,4 @@
-export type ContactField =
-  | 'firstName'
-  | 'lastName'
-  | 'email'
-  | 'phone'
-  | 'subject'
-  | 'message';
+export type ContactField = 'firstName' | 'lastName' | 'email' | 'phone' | 'subject' | 'message';
 
 export type ContactState = {
   status: 'idle' | 'success' | 'error';

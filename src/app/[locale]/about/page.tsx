@@ -6,6 +6,7 @@ import { Section, SectionContent } from '@/components/fluid/Section';
 import { CtaImageSection } from '@/components/sections/CtaImageSection';
 import { getContent } from '@/content';
 import { isLocale } from '@/i18n/config';
+import { mtavruli } from '@/lib/mtavruli';
 
 export async function generateMetadata({
   params,
@@ -33,7 +34,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <SectionContent>
           <FluidGrid className="gap-y-[2.4vmax]">
             <FluidSpan span={{ desktop: [2, 12], mobile: [2, 10] }}>
-              <h1 className="[--fs:2.8]">{about.heading}</h1>
+              <h1 className="[--fs:2.8]">{mtavruli(about.heading)}</h1>
             </FluidSpan>
 
             <FluidSpan span={{ desktop: [12, 26], mobile: [2, 10] }} className="prose-utica">

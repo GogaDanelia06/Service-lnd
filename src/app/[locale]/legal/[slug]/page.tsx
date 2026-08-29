@@ -5,6 +5,7 @@ import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import { getContent } from '@/content';
 import { isLocale, locales } from '@/i18n/config';
+import { mtavruli } from '@/lib/mtavruli';
 
 type Params = { locale: string; slug: string };
 
@@ -36,7 +37,7 @@ export default async function LegalPage({ params }: { params: Promise<Params> })
       <SectionContent>
         <FluidGrid className="gap-y-[2.4vmax]">
           <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
-            <h1 className="[--fs:2.8]">{page.title}</h1>
+            <h1 className="[--fs:2.8]">{mtavruli(page.title)}</h1>
           </FluidSpan>
 
           {page.body.length > 0 ? (

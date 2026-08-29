@@ -57,7 +57,12 @@ export function Lightbox({
       data-theme="black"
       className="lightbox"
     >
-      <button type="button" aria-label={labels.close} onClick={onClose} className="lightbox__scrim" />
+      <button
+        type="button"
+        aria-label={labels.close}
+        onClick={onClose}
+        className="lightbox__scrim"
+      />
 
       <figure className="lightbox__stage">
         <Image

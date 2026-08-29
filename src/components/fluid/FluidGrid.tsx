@@ -3,13 +3,7 @@ import type { ElementType, ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 import { areaStyle, columnStyle, type FluidArea, type FluidColumn } from '@/lib/fluid';
 
-export function FluidGrid({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+export function FluidGrid({ children, className }: { children: ReactNode; className?: string }) {
   return <div className={cn('fe-grid w-full', className)}>{children}</div>;
 }
 

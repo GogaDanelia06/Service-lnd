@@ -6,10 +6,11 @@ import { usePathname } from 'next/navigation';
 import { LocaleSwitch } from '@/components/layout/LocaleSwitch';
 import { Logo } from '@/components/layout/Logo';
 import { MobileNav } from '@/components/layout/MobileNav';
+import { NavDropdown } from '@/components/layout/NavDropdown';
 import { SocialIcon } from '@/components/layout/SocialIcon';
+import type { NavItem } from '@/content';
 import { localePath, type Locale } from '@/i18n/config';
 
-type NavItem = { label: string; href: string };
 type Social = { label: string; href: string };
 
 function isActive(pathname: string, locale: Locale, href: string): boolean {
@@ -50,8 +51,12 @@ export function SiteHeader({
           <ul className="flex items-center gap-[17px] text-[length:var(--header-text)] font-semibold">
             {nav.map((item) => {
               const active = isActive(pathname, locale, item.href);
+              const children = item.children ?? [];
               return (
-                <li key={item.href}>
+                <li
+                  key={item.href}
+                  className={children.length > 0 ? 'nav-has-dropdown relative' : undefined}
+                >
                   <Link
                     href={localePath(locale, item.href)}
                     aria-current={active ? 'page' : undefined}
@@ -60,6 +65,9 @@ export function SiteHeader({
                   >
                     {item.label}
                   </Link>
+                  {children.length > 0 ? (
+                    <NavDropdown locale={locale} items={children} pathname={pathname} />
+                  ) : null}
                 </li>
               );
             })}

@@ -10,7 +10,8 @@ export const home = {
     caption: 'Project Three — Kutaisi',
   },
   practice: {
-    heading: 'Our practice spans environmental retrofits of existing buildings and the complete planning of new neighbourhoods.',
+    heading:
+      'Our practice spans environmental retrofits of existing buildings and the complete planning of new neighbourhoods.',
     body: 'While the work is aesthetically diverse, the projects are linked by one question: what kind of relationships does this place make possible? We answer it in plan before we answer it in elevation.',
   },
   work: {

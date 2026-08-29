@@ -7,6 +7,7 @@ import { submitContact } from '@/lib/contact/actions';
 import { initialContactState } from '@/lib/contact/state';
 import { useContactForm } from '@/lib/contact/useContactForm';
 import type { ContactField } from '@/lib/contact/state';
+import { mtavruli } from '@/lib/mtavruli';
 
 type FormLabels = {
   firstName: string;
@@ -40,7 +41,7 @@ export function ContactForm({ labels, locale }: { labels: FormLabels; locale: st
   if (state.status === 'success') {
     return (
       <div role="status" className="prose-utica">
-        <h4>{labels.sent}</h4>
+        <h4>{mtavruli(labels.sent)}</h4>
         <p>{state.message}</p>
       </div>
     );
@@ -74,18 +75,28 @@ export function ContactForm({ labels, locale }: { labels: FormLabels; locale: st
       <input type="hidden" name="locale" value={locale} />
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <Field label={labels.firstName} name="firstName" autoComplete="given-name" {...field('firstName')} />
-        <Field label={labels.lastName} name="lastName" autoComplete="family-name" {...field('lastName')} />
+        <Field
+          label={labels.firstName}
+          name="firstName"
+          autoComplete="given-name"
+          {...field('firstName')}
+        />
+        <Field
+          label={labels.lastName}
+          name="lastName"
+          autoComplete="family-name"
+          {...field('lastName')}
+        />
       </div>
 
-      <Field label={labels.email} name="email" type="email" autoComplete="email" {...field('email')} />
       <Field
-        label={labels.phone}
-        name="phone"
-        type="tel"
-        autoComplete="tel"
-        {...field('phone')}
+        label={labels.email}
+        name="email"
+        type="email"
+        autoComplete="email"
+        {...field('email')}
       />
+      <Field label={labels.phone} name="phone" type="tel" autoComplete="tel" {...field('phone')} />
       <Field label={labels.subject} name="subject" required={false} {...field('subject')} />
       <Field label={labels.message} name="message" rows={5} {...field('message')} />
 

@@ -32,7 +32,6 @@ describe('areaStyle', () => {
   });
 
   it('rejects a desktop column that overruns the 24-column grid', () => {
-
     expect(() => areaStyle({ desktop: [1, 2, 3, 27] }, 'test')).toThrow(/24-column grid/);
   });
 

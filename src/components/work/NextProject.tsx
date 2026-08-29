@@ -4,6 +4,7 @@ import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import type { Project } from '@/content/types';
 import { localePath, type Locale } from '@/i18n/config';
+import { mtavruli } from '@/lib/mtavruli';
 
 export function NextProject({
   locale,
@@ -25,7 +26,7 @@ export function NextProject({
                 aria-label={`${label}: ${project.title}`}
                 className="next-project inline-flex items-center gap-4"
               >
-                <h2 className="[--fs:2.2]">{project.title}</h2>
+                <h2 className="[--fs:2.2]">{mtavruli(project.title)}</h2>
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden

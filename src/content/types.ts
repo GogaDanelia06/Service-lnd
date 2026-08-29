@@ -1,3 +1,9 @@
+export type NavItem = {
+  label: string;
+  href: string;
+  children?: NavItem[];
+};
+
 export type ProjectImage = {
   src: string;
   alt: string;

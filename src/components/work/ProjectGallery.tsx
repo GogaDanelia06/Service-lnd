@@ -84,12 +84,7 @@ export function ProjectGallery({
       </div>
 
       {openAt !== null ? (
-        <Lightbox
-          images={images}
-          index={openAt}
-          labels={labels}
-          onClose={() => setOpenAt(null)}
-        />
+        <Lightbox images={images} index={openAt} labels={labels} onClose={() => setOpenAt(null)} />
       ) : null}
     </Section>
   );

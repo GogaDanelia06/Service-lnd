@@ -24,7 +24,7 @@ export const stats = [
 export const nav = [
   { label: 'მთავარი', href: '/' },
   { label: 'ჩვენ შესახებ', href: '/about' },
-  { label: 'სერვისები', href: '/services' },
+  { label: 'სერვისები', href: '/services', children: [{ label: 'პორტფოლიო', href: '/work' }] },
   { label: 'კონტაქტი', href: '/contact' },
 ];
 
@@ -40,7 +40,7 @@ export const ui = {
   notFound: 'ასეთი გვერდი არ არსებობს.',
   notFoundBody: 'ბმული შესაძლოა მოძველებულია, ან გვერდი გადატანილია.',
   colophon: 'დიზაინი და დეველოპმენტი',
-  rights: 'ყველა უფლება დაცულია',
+  rights: 'ყველა უფლება დაცულია. მონტავია',
   nav: { primary: 'მთავარი ნავიგაცია', footer: 'ქვედა ნავიგაცია' },
   byTheNumbers: 'ციფრებში',
   details: {
@@ -51,7 +51,6 @@ export const ui = {
   },
   sections: {
     legal: 'იურიდიული',
-
 
     work: 'ნამუშევრები',
     practice: 'პრაქტიკა',

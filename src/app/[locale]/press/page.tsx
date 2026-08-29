@@ -6,6 +6,7 @@ import { Section, SectionContent } from '@/components/fluid/Section';
 import { CtaImageSection } from '@/components/sections/CtaImageSection';
 import { getContent } from '@/content';
 import { isLocale } from '@/i18n/config';
+import { mtavruli } from '@/lib/mtavruli';
 
 type Quote = { quote: string; source: string; year: string };
 
@@ -35,7 +36,7 @@ export default async function PressPage({ params }: { params: Promise<{ locale: 
         <SectionContent>
           <FluidGrid className="gap-y-[2.4vmax]">
             <FluidSpan span={{ desktop: [2, 12], mobile: [2, 10] }}>
-              <h1 className="[--fs:2.8]">{press.heading}</h1>
+              <h1 className="[--fs:2.8]">{mtavruli(press.heading)}</h1>
             </FluidSpan>
 
             <FluidSpan

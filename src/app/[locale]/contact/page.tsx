@@ -7,6 +7,7 @@ import { Section, SectionContent } from '@/components/fluid/Section';
 import { SocialIcon } from '@/components/layout/SocialIcon';
 import { getContent, shared } from '@/content';
 import { isLocale } from '@/i18n/config';
+import { mtavruli } from '@/lib/mtavruli';
 
 export async function generateMetadata({
   params,
@@ -26,39 +27,22 @@ export async function generateMetadata({
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const { contact, site, ui } = getContent(locale);
+  const { contact, ui } = getContent(locale);
 
   return (
     <Section height="medium" theme="white" offsetHeader>
       <SectionContent>
         <FluidGrid className="gap-y-[2.4vmax]">
           <FluidBlock
-            area={{ desktop: [1, 2, 2, 12], mobile: [1, 2, 2, 10] }}
-            className="prose-utica"
+            area={{ desktop: [1, 2, 3, 12], mobile: [1, 2, 2, 10] }}
+            className="prose-utica self-start"
           >
-            <h1 className="[--fs:2.8]">{contact.heading}</h1>
+            <h1 className="[--fs:2.8]">{mtavruli(contact.heading)}</h1>
             <p className="mt-[0.8em]">{contact.body}</p>
-          </FluidBlock>
 
-          <FluidBlock
-            area={{ desktop: [1, 14, 3, 26], mobile: [2, 2, 3, 10] }}
-            className="max-fe:mt-[2vmax]"
-          >
-            <ContactForm labels={ui.form} locale={locale} />
-          </FluidBlock>
+            <hr className="rule mt-[3vmax] w-full" />
 
-          <FluidBlock
-            area={{ desktop: [2, 2, 3, 12], mobile: [3, 2, 4, 10] }}
-            className="prose-utica max-fe:mt-[2.4vmax]"
-          >
-            <hr className="rule w-full" />
-
-            <p className="mt-[2.2vmax]">
-              {site.address.street}
-              <br />
-              {site.address.city}, {site.address.country}
-            </p>
-            <p>
+            <p className="mt-[1.4vmax]">
               <a href={`tel:${shared.phone.replace(/[^\d+]/g, '')}`}>{shared.phone}</a>
               <br />
               <a href={`mailto:${shared.email}`}>{shared.email}</a>
@@ -78,6 +62,13 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                 </li>
               ))}
             </ul>
+          </FluidBlock>
+
+          <FluidBlock
+            area={{ desktop: [1, 14, 3, 26], mobile: [2, 2, 3, 10] }}
+            className="max-fe:mt-[2vmax]"
+          >
+            <ContactForm labels={ui.form} locale={locale} />
           </FluidBlock>
         </FluidGrid>
       </SectionContent>

@@ -41,7 +41,8 @@ export function useContactForm(messages: ValidationMessages) {
 
       for (const name of FIELDS) {
         const el = form.elements.namedItem(name);
-        const value = el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement ? el.value : '';
+        const value =
+          el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement ? el.value : '';
         const message = check(name, value);
         if (message) {
           next[name] = message;
@@ -57,7 +58,8 @@ export function useContactForm(messages: ValidationMessages) {
   );
 
   const errorFor = useCallback(
-    (name: ContactField, serverError?: string) => (touched[name] ? errors[name] : undefined) ?? serverError,
+    (name: ContactField, serverError?: string) =>
+      (touched[name] ? errors[name] : undefined) ?? serverError,
     [errors, touched],
   );
 

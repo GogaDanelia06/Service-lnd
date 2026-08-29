@@ -24,7 +24,7 @@ export const stats = [
 export const nav = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
+  { label: 'Services', href: '/services', children: [{ label: 'Portfolio', href: '/work' }] },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -40,7 +40,7 @@ export const ui = {
   notFound: 'This page doesn’t exist.',
   notFoundBody: 'The link may be out of date, or the page may have moved.',
   colophon: 'Design and build',
-  rights: 'All rights reserved',
+  rights: 'All rights reserved. Montavia',
   nav: { primary: 'Primary', footer: 'Footer' },
   byTheNumbers: 'By the numbers',
   details: {
@@ -51,7 +51,6 @@ export const ui = {
   },
   sections: {
     legal: 'Legal',
-
 
     work: 'Work',
     practice: 'Practice',

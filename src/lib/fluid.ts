@@ -28,7 +28,10 @@ export function columnStyle(span: FluidColumn): React.CSSProperties {
 }
 
 export function sizesForColumn(span: FluidColumn): string {
-  const d = Math.min(100, Math.ceil(((span.desktop[1] - span.desktop[0]) / FE_COLUMNS.desktop) * 92));
+  const d = Math.min(
+    100,
+    Math.ceil(((span.desktop[1] - span.desktop[0]) / FE_COLUMNS.desktop) * 92),
+  );
   const m = span.mobile
     ? Math.min(100, Math.ceil(((span.mobile[1] - span.mobile[0]) / FE_COLUMNS.mobile) * 88))
     : 88;

@@ -12,9 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: route === '' ? 1 : 0.8,
       alternates: {
-        languages: Object.fromEntries(
-          locales.map((alt) => [alt, `${shared.url}/${alt}${route}`]),
-        ),
+        languages: Object.fromEntries(locales.map((alt) => [alt, `${shared.url}/${alt}${route}`])),
       },
     })),
     ...getContent(locale).legal.map((page) => ({

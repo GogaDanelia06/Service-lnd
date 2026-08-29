@@ -61,12 +61,17 @@ export function Field({
         {label}
         {required ? (
           <span aria-hidden title={requiredLabel} className="text-[var(--alert)]">
-            {' '}*
+            {' '}
+            *
           </span>
         ) : null}
       </label>
 
-      {rows ? <textarea {...shared} rows={rows} /> : <input {...shared} type={type} autoComplete={autoComplete} />}
+      {rows ? (
+        <textarea {...shared} rows={rows} />
+      ) : (
+        <input {...shared} type={type} autoComplete={autoComplete} />
+      )}
 
       <p
         id={errorId}

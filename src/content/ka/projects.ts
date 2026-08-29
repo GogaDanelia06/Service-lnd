@@ -21,8 +21,16 @@ export const projects: Project[] = [
       'მაცხოვრებლები სამი სამშენებლო ფაზიდან ორის განმავლობაში ადგილზე დარჩნენ. სწორედ ამ შეზღუდვამ განსაზღვრა დიზაინი უფრო მეტად, ვიდრე ნებისმიერმა ნახაზმა — ყოველი კვანძი სართულ-სართულად, გარედან და ქუჩაზე ამწის გარეშე უნდა აშენებულიყო.',
     ],
     gallery: [
-      { src: '/images/project-one-01.jpg', alt: 'ფასადზე შენარჩუნებული ორიგინალი ფანჯრის ღიობი', span: 'half' },
-      { src: '/images/project-one-02.jpg', alt: 'შენარჩუნებული კონსტრუქციის აგურის წყობა', span: 'half' },
+      {
+        src: '/images/project-one-01.jpg',
+        alt: 'ფასადზე შენარჩუნებული ორიგინალი ფანჯრის ღიობი',
+        span: 'half',
+      },
+      {
+        src: '/images/project-one-02.jpg',
+        alt: 'შენარჩუნებული კონსტრუქციის აგურის წყობა',
+        span: 'half',
+      },
       { src: '/images/project-one-03.jpg', alt: 'ფერდობზე  მოცულობები', span: 'full' },
     ],
   },
@@ -72,7 +80,11 @@ export const projects: Project[] = [
     ],
     gallery: [
       { src: '/images/project-three-01.jpg', alt: 'ქვის ღიობი არსებულ ფასადზე', span: 'half' },
-      { src: '/images/project-three-02.jpg', alt: 'ქუჩის ფასადი, შესასვლელი სიღრმეში', span: 'half' },
+      {
+        src: '/images/project-three-02.jpg',
+        alt: 'ქუჩის ფასადი, შესასვლელი სიღრმეში',
+        span: 'half',
+      },
       { src: '/images/project-three-03.jpg', alt: 'ქალაქის სილუეტი ღამით', span: 'full' },
     ],
   },
@@ -97,7 +109,11 @@ export const projects: Project[] = [
     ],
     gallery: [
       { src: '/images/project-four-01.jpg', alt: 'ტერიტორია და სანაპირო ჰაერიდან', span: 'half' },
-      { src: '/images/project-four-02.jpg', alt: 'განათებული ქუჩა პირველ დასრულებულ კვარტლებს შორის', span: 'half' },
+      {
+        src: '/images/project-four-02.jpg',
+        alt: 'განათებული ქუჩა პირველ დასრულებულ კვარტლებს შორის',
+        span: 'half',
+      },
       { src: '/images/project-four-03.jpg', alt: 'სანაპირო ღამით', span: 'full' },
     ],
   },

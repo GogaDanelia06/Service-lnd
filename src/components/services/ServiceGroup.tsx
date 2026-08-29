@@ -4,20 +4,15 @@ import { Fragment } from 'react';
 import { FluidGrid, FluidSpan } from '@/components/fluid/FluidGrid';
 import { Section, SectionContent } from '@/components/fluid/Section';
 import type { Service } from '@/content';
+import { mtavruli } from '@/lib/mtavruli';
 
-export function ServiceGroup({
-  items,
-  heading,
-}: {
-  items: Service[];
-  heading: string;
-}) {
+export function ServiceGroup({ items, heading }: { items: Service[]; heading: string }) {
   return (
     <Section height="medium" theme="white" offsetHeader>
-      <SectionContent>
+      <SectionContent className="pb-[2.4vmax]">
         <FluidGrid className="gap-y-[2vmax]">
           <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }} className="mb-[3vmax]">
-            <h1 className="[--fs:2.8]">{heading}</h1>
+            <h1 className="[--fs:2.2]">{mtavruli(heading)}</h1>
           </FluidSpan>
 
           {items.map((service, index) => (
@@ -27,8 +22,8 @@ export function ServiceGroup({
               </FluidSpan>
 
               <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
-                <h2 id={service.slug} className="[--fs:1.4] scroll-mt-[6vmax]">
-                  {service.title}
+                <h2 id={service.slug} className="[--fs:2.2] scroll-mt-[6vmax]">
+                  {mtavruli(service.title)}
                 </h2>
               </FluidSpan>
 
@@ -43,6 +38,7 @@ export function ServiceGroup({
                     className="object-cover"
                   />
                 </div>
+                <p className="service-body">{service.body}</p>
               </FluidSpan>
 
               <FluidSpan span={{ desktop: [18, 26], mobile: [2, 10] }}>
@@ -51,10 +47,6 @@ export function ServiceGroup({
                     <li key={entry}>{entry}</li>
                   ))}
                 </ul>
-              </FluidSpan>
-
-              <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
-                <p className="service-body">{service.body}</p>
               </FluidSpan>
             </Fragment>
           ))}

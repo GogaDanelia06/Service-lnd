@@ -6,6 +6,7 @@ import { CtaSection } from '@/components/sections/CtaSection';
 import { ProjectIndex } from '@/components/work/ProjectIndex';
 import { getContent } from '@/content';
 import { isLocale } from '@/i18n/config';
+import { mtavruli } from '@/lib/mtavruli';
 
 export default async function WorkPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -27,7 +28,7 @@ export default async function WorkPage({ params }: { params: Promise<{ locale: s
         <SectionContent>
           <FluidGrid>
             <FluidSpan span={{ desktop: [2, 14], mobile: [2, 10] }} className="prose-utica">
-              <h2>{home.work.heading}</h2>
+              <h2>{mtavruli(home.work.heading)}</h2>
               <p className="mt-[0.8em]">{home.work.body}</p>
             </FluidSpan>
           </FluidGrid>

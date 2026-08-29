@@ -13,8 +13,22 @@ import { team as kaTeam } from '@/content/ka/team';
 import type { Locale } from '@/i18n/config';
 
 const DICTIONARIES = {
-  en: { ...enSite, ...enPages, legal: enLegal, projects: enProjects, services: enServices, team: enTeam },
-  ka: { ...kaSite, ...kaPages, legal: kaLegal, projects: kaProjects, services: kaServices, team: kaTeam },
+  en: {
+    ...enSite,
+    ...enPages,
+    legal: enLegal,
+    projects: enProjects,
+    services: enServices,
+    team: enTeam,
+  },
+  ka: {
+    ...kaSite,
+    ...kaPages,
+    legal: kaLegal,
+    projects: kaProjects,
+    services: kaServices,
+    team: kaTeam,
+  },
 };
 
 export type Content = (typeof DICTIONARIES)['en'];
@@ -28,9 +42,17 @@ export const shared = {
   phone: '+995 32 200 00 00',
   email: 'hello@montavia.ge',
   socials: [
+    { label: 'WhatsApp', href: 'https://wa.me/995322000000' },
     { label: 'Facebook', href: 'https://facebook.com/' },
     { label: 'Instagram', href: 'https://instagram.com/' },
   ],
 };
 
-export type { LegalPage, Project, ProjectImage, Service, TeamMember } from '@/content/types';
+export type {
+  LegalPage,
+  NavItem,
+  Project,
+  ProjectImage,
+  Service,
+  TeamMember,
+} from '@/content/types';

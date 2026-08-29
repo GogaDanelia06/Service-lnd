@@ -5,10 +5,9 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 
 import { LocaleSwitch } from '@/components/layout/LocaleSwitch';
 import { Meta } from '@/components/ui/Meta';
+import type { NavItem } from '@/content';
 import { localePath, type Locale } from '@/i18n/config';
 import { useModalPanel } from '@/lib/useModalPanel';
-
-type NavItem = { label: string; href: string };
 
 export function MobileNav({
   locale,
@@ -86,6 +85,19 @@ export function MobileNav({
                     {item.label}
                   </span>
                 </Link>
+
+                {(item.children ?? []).map((child) => (
+                  <Link
+                    key={child.href}
+                    href={localePath(locale, child.href)}
+                    aria-current={pathname === localePath(locale, child.href) ? 'page' : undefined}
+                    className="flex items-baseline gap-4 pb-[0.55em] pl-12"
+                  >
+                    <span className="display display--tight text-[length:calc(1.4rem+0.8*var(--type-step))] text-[var(--muted)]">
+                      {child.label}
+                    </span>
+                  </Link>
+                ))}
               </li>
             ))}
           </ul>

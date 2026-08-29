@@ -48,7 +48,6 @@ export function SplitText({
   return (
     <Tag ref={ref} data-split={phase === 'static' ? undefined : phase} className={className}>
       {words.map((word, index) => (
-
         <Fragment key={`${word}-${index}`}>
           <span className={cn('split-word')}>
             <span className="split-inner">{word}</span>

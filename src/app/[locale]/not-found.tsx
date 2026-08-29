@@ -3,6 +3,7 @@ import { Section, SectionContent } from '@/components/fluid/Section';
 import { ButtonLink } from '@/components/ui/Button';
 import { getContent } from '@/content';
 import { defaultLocale, localePath } from '@/i18n/config';
+import { mtavruli } from '@/lib/mtavruli';
 
 export default function NotFound() {
   const { ui } = getContent(defaultLocale);
@@ -12,12 +13,10 @@ export default function NotFound() {
       <SectionContent>
         <FluidGrid className="gap-y-[2.6vmax]">
           <FluidSpan span={{ desktop: [2, 16], mobile: [2, 10] }} className="prose-utica">
-            <h1 className="display">{ui.notFound}</h1>
+            <h1 className="display">{mtavruli(ui.notFound)}</h1>
             <p className="mt-[0.8em] text-[var(--muted)]">{ui.notFoundBody}</p>
             <div className="mt-[2em]">
-              <ButtonLink href={localePath(defaultLocale, '/')}>
-                {ui.backToWork}
-              </ButtonLink>
+              <ButtonLink href={localePath(defaultLocale, '/')}>{ui.backToWork}</ButtonLink>
             </div>
           </FluidSpan>
         </FluidGrid>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import type { Project } from '@/content/types';
 import { localePath, type Locale } from '@/i18n/config';
+import { mtavruli } from '@/lib/mtavruli';
 
 export function ProjectIndex({ locale, projects }: { locale: Locale; projects: Project[] }) {
   return (
@@ -20,9 +21,7 @@ export function ProjectIndex({ locale, projects }: { locale: Locale; projects: P
                 className="object-cover"
               />
             </div>
-            <h4 className="mt-[0.9em]">
-              {project.title}
-            </h4>
+            <h4 className="mt-[0.9em]">{mtavruli(project.title)}</h4>
           </Link>
         </li>
       ))}

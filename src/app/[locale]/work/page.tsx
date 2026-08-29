@@ -7,6 +7,7 @@ import { CtaSection } from '@/components/sections/CtaSection';
 import { ProjectIndex } from '@/components/work/ProjectIndex';
 import { getContent } from '@/content';
 import { isLocale } from '@/i18n/config';
+import { mtavruli } from '@/lib/mtavruli';
 
 export async function generateMetadata({
   params,
@@ -35,7 +36,7 @@ export default async function WorkIndexPage({ params }: { params: Promise<{ loca
         <SectionContent>
           <FluidGrid>
             <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
-              <h1 className="[--fs:2.8]">{workPage.heading}</h1>
+              <h1 className="[--fs:2.8]">{mtavruli(workPage.heading)}</h1>
             </FluidSpan>
           </FluidGrid>
         </SectionContent>
