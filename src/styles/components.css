@@ -31,51 +31,6 @@
     opacity: 0.55;
   }
 
-  .nav-dropdown {
-    width: max-content;
-    padding-block-start: 0.95em;
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition:
-      opacity 0.26s var(--ease-out-quint),
-      transform 0.26s var(--ease-out-quint),
-      visibility 0s linear 0.26s;
-  }
-
-  .nav-has-dropdown:hover .nav-dropdown,
-  .nav-has-dropdown:focus-within .nav-dropdown {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0s;
-  }
-
-  .nav-dropdown__panel {
-    display: grid;
-    gap: 0.55em;
-    padding: 0.95em 1.5em 1em;
-    border-radius: 4px;
-    background: var(--bg);
-    box-shadow:
-      0 1px 2px color-mix(in srgb, var(--color-ink) 6%, transparent),
-      0 14px 34px -10px color-mix(in srgb, var(--color-ink) 22%, transparent);
-  }
-
-  .nav-dropdown__link {
-    display: inline-block;
-    font-weight: 400;
-    white-space: nowrap;
-    color: var(--muted);
-    transition: color 0.2s var(--ease-out-quint);
-  }
-
-  .nav-dropdown__link:hover,
-  .nav-dropdown__link:focus-visible,
-  .nav-dropdown__link[data-active='true'] {
-    color: var(--fg);
-  }
-
   .footer-links {
     display: grid;
     gap: 0.7em;

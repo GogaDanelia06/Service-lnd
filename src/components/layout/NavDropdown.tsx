@@ -7,10 +7,12 @@ export function NavDropdown({
   locale,
   items,
   pathname,
+  onNavigate,
 }: {
   locale: Locale;
   items: NavItem[];
   pathname: string;
+  onNavigate: () => void;
 }) {
   return (
     <div data-theme="white" className="nav-dropdown absolute left-0 top-full z-20">
@@ -25,6 +27,7 @@ export function NavDropdown({
                 href={target}
                 aria-current={active ? 'page' : undefined}
                 data-active={active}
+                onClick={onNavigate}
                 className="nav-dropdown__link"
               >
                 {item.label}

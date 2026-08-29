@@ -6,18 +6,12 @@ import { usePathname } from 'next/navigation';
 import { LocaleSwitch } from '@/components/layout/LocaleSwitch';
 import { Logo } from '@/components/layout/Logo';
 import { MobileNav } from '@/components/layout/MobileNav';
-import { NavDropdown } from '@/components/layout/NavDropdown';
+import { PrimaryNav } from '@/components/layout/PrimaryNav';
 import { SocialIcon } from '@/components/layout/SocialIcon';
 import type { NavItem } from '@/content';
 import { localePath, type Locale } from '@/i18n/config';
 
 type Social = { label: string; href: string };
-
-function isActive(pathname: string, locale: Locale, href: string): boolean {
-  const target = localePath(locale, href);
-  if (href === '/') return pathname === target;
-  return pathname === target || pathname.startsWith(`${target}/`);
-}
 
 export function SiteHeader({
   locale,
@@ -47,32 +41,7 @@ export function SiteHeader({
       className="absolute inset-x-0 top-0 z-10 flex min-h-[var(--header-height)] items-center text-[var(--fg)]"
     >
       <div className="site-pad grid w-full grid-cols-[1fr_auto_1fr] items-center gap-6 py-[var(--header-pad-y)]">
-        <nav aria-label={ui.nav.primary} className="col-start-1 max-[1130px]:hidden">
-          <ul className="flex items-center gap-[17px] text-[length:var(--header-text)] font-semibold">
-            {nav.map((item) => {
-              const active = isActive(pathname, locale, item.href);
-              const children = item.children ?? [];
-              return (
-                <li
-                  key={item.href}
-                  className={children.length > 0 ? 'nav-has-dropdown relative' : undefined}
-                >
-                  <Link
-                    href={localePath(locale, item.href)}
-                    aria-current={active ? 'page' : undefined}
-                    data-active={active}
-                    className="underline-swipe inline-block whitespace-nowrap"
-                  >
-                    {item.label}
-                  </Link>
-                  {children.length > 0 ? (
-                    <NavDropdown locale={locale} items={children} pathname={pathname} />
-                  ) : null}
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        <PrimaryNav locale={locale} nav={nav} label={ui.nav.primary} pathname={pathname} />
 
         <Link
           href={localePath(locale, '/')}
