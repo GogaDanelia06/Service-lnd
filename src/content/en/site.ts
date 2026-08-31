@@ -54,7 +54,7 @@ export const ui = {
 
     work: 'Work',
     practice: 'Practice',
-    selectedWork: 'Selected Work',
+    selectedWork: 'Projects',
     approach: 'Approach',
     about: 'About',
     team: 'Team',
