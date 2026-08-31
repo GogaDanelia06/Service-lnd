@@ -82,7 +82,7 @@ export function MobileNav({
                   <Meta muted className="w-8 shrink-0">
                     {String(index + 1).padStart(2, '0')}
                   </Meta>
-                  <span className="display display--tight text-[length:calc(2.2rem+1.2*var(--type-step))]">
+                  <span className="display text-[length:calc(2.2rem+1.2*var(--type-step))]">
                     {item.label}
                   </span>
                 </Link>

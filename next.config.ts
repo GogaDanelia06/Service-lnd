@@ -9,10 +9,6 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1500, 1920, 2048, 2560],
     imageSizes: [256, 384, 512, 640],
   },
-  async redirects() {
-
-    return [{ source: '/work', destination: '/en', permanent: true }];
-  },
   async headers() {
     return [
       {

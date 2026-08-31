@@ -8,6 +8,16 @@
   --btn-fg: var(--color-paper);
 }
 
+[data-theme='tint'] {
+  --bg: color-mix(in srgb, var(--color-ink) 4%, var(--color-paper));
+  --fg: var(--color-ink);
+  --alert: var(--color-alert);
+  --muted: color-mix(in srgb, var(--color-ink) 70%, transparent);
+  --rule: color-mix(in srgb, var(--color-ink) 14%, transparent);
+  --btn-bg: var(--color-ink);
+  --btn-fg: var(--color-paper);
+}
+
 [data-theme='dark'] {
   --bg: var(--color-dark);
   --fg: var(--color-paper);
