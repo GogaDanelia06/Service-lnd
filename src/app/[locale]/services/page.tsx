@@ -59,7 +59,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       <CtaSection
         locale={locale}
         heading={home.cta.heading}
-        body={home.cta.body}
+        body={services.cta.body}
         action={home.cta.action}
         headingFs={2.2}
       />

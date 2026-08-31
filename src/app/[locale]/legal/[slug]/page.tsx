@@ -36,14 +36,28 @@ export default async function LegalPage({ params }: { params: Promise<Params> })
     <Section height="medium" theme="white" offsetHeader>
       <SectionContent>
         <FluidGrid className="gap-y-[2.4vmax]">
-          <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
-            <h1 className="[--fs:2.8]">{mtavruli(page.title)}</h1>
+          <FluidSpan span={{ desktop: [6, 22], mobile: [2, 10] }}>
+            <h1 className="[--fs:2.2]">{mtavruli(page.title)}</h1>
           </FluidSpan>
 
           {page.body.length > 0 ? (
-            <FluidSpan span={{ desktop: [2, 16], mobile: [2, 10] }} className="prose-utica">
-              {page.body.map((paragraph) => (
-                <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+            <FluidSpan span={{ desktop: [6, 22], mobile: [2, 10] }} className="prose-utica">
+              {page.body.map((block, index) => (
+                <section key={block.heading ?? index} className="mt-[2.4em] first:mt-0">
+                  {block.heading ? (
+                    <h2 className="[--fs:1.4]">{mtavruli(block.heading)}</h2>
+                  ) : null}
+                  {block.paragraphs?.map((paragraph) => (
+                    <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                  ))}
+                  {block.list ? (
+                    <ul>
+                      {block.list.map((entry) => (
+                        <li key={entry}>{entry}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </section>
               ))}
             </FluidSpan>
           ) : null}

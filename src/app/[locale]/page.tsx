@@ -12,16 +12,32 @@ export default async function WorkPage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
-  const { site, home, projects } = getContent(locale);
+  const { home, projects } = getContent(locale);
 
   return (
     <>
       <Section
         height="hero"
         theme="white"
-        background={{ src: home.hero.image, alt: home.hero.alt, overlay: 0, priority: true }}
+        className="content-end"
+        background={{
+          src: home.hero.image,
+          alt: home.hero.alt,
+          overlay: 0,
+          priority: true,
+          scrim:
+            'linear-gradient(to top, rgb(0 0 0 / 0.78) 0%, rgb(0 0 0 / 0.72) 26%, transparent 62%)',
+        }}
       >
-        <h1 className="sr-only">{site.tagline}</h1>
+        <SectionContent>
+          <FluidGrid>
+            <FluidSpan span={{ desktop: [2, 18], mobile: [2, 10] }}>
+              <h1 className="display text-[var(--color-paper)] [--fs:2.4]">
+                {mtavruli(home.hero.headline)}
+              </h1>
+            </FluidSpan>
+          </FluidGrid>
+        </SectionContent>
       </Section>
 
       <Section height="small" theme="white">

@@ -36,10 +36,17 @@ export type Service = {
   list: string[];
 };
 
+export type LegalBlock = {
+  heading?: string;
+  paragraphs?: string[];
+  list?: string[];
+};
+
 export type LegalPage = {
   slug: string;
   title: string;
-  body: string[];
+  label: string;
+  body: LegalBlock[];
 };
 
 export type TeamMember = {

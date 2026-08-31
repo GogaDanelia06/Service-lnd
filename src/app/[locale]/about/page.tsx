@@ -49,6 +49,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       <CtaImageSection
         locale={locale}
         heading={about.cta.heading}
+        body={about.cta.body}
         action={about.cta.action}
         image={about.cta.image}
         alt={about.cta.alt}

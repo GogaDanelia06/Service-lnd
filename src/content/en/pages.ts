@@ -2,7 +2,8 @@ export const home = {
   hero: {
     image: '/images/hero-home.jpg',
     alt: 'A brutalist concrete tower against open sky',
-    caption: 'Tbilisi — 2024',
+    headline:
+      'Design, construction and renovation — a professional eye, from the first idea to the finished result.',
   },
   bleed: {
     image: '/images/home-bleed.jpg',
@@ -15,8 +16,8 @@ export const home = {
     body: 'While the work is aesthetically diverse, the projects are linked by one question: what kind of relationships does this place make possible? We answer it in plan before we answer it in elevation.',
   },
   work: {
-    heading: 'Recent Work',
-    body: 'Our practice spans from environmental retrofits of existing buildings to the complete planning and design of new neighbourhoods and public spaces. While our work is aesthetically diverse, our projects are linked by a focus on enhancing human relationships through architecture.',
+    heading: 'Selected Work',
+    body: 'Look through the projects we have completed — the clearest example of our experience and of what we are able to do. Montavia is not only a company; it is a system and a space shaped around you.',
   },
   approach: [
     {
@@ -34,7 +35,7 @@ export const home = {
   ],
   cta: {
     heading: 'Let’s Work Together',
-    body: 'We’re always looking for new opportunities and are comfortable working internationally. Get in touch and one of our project managers will contact you about beginning the proposal process.',
+    body: 'Our team is always ready for new projects and new challenges. We believe the best result rests on the right collaboration and a professional approach. We work with private clients, companies and state institutions.',
     action: { label: 'Contact Us', href: '/contact' },
   },
 };
@@ -50,6 +51,7 @@ export const about = {
   image: { src: '/images/about-studio.jpg', alt: 'The studio: long windows over the work tables' },
   cta: {
     heading: 'Let’s Work Together',
+    body: 'Our work rests on a few principles that matter. Combining accountability with quality, we set a proper standard and keep communication effective. Holding a high standard and staying dependable on every job is what counts for us.',
     action: { label: 'Contact Us', href: '/contact' },
     image: '/images/cta-about.jpg',
     alt: 'A concrete underpass lit from the far end',

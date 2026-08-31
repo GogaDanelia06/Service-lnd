@@ -38,7 +38,6 @@ export function ServiceGroup({ items, heading }: { items: Service[]; heading: st
                     className="object-cover"
                   />
                 </div>
-                <p className="service-body">{service.body}</p>
               </FluidSpan>
 
               <FluidSpan span={{ desktop: [18, 26], mobile: [2, 10] }}>

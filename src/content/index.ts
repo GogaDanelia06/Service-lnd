@@ -1,11 +1,11 @@
 import * as enPages from '@/content/en/pages';
-import { legal as enLegal } from '@/content/en/legal';
+import { legal as enLegal } from '@/content/en/legal/index';
 import { projects as enProjects } from '@/content/en/projects';
 import { services as enServices } from '@/content/en/services';
 import * as enSite from '@/content/en/site';
 import { team as enTeam } from '@/content/en/team';
 import * as kaPages from '@/content/ka/pages';
-import { legal as kaLegal } from '@/content/ka/legal';
+import { legal as kaLegal } from '@/content/ka/legal/index';
 import { projects as kaProjects } from '@/content/ka/projects';
 import { services as kaServices } from '@/content/ka/services';
 import * as kaSite from '@/content/ka/site';

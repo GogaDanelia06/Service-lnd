@@ -8,7 +8,7 @@ import type { Locale } from '@/i18n/config';
 
 export function SiteFooter({ locale, content }: { locale: Locale; content: Content }) {
   const { site, ui, nav, legal } = content;
-  const legalLinks = legal.map((page) => ({ label: page.title, href: `/legal/${page.slug}` }));
+  const legalLinks = legal.map((page) => ({ label: page.label, href: `/legal/${page.slug}` }));
   const siteMap = nav.flatMap((item) => [item, ...(item.children ?? [])]);
 
   return (

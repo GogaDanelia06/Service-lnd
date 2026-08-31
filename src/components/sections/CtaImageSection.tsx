@@ -9,6 +9,7 @@ type Action = { label: string; href: string };
 export function CtaImageSection({
   locale,
   heading,
+  body,
   action,
   image,
   alt = '',
@@ -16,6 +17,7 @@ export function CtaImageSection({
 }: {
   locale: Locale;
   heading: string;
+  body?: string;
   action: Action;
   image: string;
   alt?: string;
@@ -30,8 +32,9 @@ export function CtaImageSection({
     >
       <SectionContent>
         <FluidGrid className="gap-y-[2.4vmax]">
-          <FluidSpan span={{ desktop: [2, 14], mobile: [2, 10] }}>
+          <FluidSpan span={{ desktop: [2, 14], mobile: [2, 10] }} className="prose-utica">
             <h2>{mtavruli(heading)}</h2>
+            {body ? <p className="mt-[0.8em]">{body}</p> : null}
           </FluidSpan>
 
           <FluidSpan span={{ desktop: [2, 6], mobile: [2, 6] }}>
