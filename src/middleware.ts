@@ -4,16 +4,6 @@ import { defaultLocale, isLocale, locales } from '@/i18n/config';
 
 const PUBLIC_FILE = /\.(.*)$/;
 
-function preferredLocale(request: NextRequest) {
-  const header = request.headers.get('accept-language') ?? '';
-  for (const part of header.split(',')) {
-    const tag = part.split(';')[0]?.trim().toLowerCase() ?? '';
-    const base = tag.split('-')[0] ?? '';
-    if (isLocale(base)) return base;
-  }
-  return defaultLocale;
-}
-
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -25,7 +15,7 @@ export function middleware(request: NextRequest) {
   if (isLocale(first)) return NextResponse.next();
 
   const cookie = request.cookies.get('locale')?.value ?? '';
-  const locale = isLocale(cookie) ? cookie : preferredLocale(request);
+  const locale = isLocale(cookie) ? cookie : defaultLocale;
 
   const url = request.nextUrl.clone();
   url.pathname = `/${locale}${pathname === '/' ? '' : pathname}`;
