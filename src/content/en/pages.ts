@@ -34,7 +34,7 @@ export const home = {
     },
   ],
   cta: {
-    heading: 'Partners',
+    heading: 'Partnership',
     body: 'Our team is always ready for new projects and new challenges. We believe the best result rests on the right collaboration and a professional approach. We work with private clients, companies and state institutions.',
     action: { label: 'Contact Us', href: '/contact' },
   },
@@ -50,7 +50,7 @@ export const about = {
   ],
   image: { src: '/images/about-studio.jpg', alt: 'The studio: long windows over the work tables' },
   cta: {
-    heading: 'Partners',
+    heading: 'Partnership',
     body: 'Our work rests on a few principles that matter. Combining accountability with quality, we set a proper standard and keep communication effective. Holding a high standard and staying dependable on every job is what counts for us.',
     action: { label: 'Contact Us', href: '/contact' },
     image: '/images/cta-about.jpg',
@@ -91,7 +91,7 @@ export const press = {
     },
   ],
   cta: {
-    heading: 'Partners',
+    heading: 'Partnership',
     action: { label: 'Contact Us', href: '/contact' },
     image: '/images/cta-press.jpg',
     alt: 'Dense city blocks seen from above',
@@ -99,6 +99,6 @@ export const press = {
 };
 
 export const contact = {
-  heading: 'Partners',
+  heading: 'Contact Us',
   body: 'Further case studies available upon request. Please provide some information on your project or goals and we’ll move the conversation on from there.',
 };

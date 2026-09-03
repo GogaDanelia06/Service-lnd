@@ -40,7 +40,7 @@ export const ui = {
   notFound: 'This page doesn’t exist.',
   notFoundBody: 'The link may be out of date, or the page may have moved.',
   colophon: 'Design and build',
-  rights: 'All rights reserved. Montavia',
+  rights: 'Montavia. All rights reserved',
   nav: { primary: 'Primary', footer: 'Footer' },
   byTheNumbers: 'By the numbers',
   details: {

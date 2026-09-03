@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     slug: 'project-one',
     index: '01',
-    title: 'პროექტი ერთი',
+    title: '01',
     summary: 'თექვსმეტი ბინა კარკასში, რომელიც უკვე იდგა.',
     thumbnail: '/images/project-one-thumb.jpg',
     hero: '/images/project-one-hero.jpg',
@@ -37,7 +37,7 @@ export const projects: Project[] = [
   {
     slug: 'project-two',
     index: '02',
-    title: 'პროექტი ორი',
+    title: '02',
     summary: 'ჩრდილი, წყალი და დასაჯდომი ადგილი — შეთანხმებული ღიად.',
     thumbnail: '/images/project-two-thumb.jpg',
     hero: '/images/project-two-hero.jpg',
@@ -62,7 +62,7 @@ export const projects: Project[] = [
   {
     slug: 'project-three',
     index: '03',
-    title: 'პროექტი სამი',
+    title: '03',
     summary: 'აკუსტიკის დავალება, რომელიც დერეფნებზე აღმოჩნდა.',
     thumbnail: '/images/project-three-thumb.jpg',
     hero: '/images/project-three-hero.jpg',
@@ -91,7 +91,7 @@ export const projects: Project[] = [
   {
     slug: 'project-four',
     index: '04',
-    title: 'პროექტი ოთხი',
+    title: '04',
     summary: 'ოცდაორი ჰექტარი, დაგეგმილი როგორც ექვსი უბანი და არა ერთი.',
     thumbnail: '/images/project-four-thumb.jpg',
     hero: '/images/project-four-hero.jpg',

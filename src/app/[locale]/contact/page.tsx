@@ -57,7 +57,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                     className="inline-flex items-center gap-2"
                   >
                     <SocialIcon label={social.label} className="h-[1.05em] w-[1.05em] shrink-0" />
-                    <span className="underline-swipe">{social.label}</span>
+                    <span>{social.label}</span>
                   </a>
                 </li>
               ))}

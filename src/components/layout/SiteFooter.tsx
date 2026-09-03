@@ -64,7 +64,7 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: Conte
           <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }} className="mt-[2vmax]">
             <hr className="rule" />
             <p className="mt-[2vmax] text-center text-[0.85rem] leading-[1.6] text-[var(--muted)]">
-              © {new Date().getFullYear()}. {ui.rights}
+              © {new Date().getFullYear()} {ui.rights}
             </p>
           </FluidSpan>
         </FluidGrid>

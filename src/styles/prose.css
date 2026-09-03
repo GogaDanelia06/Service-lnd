@@ -46,6 +46,10 @@
     content: none;
   }
 
+  .prose-utica ul.social-row a:not(.btn) {
+    background-image: none;
+  }
+
   .prose-utica a:not(.btn) {
     background-image: linear-gradient(currentColor, currentColor);
     background-repeat: no-repeat;

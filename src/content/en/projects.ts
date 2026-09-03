@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     slug: 'project-one',
     index: '01',
-    title: 'Project One',
+    title: '01',
     summary: 'Sixteen homes inside a frame that was already standing.',
     thumbnail: '/images/project-one-thumb.jpg',
     hero: '/images/project-one-hero.jpg',
@@ -29,7 +29,7 @@ export const projects: Project[] = [
   {
     slug: 'project-two',
     index: '02',
-    title: 'Project Two',
+    title: '02',
     summary: 'Shade, water, and somewhere to sit — negotiated in the open.',
     thumbnail: '/images/project-two-thumb.jpg',
     hero: '/images/project-two-hero.jpg',
@@ -54,7 +54,7 @@ export const projects: Project[] = [
   {
     slug: 'project-three',
     index: '03',
-    title: 'Project Three',
+    title: '03',
     summary: 'An acoustics brief that turned out to be about corridors.',
     thumbnail: '/images/project-three-thumb.jpg',
     hero: '/images/project-three-hero.jpg',
@@ -79,7 +79,7 @@ export const projects: Project[] = [
   {
     slug: 'project-four',
     index: '04',
-    title: 'Project Four',
+    title: '04',
     summary: 'Twenty-two hectares planned as six neighbourhoods, not one.',
     thumbnail: '/images/project-four-thumb.jpg',
     hero: '/images/project-four-hero.jpg',
