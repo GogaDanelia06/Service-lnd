@@ -10,6 +10,18 @@
     }
   }
 
+  .field-line {
+    border-style: solid;
+    border-width: 1px;
+    border-color: color-mix(in srgb, var(--fg) 60%, transparent);
+  }
+
+  @media (min-resolution: 2dppx) {
+    .field-line {
+      border-width: 0.5px;
+    }
+  }
+
   .underline-swipe {
     background-image: linear-gradient(currentColor, currentColor);
     background-repeat: no-repeat;

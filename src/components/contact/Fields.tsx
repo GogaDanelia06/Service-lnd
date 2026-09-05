@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/cn';
 
 const FIELD =
-  'w-full border bg-[color-mix(in_srgb,var(--fg)_3%,transparent)] px-3 py-2.5 font-[family-name:var(--font-body)] text-base font-light leading-[1.6] text-[var(--fg)] outline-none';
+  'field-line w-full bg-[color-mix(in_srgb,var(--fg)_3%,transparent)] px-3 py-2.5 font-[family-name:var(--font-body)] text-base font-light leading-[1.6] text-[var(--fg)] outline-none';
 
 export function Field({
   label,
@@ -51,7 +51,7 @@ export function Field({
     className: cn(
       FIELD,
       rows && 'resize-y leading-[1.7]',
-      error ? 'border-[var(--alert)]' : 'border-[var(--fg)]',
+      error && 'border-[var(--alert)]',
     ),
   };
 
