@@ -42,19 +42,20 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
             <hr className="rule mt-[3vmax] w-full" />
 
-            <p className="mt-[1.4vmax]">
-              <a href={`tel:${shared.phone.replace(/[^\d+]/g, '')}`}>{shared.phone}</a>
-              <br />
-              <a href={`mailto:${shared.email}`}>{shared.email}</a>
-            </p>
-            <ul className="social-row mt-[1.4em] flex flex-wrap gap-x-6 gap-y-2">
+            <ul className="social-row mt-[1.4vmax] grid gap-y-[0.7em]">
+              <li>
+                <a href={`tel:${shared.phone.replace(/[^\d+]/g, '')}`}>{shared.phone}</a>
+              </li>
+              <li>
+                <a href={`mailto:${shared.email}`}>{shared.email}</a>
+              </li>
               {shared.socials.map((social: { label: string; href: string }) => (
                 <li key={social.href}>
                   <a
                     href={social.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="inline-flex items-center gap-2"
+                    className="flex w-fit items-center gap-2"
                   >
                     <SocialIcon label={social.label} className="h-[1.05em] w-[1.05em] shrink-0" />
                     <span>{social.label}</span>

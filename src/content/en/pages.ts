@@ -100,5 +100,5 @@ export const press = {
 
 export const contact = {
   heading: 'Contact Us',
-  body: 'Further case studies available upon request. Please provide some information on your project or goals and we’ll move the conversation on from there.',
+  body: 'Have an idea, a plan, a project or a specific request? Write to us or give us a call, and let’s talk your vision through together.',
 };

@@ -31,8 +31,8 @@ export default async function WorkPage({ params }: { params: Promise<{ locale: s
       >
         <SectionContent>
           <FluidGrid>
-            <FluidSpan span={{ desktop: [2, 18], mobile: [2, 10] }}>
-              <h1 className="display text-[var(--color-paper)] [--fs:2.4]">
+            <FluidSpan span={{ desktop: [2, 22], mobile: [2, 10] }}>
+              <h1 className="display text-[var(--color-paper)] [--fs:1.9]">
                 {mtavruli(home.hero.headline)}
               </h1>
             </FluidSpan>
