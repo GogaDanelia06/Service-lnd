@@ -1,10 +1,10 @@
 export const site = {
   name: 'Montavia',
-  tagline: 'Montavia is an architecture firm based in Tbilisi, Georgia.',
+  tagline: 'Design, Construction and Renovation',
   discipline: 'Architecture & Urbanism',
   founded: '2011',
   description:
-    'Montavia is an architecture firm based in Tbilisi, Georgia, working across environmental retrofits, new neighbourhoods and public space.',
+    'Montavia — design, construction and renovation in Tbilisi. We work across architectural design, construction, renovation and complete interior fit-out.',
   address: { street: '45 Aghmashenebeli Avenue', city: 'Tbilisi', country: 'Georgia' },
 };
 

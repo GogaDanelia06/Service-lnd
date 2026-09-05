@@ -24,13 +24,13 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(shared.url),
-    title: { default: site.name, template: `%s — ${site.name}` },
+    title: { default: `${site.name} — ${site.tagline}`, template: `%s — ${site.name}` },
     description: site.description,
     openGraph: {
       type: 'website',
       locale: ogLocale[locale],
       siteName: site.name,
-      title: site.name,
+      title: `${site.name} — ${site.tagline}`,
       description: site.description,
       url: `${shared.url}/${locale}`,
     },
