@@ -1,7 +1,35 @@
+import nodemailer from 'nodemailer';
+
 import { composeMessage } from './message';
 import type { ContactInput } from './schema';
 
 const RESEND_ENDPOINT = 'https://api.resend.com/emails';
+
+async function viaSmtp(input: ContactInput): Promise<boolean> {
+  const host = process.env.SMTP_HOST;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  const to = process.env.CONTACT_TO;
+  if (!host || !user || !pass || !to) return false;
+
+  const port = Number(process.env.SMTP_PORT ?? 465);
+  const transport = nodemailer.createTransport({
+    host,
+    port,
+    secure: port === 465,
+    auth: { user, pass },
+  });
+
+  const { subject, text, replyTo } = composeMessage(input);
+  await transport.sendMail({
+    from: process.env.CONTACT_FROM ?? user,
+    to: to.split(',').map((address) => address.trim()),
+    replyTo,
+    subject,
+    text,
+  });
+  return true;
+}
 
 async function viaResend(input: ContactInput): Promise<boolean> {
   const key = process.env.RESEND_API_KEY;
@@ -44,12 +72,13 @@ async function viaWebhook(input: ContactInput): Promise<boolean> {
 }
 
 export async function deliver(input: ContactInput): Promise<void> {
+  if (await viaSmtp(input)) return;
   if (await viaResend(input)) return;
   if (await viaWebhook(input)) return;
 
   if (process.env.NODE_ENV === 'production') {
     throw new Error(
-      'No contact transport configured. Set RESEND_API_KEY + CONTACT_TO + CONTACT_FROM, or CONTACT_WEBHOOK_URL.',
+      'No contact transport configured. Set SMTP_HOST + SMTP_USER + SMTP_PASS + CONTACT_TO, RESEND_API_KEY + CONTACT_TO + CONTACT_FROM, or CONTACT_WEBHOOK_URL.',
     );
   }
 

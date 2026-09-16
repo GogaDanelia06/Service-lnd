@@ -534,6 +534,14 @@ CONTACT_FROM=Montavia <hello@montavia.ge>    # Resend-verified domain
 
 # Option B - POST the submission as JSON anywhere
 CONTACT_WEBHOOK_URL=https://hooks.zapier.com/...
+
+# Option C - SMTP through the mailbox provider (tried before Resend when set)
+SMTP_HOST=smtp.mailbox.ge
+SMTP_PORT=465                                # SSL; 587 uses STARTTLS
+SMTP_USER=info@montavia.ge
+SMTP_PASS=...                                # the mailbox password
+CONTACT_TO=info@montavia.ge
+CONTACT_FROM=Montavia <info@montavia.ge>     # same address as SMTP_USER
 ```
 
 Resend is called over its REST API with `fetch`, so there is no SDK
