@@ -14,11 +14,11 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: Conte
   return (
     <Section as="footer" height="small" theme="white">
       <SectionContent>
-        <FluidGrid className="gap-y-[2.4vmax]">
+        <FluidGrid className="gap-y-[2.4vmax] max-fe:text-center">
           <FluidSpan span={{ desktop: [2, 8], mobile: [2, 10] }}>
             <h3>
               <span className="sr-only">{site.name}</span>
-              <LogoVertical className="h-[var(--footer-logo)] w-auto" />
+              <LogoVertical className="h-[var(--footer-logo)] w-auto max-fe:mx-auto" />
             </h3>
           </FluidSpan>
 
@@ -51,7 +51,7 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: Conte
                     href={social.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="flex w-fit items-center gap-2"
+                    className="flex w-fit items-center gap-2 max-fe:mx-auto"
                   >
                     <SocialIcon label={social.label} className="h-[1.05em] w-[1.05em] shrink-0" />
                     <span className="underline-swipe">{social.label}</span>

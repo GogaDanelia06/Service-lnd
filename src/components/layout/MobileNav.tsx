@@ -65,11 +65,11 @@ export function MobileNav({
         id={panelId}
         data-theme="white"
         hidden={!open}
-        className="fixed inset-0 z-20 bg-[var(--bg)] text-[var(--fg)]"
+        className="fixed inset-0 z-20 overflow-y-auto overscroll-contain bg-[var(--bg)] text-[var(--fg)]"
       >
         <nav
           aria-label={ui.nav.primary}
-          className="site-pad flex h-full flex-col justify-between py-[var(--header-pad-y)]"
+          className="site-pad flex min-h-full flex-col justify-between pt-[var(--header-height)] pb-[var(--header-pad-y)]"
         >
           <ul className="flex flex-1 flex-col content-center justify-center">
             {items.map((item, index) => (
@@ -77,12 +77,12 @@ export function MobileNav({
                 <Link
                   href={localePath(locale, item.href)}
                   aria-current={pathname === localePath(locale, item.href) ? 'page' : undefined}
-                  className="flex items-baseline gap-4 py-[0.55em]"
+                  className="flex items-baseline gap-4 py-[0.55em] [@media(max-height:500px)]:py-[0.35em]"
                 >
                   <Meta muted className="w-8 shrink-0">
                     {String(index + 1).padStart(2, '0')}
                   </Meta>
-                  <span className="display text-[length:calc(2.2rem+1.2*var(--type-step))]">
+                  <span className="display text-[length:calc(2.2rem+1.2*var(--type-step))] [@media(max-height:500px)]:text-[1.6rem]">
                     {item.label}
                   </span>
                 </Link>

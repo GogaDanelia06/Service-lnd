@@ -44,3 +44,10 @@
     --header-pad-y: var(--site-gutter);
   }
 }
+
+/* Phones turned sideways: little height, so tighten the header. */
+@media (max-height: 500px) and (orientation: landscape) {
+  :root {
+    --header-pad-y: 14px;
+  }
+}

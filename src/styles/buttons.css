@@ -52,6 +52,7 @@
   .btn-stretch {
     display: flex;
     width: 100%;
+    min-width: max-content;
     min-height: calc(var(--fe-row) * 2 + var(--fe-gap));
     padding-block: 0;
   }

@@ -17,7 +17,11 @@ export function ServiceGroup({ items, heading }: { items: Service[]; heading: st
 
           {items.map((service, index) => (
             <Fragment key={service.slug}>
-              <FluidSpan span={{ desktop: [2, 26], mobile: [2, 10] }}>
+              {/* After an image, match the optical gap the heading's line box leaves below the rule. */}
+              <FluidSpan
+                span={{ desktop: [2, 26], mobile: [2, 10] }}
+                className={index > 0 ? 'mt-[calc(0.27*(2.2rem+1.2*var(--type-step)))]' : undefined}
+              >
                 <hr className="rule" />
               </FluidSpan>
 
