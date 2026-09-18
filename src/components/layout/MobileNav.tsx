@@ -35,6 +35,17 @@ export function MobileNav({
     setOpen(false);
   }, [pathname]);
 
+  // Any link click closes the menu, including links to the page already open
+  // (the pathname effect above only fires when the route changes).
+  useEffect(() => {
+    if (!open) return;
+    const onClick = (event: MouseEvent) => {
+      if ((event.target as Element | null)?.closest('a[href]')) setOpen(false);
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, [open]);
+
   useModalPanel({ open, panelRef, onClose: close });
 
   return (
@@ -46,6 +57,8 @@ export function MobileNav({
         aria-controls={panelId}
         onClick={() => (open ? close() : setOpen(true))}
         className="relative z-30 -mr-3 grid h-11 w-11 place-items-center"
+        // The header can be white over a dark hero; the open panel is always white.
+        style={open ? { color: 'var(--color-ink)' } : undefined}
       >
         <span className="sr-only">{open ? ui.closeMenu : ui.openMenu}</span>
         <span aria-hidden className="relative block h-[13px] w-[26px]">
